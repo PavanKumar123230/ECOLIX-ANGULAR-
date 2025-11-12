@@ -35,11 +35,14 @@ import { GoldCaderUsersComponent } from './admin/gold-cader-users/gold-cader-use
 import { DiamondCaderUsersComponent } from './admin/diamond-cader-users/diamond-cader-users.component';
 import { WithdrawUsersListComponent } from './admin/withdraw-users-list/withdraw-users-list.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { SilverManagersDataComponent } from './Components/silver-managers-data/silver-managers-data.component';
+import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-managers-data.component';
+import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
+import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 
 const routes: Routes = [
   // Public routes
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'product', component: ProductComponent },
   { path: 'sign-up', component: SignUpComponent },
@@ -55,6 +58,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['user'] },
     children: [
+      { path: 'home', component: HomeComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'packages', component: SelectPackagesComponent },
       { path: 'transferfund', component: TransferFundComponent },
@@ -65,6 +69,9 @@ const routes: Routes = [
       { path: 'gold', component: GoldIncomeComponent },
       { path: 'diamond', component: DiamondIncomeComponent },
       { path: 'wallet', component: WalletComponent },
+       { path: 'silvermanager', component: SilverManagersDataComponent },
+        { path: 'goldmanager', component: GoldManagersDataComponent },
+         { path: 'diamondmanager', component: DiamondManagersDataComponent },
     ]
   },
 
@@ -88,10 +95,22 @@ const routes: Routes = [
     { path: 'goldcaderusers', component: GoldCaderUsersComponent },
     { path: 'diamondcaderusers', component: DiamondCaderUsersComponent },
     { path: 'withdrawusers', component: WithdrawUsersListComponent },
-    { path: 'aprofile', component: AdminProfileComponent },              
+    { path: 'aprofile', component: AdminProfileComponent }, 
+      { path: 'adminregister', component: AdminRegisterUserComponent },                 
   ]
 },
+  // ✅ Admin Dashboard Layout
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
+    children: [
+      { path: 'adashboard', component: AdashboardComponent },
+    ]
+  },
 
+  // Wildcard route
   { path: '**', redirectTo: '' }
 ];
 

@@ -22,10 +22,14 @@
   <!-- header.component.html -->
   <header class="header">
     <button class="menu-btn" (click)="sidebarService.toggleSidebar()">☰</button>
-    <h2 class="title">My USERID</h2>
+    <h2 class="title"> <strong>Reg ID:</strong> {{ homeData?.profiledata?.regid }}</h2>
     <div class="user">
-      <span>Welcome, SUDHEER</span>
+      <span> Welcome, {{ homeData?.profiledata?.name || 'User' }} 👋</span>
       <div class="avatar">U</div>
     </div>
   </header>
+  
+
+
+
   

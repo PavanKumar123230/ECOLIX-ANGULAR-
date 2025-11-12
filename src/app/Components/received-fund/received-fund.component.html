@@ -1,30 +1,38 @@
-<div class="container mt-4">
-    <h2 class="text-center mb-3">Received Fund Transactions</h2>
-  
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover align-middle responsive-table">
-        <thead class="table-dark text-center">
-          <tr>
-            <th>S.No</th>
-            <th>Date</th>
-            <th>User ID</th>
-            <th>Amount (₹)</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-  
-        <tbody>
-          <tr *ngFor="let tx of transactions">
-            <td data-label="S.No">{{ tx.sno }}</td>
-            <td data-label="Date">{{ tx.date }}</td>
-            <td data-label="User ID">{{ tx.userId }}</td>
-            <td data-label="Amount">₹{{ tx.amount | number:'1.2-2' }}</td>
-            <td data-label="Status" [ngClass]="tx.status.toLowerCase()">
-              {{ tx.status }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
+<div class="container">
+  <h1>Received Fund Transactions</h1>
+
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Date & Time</th>
+        <th>User ID</th>
+        <th>Amount (₹)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="transactions.length === 0">
+        <td colspan="5" class="text-muted text-center py-3">
+          No transactions found
+        </td>
+      </tr>
+
+      <tr *ngFor="let tx of transactions; let i = index">
+        <td data-label="S.No">{{ i + 1 }}</td>
+        <td data-label="Date & Time">{{ tx.cdate }} {{ tx.ctime }}</td>
+        <td data-label="User ID">{{ tx.userid }}</td>
+        <td data-label="Amount">₹{{ tx.amount | number:'1.2-2' }}</td>
+        <td
+          [class.approved]="tx.status === 'Success'"
+          [class.pending]="tx.status === 'Pending'"
+          [class.rejected]="tx.status === 'Failed'"
+          data-label="Status"
+        >
+          {{ tx.status || 'Success' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

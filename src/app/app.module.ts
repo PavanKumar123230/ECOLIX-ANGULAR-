@@ -8,7 +8,6 @@ import { HomeComponent } from './Components/home/home.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ProductComponent } from './Components/product/product.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
-import { LoginComponent } from './Components/login/login.component';
 import { ProductDeatilsComponent } from './Components/product-deatils/product-deatils.component';
 import { ContactComponent } from './Components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
@@ -44,6 +43,11 @@ import { GoldCaderUsersComponent } from './admin/gold-cader-users/gold-cader-use
 import { DiamondCaderUsersComponent } from './admin/diamond-cader-users/diamond-cader-users.component';
 import { WithdrawUsersListComponent } from './admin/withdraw-users-list/withdraw-users-list.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { LoginComponent } from './Components/login/login.component';
+import { SilverManagersDataComponent } from './Components/silver-managers-data/silver-managers-data.component';
+import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-managers-data.component';
+import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
+import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 
 
 
@@ -57,7 +61,6 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
     AboutusComponent,
     ProductComponent,
     SignUpComponent,
-    LoginComponent,
     ProductDeatilsComponent,
     ContactComponent,
     AddToCartComponent,
@@ -90,6 +93,11 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
     DiamondCaderUsersComponent,
     WithdrawUsersListComponent,
     AdminProfileComponent,
+    LoginComponent,
+    SilverManagersDataComponent,
+    GoldManagersDataComponent,
+    DiamondManagersDataComponent,
+    AdminRegisterUserComponent,
    
   ],
   imports: [

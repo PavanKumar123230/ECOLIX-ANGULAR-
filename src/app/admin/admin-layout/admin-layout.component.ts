@@ -54,7 +54,7 @@ export class AdminLayoutComponent {
 
   logout() {
     this.tokenService.signOut();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/adminlogin']);
   }
 
   buildMenu() {
@@ -72,6 +72,7 @@ export class AdminLayoutComponent {
         { label: 'Dashboard', icon: 'fas fa-tachometer-alt', route: '/adashboard' },
         { label: 'Add Package', icon: 'bi bi-speedometer2', route: '/addpackage' },
          { label: 'Add Products', icon: 'bi bi-speedometer2', route: '/addproduct' },
+         { label: 'Registration', icon: 'fas fa-tachometer-alt', route: '/adminregister' },
           { label: 'Profile', icon: 'fas fa-edit', route: '/aprofile' },
         {
           label: 'Users',

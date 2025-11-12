@@ -26,6 +26,55 @@ export class AdminService {
   );
 }
 
+ AdminRegistration(value: any) {
+  const token1 = this.token.getToken();
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token1
+    })
+  };
+
+  return this.http.post(
+    AUTH_API + 'Register',
+    {
+      "sponcerid": value.sponcerid,
+      "name": value.name,
+      "phone": value.phone,
+      "email": value.email,
+      "password": value.password,
+      "product": value.product,
+    },
+    httpOptions
+  );
+}
+
+ GetJoiningPackage(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    }
+    return this.http.get(
+      AUTH_API + 'Get_JoinPackages',
+      httpOptions
+    );
+  }
+
+    GetProductsByPackages(id: string) {
+      const token1 = this.token.getToken();
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token1
+        })
+      };
+      return this.http.get(`${AUTH_API}Get_Productdatabypackage/${id}`, httpOptions);
+    }
+  
+
 
  Profile(){
     const token1 = this.token.getToken();

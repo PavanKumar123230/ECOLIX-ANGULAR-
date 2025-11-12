@@ -1,0 +1,44 @@
+<div class="container">
+  <h2 class="title">Gold Manager Data</h2>
+
+  <div class="form-group">
+    <label for="managerSelect">Select Gold Manager</label>
+    <select id="managerSelect" class="form-control" [(ngModel)]="selectedManager" (change)="onManagerChange()">
+      <option value="" disabled>Select Manager</option>
+      <option *ngFor="let manager of managerOptions" [value]="manager.value">
+        {{ manager.label }}
+      </option>
+    </select>
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    Loading data...
+  </div>
+
+  <div *ngIf="managerData.length > 0" class="table-responsive">
+    <table class="manager-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Reg ID</th>
+          <th>Package</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of managerData; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.regid }}</td>
+          <td>{{ item.package }}</td>
+          <td>{{ item.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && managerData.length === 0 && selectedManager">
+    No data available for this manager.
+  </div>
+</div>
