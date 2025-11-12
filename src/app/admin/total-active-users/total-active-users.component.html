@@ -1,0 +1,80 @@
+<div class="admin-dashboard">
+  <h2 class="title">Total Active Users</h2>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'active'" 
+      (click)="switchTab('active')">
+      <i class="fas fa-bolt"></i> Active Users
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'join'" 
+      (click)="switchTab('join')">
+      <i class="fas fa-user-plus"></i> Inactive Users
+    </button>
+  </div>
+
+  <div class="tab-content">
+    <!-- Loader -->
+    <div *ngIf="loading" class="loading">Loading...</div>
+
+    <!-- Today Active Users -->
+    <div *ngIf="activeTab === 'active' && !loading" class="table-container">
+      <h3>Active Users</h3>
+      <table *ngIf="activeUsers.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of activeUsers">
+            <td>{{ u.id }}</td>
+            <td>{{ u.regid }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td> </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="activeUsers.length === 0" class="no-data">No active users found.</div>
+    </div>
+
+    <!-- Today Joined Users -->
+    <div *ngIf="activeTab === 'join' && !loading" class="table-container">
+      <h3>Joined Users</h3>
+      <table *ngIf="joinUsers.length > 0">
+        <thead>
+          <tr>
+             <th>ID</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of joinUsers">
+            <td>{{ u.id }}</td>
+            <td>{{ u.regid }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="joinUsers.length === 0" class="no-data">No joined users found today.</div>
+    </div>
+  </div>
+</div>

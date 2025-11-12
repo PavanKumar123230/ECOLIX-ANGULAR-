@@ -54,7 +54,7 @@ export class AdminLayoutComponent {
 
   logout() {
     this.tokenService.signOut();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/adminlogin']);
   }
 
   buildMenu() {
@@ -70,23 +70,40 @@ export class AdminLayoutComponent {
     } else if (this.isAdmin) {
       this.menuItems = [
         { label: 'Dashboard', icon: 'fas fa-tachometer-alt', route: '/adashboard' },
+        { label: 'Add Package', icon: 'bi bi-speedometer2', route: '/addpackage' },
+         { label: 'Add Products', icon: 'bi bi-speedometer2', route: '/addproduct' },
+         { label: 'Registration', icon: 'fas fa-tachometer-alt', route: '/adminregister' },
+          { label: 'Profile', icon: 'fas fa-edit', route: '/aprofile' },
         {
           label: 'Users',
           icon: 'fas fa-users',
           children: [
-            { label: 'All Users', icon: 'fas fa-list', route: '/users' },
-            { label: 'Add User', icon: 'fas fa-user-plus', route: '/users/add' }
+            { label: 'Today Users', icon: 'fas fa-list', route: '/todayactive' },
+            { label: 'Total Users', icon: 'fas fa-user-plus', route: '/totalusers' },
+            { label: 'Total Active Users', icon: 'fas fa-user-plus', route: '/totalactiveusers' },
+            { label: 'Upgrade Users', icon: 'fas fa-user-plus', route: '/upgradeusers' },
+            { label: 'Rank Users', icon: 'fas fa-user-plus', route: '/rankwiseusers' },
+          ]
+        },
+            {
+          label: 'Cader Users',
+          icon: 'fas fa-users',
+          children: [
+            { label: 'Silver', icon: 'fas fa-list', route: '/silvercaderusers' },
+            { label: 'Gold', icon: 'fas fa-list', route: '/goldcaderusers' },
+            { label: 'Diamond', icon: 'fas fa-list', route: '/diamondcaderusers' },
           ]
         },
         {
           label: 'Payments',
           icon: 'fas fa-credit-card',
           children: [
-            { label: 'Pending', icon: 'fas fa-clock', route: '/payments/pending' },
-            { label: 'Approved', icon: 'fas fa-check', route: '/payments/approved' }
+            { label: 'Transfer', icon: 'fas fa-clock', route: '/transfertouser' },
+            { label: 'Withdraw', icon: 'fas fa-clock', route: '/withdrawusers' },
+            // { label: 'Approved', icon: 'fas fa-check', route: '/payments/approved' }
           ]
         },
-        { label: 'Reports', icon: 'fas fa-chart-line', route: '/reports' }
+        // { label: 'Reports', icon: 'fas fa-chart-line', route: '/reports' }
       ];
     }
   }

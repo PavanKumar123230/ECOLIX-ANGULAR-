@@ -163,6 +163,275 @@ WalletReport(){
     };
     return this.http.get(AUTH_API + 'Wallet_Receivereport', httpOptions);
   }
+
+  //silver users data
+
+    SilverManager1(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Onedata', httpOptions);
+  }
+
+      SilverManager2(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Twodata', httpOptions);
+  }
+
+      SilverManager3(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Threedata', httpOptions);
+  }
+
+      SilverManager4(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Fourdata', httpOptions);
+  }
+
+      SilverManager5(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Fivedata', httpOptions);
+  }
+
+      SilverManager6(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'SilverManager_Sixdata', httpOptions);
+  }
+
+      SilverManager7(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Silver_BusinessManagerdata', httpOptions);
+  }
+
+      SilverManager8(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Silver_Directordata', httpOptions);
+  }
+
+  //gold users data
+
+  GoldManager1(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Onedata', httpOptions);
+  }
+
+     GoldManager2(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Twodata', httpOptions);
+  }
+
+    GoldManager3(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Threedata', httpOptions);
+  }
+
+   GoldManager4(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Fourdata', httpOptions);
+  }
+
+   GoldrManager5(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Fivedata', httpOptions);
+  }
+
+      GoldManager6(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'GoldManager_Sixdata', httpOptions);
+  }
+
+     GoldManager7(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Gold_BusinessManagerdata', httpOptions);
+  }
+
+      GoldManager8(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Gold_Directordata', httpOptions);
+  }
+
+  //dimaond users data 
+ DiamondManager1(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Onedata', httpOptions);
+  }
+
+     DiamondManager2(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Twodata', httpOptions);
+  }
+
+    DiamondManager3(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Threedata', httpOptions);
+  }
+
+   DiamondManager4(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Fourdata', httpOptions);
+  }
+
+   DiamondManager5(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Fivedata', httpOptions);
+  }
+
+      DiamondManager6(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'DiamondManager_Sixdata', httpOptions);
+  }
+
+     DiamondManager7(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Diamond_BusinessManagerdata', httpOptions);
+  }
+
+      DiamondManager8(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Diamond_Directordata', httpOptions);
+  }
   
 
   DirectTeam(){

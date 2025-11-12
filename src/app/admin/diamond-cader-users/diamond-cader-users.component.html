@@ -1,0 +1,62 @@
+<div class="diamond-cader-dashboard">
+  <h2 class="title">
+    <i class="fas fa-gem"></i> Diamond Cadre Users
+  </h2>
+
+  <!-- Cadre Selector -->
+  <div class="card selector-box">
+    <label for="cader">
+      <i class="fas fa-layer-group"></i> Select Cadre:
+    </label>
+    <select id="cader" (change)="onCaderChange($event)">
+      <option value="">-- Select Cadre --</option>
+      <option value="gm1">Diamond GM 1</option>
+      <option value="gm2">Diamond GM 2</option>
+      <option value="gm3">Diamond GM 3</option>
+      <option value="gm4">Diamond GM 4</option>
+      <option value="gm5">Diamond GM 5</option>
+      <option value="gm6">Diamond GM 6</option>
+      <option value="bm">Diamond BM</option>
+      <option value="director">Diamond Director</option>
+    </select>
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">Loading users...</div>
+
+  <!-- Error -->
+  <div *ngIf="errorMsg && !loading" class="alert error">{{ errorMsg }}</div>
+
+  <!-- Table -->
+  <div *ngIf="!loading && users.length > 0" class="card table-container">
+    <h3 class="table-title">
+      <i class="fas fa-database"></i> {{ selectedCader | titlecase }} Users
+    </h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ u.regid || u.id }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.joindate || u.cdate }}</td>
+            <td>{{ selectedCader | uppercase }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

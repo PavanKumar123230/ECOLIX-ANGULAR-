@@ -1,0 +1,47 @@
+<div class="admin-dashboard">
+  <h2>Admin Profile</h2>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" formControlName="name" placeholder="Enter Name" />
+      <div class="error" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" formControlName="phone" placeholder="Enter Phone" />
+      <div class="error" *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">
+        Valid 10-digit phone number required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="Enter Email" />
+      <div class="error" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+        Valid email required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="Enter Password" />
+      <div class="error" *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">
+        Password is required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loading || profileForm.invalid" class="btn">
+      {{ loading ? 'Updating...' : 'Update Profile' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+  </form>
+
+  <div *ngIf="successMsg" class="alert success">{{ successMsg }}</div>
+  <div *ngIf="errorMsg" class="alert error">{{ errorMsg }}</div>
+</div>

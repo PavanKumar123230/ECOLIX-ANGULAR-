@@ -10,17 +10,19 @@
 
   <nav class="nav">
     <ng-container *ngFor="let item of menuItems">
-      <!-- Single Link -->
+      <!-- Single link -->
       <a *ngIf="!item.children" (click)="navigate(item.route)" class="nav-link">
         <i [class]="item.icon"></i>
         <span>{{item.label}}</span>
       </a>
 
-      <!-- With Submenu -->
+      <!-- With submenu -->
       <div *ngIf="item.children">
         <div class="nav-item" (click)="toggleSubmenu(item.label)">
-          <i [class]="item.icon"></i>
-          <span>{{item.label}}</span>
+          <div class="nav-item-main">
+            <i [class]="item.icon"></i>
+            <span>{{item.label}}</span>
+          </div>
           <i class="bi" [ngClass]="{'bi-chevron-down': !openSubmenus[item.label], 'bi-chevron-up': openSubmenus[item.label]}"></i>
         </div>
         <div class="submenu" *ngIf="openSubmenus[item.label]">
@@ -29,7 +31,18 @@
             <span>{{child.label}}</span>
           </a>
         </div>
+        
       </div>
+      
     </ng-container>
+      <a
+        class="nav-link text-danger"
+        (click)="logout()"
+      >
+        Logout
+      </a>
   </nav>
 </aside>
+
+<!-- Overlay for mobile -->
+<div class="overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>

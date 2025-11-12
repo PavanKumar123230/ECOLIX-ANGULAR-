@@ -1,0 +1,80 @@
+.withdraw-dashboard {
+  padding: 20px;
+
+  .title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .filter-box {
+    margin-bottom: 20px;
+    label {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+    select {
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+  }
+
+  .loading {
+    text-align: center;
+    font-weight: 600;
+    color: #007bff;
+    padding: 10px;
+  }
+
+  .alert.error {
+    background: #f8d7da;
+    color: #842029;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      th, td {
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 14px;
+      }
+      th {
+        background: #007bff;
+        color: #fff;
+      }
+      tr:hover {
+        background: #f0f8ff;
+      }
+      .btn {
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 13px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        &.btn-pay {
+          background: #28a745;
+          color: #fff;
+        }
+        &.btn-reject {
+          background: #dc3545;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .table-responsive table {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="withdraw-dashboard">
+  <h2 class="title">
+    <i class="fas fa-wallet"></i> Withdraw Users
+  </h2>
+
+  <!-- Filter Dropdown -->
+  <div class="filter-box">
+    <label for="status">Filter by Status:</label>
+    <select id="status" (change)="onFilterChange($event)">
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMsg && !loading" class="alert error">{{ errorMsg }}</div>
+
+  <!-- Table -->
+  <div *ngIf="!loading && withdrawUsers.length > 0" class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Wallet Type</th>
+          <th>Remark</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th *ngIf="filterStatus === 'pending'">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let w of withdrawUsers; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ w.userid }}</td>
+          <td>{{ w.rname }}</td>
+          <td>{{ w.amount }}</td>
+          <td>{{ w.waltype }}</td>
+          <td>{{ w.remark || w.note }}</td>
+          <td>{{ w.cdate }}</td>
+          <td>{{ w.ctime }}</td>
+          <td *ngIf="filterStatus === 'pending'">
+            <button (click)="payWithdraw(w.id)" class="btn btn-pay">
+              <i class="fas fa-check"></i> Pay
+            </button>
+            <button (click)="rejectWithdraw(w.id)" class="btn btn-reject">
+              <i class="fas fa-times"></i> Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

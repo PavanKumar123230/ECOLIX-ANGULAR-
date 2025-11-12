@@ -24,6 +24,23 @@ import { AuthGuard } from './service/auth.guard';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { ReportComponent } from './Components/report/report.component';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { AddPackageComponent } from './admin/add-package/add-package.component';
+import { AddProductsComponent } from './admin/add-products/add-products.component';
+import { TodayActiveUsersComponent } from './admin/today-active-users/today-active-users.component';
+import { TotalUsersDataComponent } from './admin/total-users-data/total-users-data.component';
+import { TotalActiveUsersComponent } from './admin/total-active-users/total-active-users.component';
+import { UpgradeUsersComponent } from './admin/upgrade-users/upgrade-users.component';
+import { TransferWallettoUserComponent } from './admin/transfer-walletto-user/transfer-walletto-user.component';
+import { RankUsersDataComponent } from './admin/rank-users-data/rank-users-data.component';
+import { SilverCaderUsersComponent } from './admin/silver-cader-users/silver-cader-users.component';
+import { GoldCaderUsersComponent } from './admin/gold-cader-users/gold-cader-users.component';
+import { DiamondCaderUsersComponent } from './admin/diamond-cader-users/diamond-cader-users.component';
+import { WithdrawUsersListComponent } from './admin/withdraw-users-list/withdraw-users-list.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { SilverManagersDataComponent } from './Components/silver-managers-data/silver-managers-data.component';
+import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-managers-data.component';
+import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
+import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 
 const routes: Routes = [
   // Public routes
@@ -58,9 +75,36 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
 
 
+       { path: 'silvermanager', component: SilverManagersDataComponent },
+        { path: 'goldmanager', component: GoldManagersDataComponent },
+         { path: 'diamondmanager', component: DiamondManagersDataComponent },
     ]
   },
 
+  // ✅ Admin Dashboard
+{
+  path: '', 
+  component: AdminLayoutComponent,
+  canActivate: [AuthGuard],
+  data: { roles: ['admin'] },
+  children: [
+    { path: 'adashboard', component: AdashboardComponent },  
+    { path: 'addpackage', component: AddPackageComponent },  
+    { path: 'addproduct', component: AddProductsComponent }, 
+    { path: 'todayactive', component: TodayActiveUsersComponent }, 
+    { path: 'totalusers', component: TotalUsersDataComponent },
+    { path: 'totalactiveusers', component: TotalActiveUsersComponent },
+    { path: 'upgradeusers', component: UpgradeUsersComponent },
+    { path: 'transfertouser', component: TransferWallettoUserComponent },
+    { path: 'rankwiseusers', component: RankUsersDataComponent },
+    { path: 'silvercaderusers', component: SilverCaderUsersComponent },
+    { path: 'goldcaderusers', component: GoldCaderUsersComponent },
+    { path: 'diamondcaderusers', component: DiamondCaderUsersComponent },
+    { path: 'withdrawusers', component: WithdrawUsersListComponent },
+    { path: 'aprofile', component: AdminProfileComponent }, 
+      { path: 'adminregister', component: AdminRegisterUserComponent },                 
+  ]
+},
   // ✅ Admin Dashboard Layout
   {
     path: '',

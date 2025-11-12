@@ -1,0 +1,60 @@
+<div class="admin-dashboard">
+  <h2 class="title">Manage Packages</h2>
+
+  <!-- Add/Edit Package Form -->
+  <form [formGroup]="packageForm" (ngSubmit)="onSubmit()" class="package-form">
+    <div class="form-group">
+      <label>Package Name</label>
+      <input type="text" formControlName="pname" placeholder="Enter package name" />
+    </div>
+
+    <div class="form-group">
+      <label>Package Type</label>
+      <select formControlName="ptype" class="form-control">
+        <option value="">Select Type</option>
+        <option value="join">Join</option>
+        <option value="silver">Silver</option>
+        <option value="gold">Gold</option>
+        <option value="diamond">Diamond</option>
+      </select>
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" [disabled]="packageForm.invalid" class="btn btn-primary">
+        {{ editMode ? 'Update Package' : 'Add Package' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+    </div>
+  </form>
+
+  <!-- Package List -->
+  <div class="package-list">
+    <h3>All Packages</h3>
+    <div *ngIf="loading">Loading...</div>
+
+    <table *ngIf="packages.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Package Name</th>
+          <th>Package Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pkg of packages">
+          <td>{{ pkg.id }}</td>
+          <td>{{ pkg.pname }}</td>
+          <td>{{ pkg.ptype }}</td>
+          <td>
+            <button (click)="editPackage(pkg.id)" class="btn btn-edit">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="packages.length === 0">No packages found.</div>
+  </div>
+</div>
