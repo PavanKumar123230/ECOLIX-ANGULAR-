@@ -30,6 +30,7 @@ import { WalletComponent } from './Components/wallet/wallet.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 
 
 
@@ -62,6 +63,7 @@ import { AdashboardComponent } from './admin/adashboard/adashboard.component';
     WalletComponent,
     AdminLoginComponent,
     AdashboardComponent,
+    AdminLayoutComponent,
    
   ],
   imports: [

@@ -21,6 +21,7 @@ import { WalletComponent } from './Components/wallet/wallet.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AuthGuard } from './service/auth.guard';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   // Public routes
@@ -55,14 +56,15 @@ const routes: Routes = [
   },
 
   // ✅ Admin Dashboard
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    data: { roles: ['admin'] },
-    children: [
-      { path: 'adashboard', component: AdashboardComponent }
-    ]
-  },
+{
+  path: '', 
+  component: AdminLayoutComponent,
+  canActivate: [AuthGuard],
+  data: { roles: ['admin'] },
+  children: [
+    { path: 'adashboard', component: AdashboardComponent },  
+  ]
+},
 
   { path: '**', redirectTo: '' }
 ];

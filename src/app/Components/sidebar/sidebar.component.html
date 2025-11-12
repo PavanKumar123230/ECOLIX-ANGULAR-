@@ -1,102 +1,35 @@
-<aside class="sidebar" [class.open]="isOpen" *ngIf="isAdmin || isUser">
-  <div class="logo">
-    <span *ngIf="isUser">User Panel</span>
-    <span *ngIf="isAdmin">Admin Panel</span>
-    <i class="bi bi-x icon-close mx-4" (click)="closeSidebar()"></i>
+<aside class="sidebar" [class.open]="isSidebarOpen">
+  <div class="sidebar-header">
+    <div class="brand">
+      <i class="bi bi-shop"></i>
+      <span *ngIf="isUser">User Panel</span>
+      <span *ngIf="isAdmin">Admin Panel</span>
+    </div>
+    <i class="bi bi-x close-btn" (click)="toggleSidebar()"></i>
   </div>
 
   <nav class="nav">
-
-    <!-- 👤 USER MENU -->
-    <ng-container *ngIf="isUser">
-      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-speedometer2"></i>
-        <span>Dashboard</span>
+    <ng-container *ngFor="let item of menuItems">
+      <!-- Single Link -->
+      <a *ngIf="!item.children" (click)="navigate(item.route)" class="nav-link">
+        <i [class]="item.icon"></i>
+        <span>{{item.label}}</span>
       </a>
 
-      <a routerLink="/packages" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-box-seam"></i>
-        <span>Select Packages</span>
-      </a>
-
-      <a routerLink="/transferfund" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-arrow-left-right"></i>
-        <span>Transfer Fund</span>
-      </a>
-
-      <a routerLink="/receivedfund" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-wallet2"></i>
-        <span>Received Fund</span>
-      </a>
-
-      <a routerLink="/my-user" class="nav-link">
-        <i class="bi bi-person-circle"></i>
-        <span>My Users</span>
-      </a>
-
-      <a routerLink="/welcome-bonus" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-gift"></i>
-        <span>Welcome Bonus</span>
-      </a>
-
-      <a routerLink="/silver" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-trophy"></i>
-        <span>Silver Income</span>
-      </a>
-
-      <a routerLink="/gold" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-award"></i>
-        <span>Gold Income</span>
-      </a>
-
-      <a routerLink="/diamond" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-gem"></i>
-        <span>Diamond Income</span>
-      </a>
-
-      <a routerLink="/wallet" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-cash-stack"></i>
-        <span>Wallet</span>
-      </a>
-
-      <a routerLink="/report" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-file-earmark-text"></i>
-        <span>Report</span>
-      </a>
-
-      <a routerLink="/logout" class="nav-link">
-        <i class="bi bi-box-arrow-right"></i>
-        <span>Logout</span>
-      </a>
+      <!-- With Submenu -->
+      <div *ngIf="item.children">
+        <div class="nav-item" (click)="toggleSubmenu(item.label)">
+          <i [class]="item.icon"></i>
+          <span>{{item.label}}</span>
+          <i class="bi" [ngClass]="{'bi-chevron-down': !openSubmenus[item.label], 'bi-chevron-up': openSubmenus[item.label]}"></i>
+        </div>
+        <div class="submenu" *ngIf="openSubmenus[item.label]">
+          <a *ngFor="let child of item.children" (click)="navigate(child.route)" class="submenu-link">
+            <i [class]="child.icon"></i>
+            <span>{{child.label}}</span>
+          </a>
+        </div>
+      </div>
     </ng-container>
-
-    <!-- 🧑‍💼 ADMIN MENU -->
-    <ng-container *ngIf="isAdmin">
-      <a routerLink="/adashboard" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-speedometer2"></i>
-        <span>Dashboard</span>
-      </a>
-
-      <a routerLink="/users" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-people"></i>
-        <span>Manage Users</span>
-      </a>
-
-      <a routerLink="/payments" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-credit-card"></i>
-        <span>Payments</span>
-      </a>
-
-      <a routerLink="/reports" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-bar-chart"></i>
-        <span>Reports</span>
-      </a>
-
-      <a routerLink="/logout" class="nav-link">
-        <i class="bi bi-box-arrow-right"></i>
-        <span>Logout</span>
-      </a>
-    </ng-container>
-
   </nav>
 </aside>

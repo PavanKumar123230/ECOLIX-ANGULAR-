@@ -1,0 +1,70 @@
+<div class="admin-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="isSidebarOpen">
+    <div class="sidebar-header">
+      <div class="brand">
+        <i class="fas fa-store"></i>
+        <span *ngIf="isUser">User Panel</span>
+        <span *ngIf="isAdmin">Admin Panel</span>
+      </div>
+      <i class="fas fa-times close-btn" (click)="toggleSidebar()"></i>
+    </div>
+
+    <nav class="nav">
+      <ng-container *ngFor="let item of menuItems">
+        <!-- Single Link -->
+        <a *ngIf="!item.children" (click)="navigate(item.route)" class="nav-link">
+          <i [class]="item.icon"></i>
+          <span>{{item.label}}</span>
+        </a>
+
+        <!-- Submenu -->
+        <div *ngIf="item.children">
+          <div class="nav-item" (click)="toggleSubmenu(item.label)">
+            <i [class]="item.icon"></i>
+            <span>{{item.label}}</span>
+            <i class="fas" [ngClass]="{'fa-chevron-down': !openSubmenus[item.label], 'fa-chevron-up': openSubmenus[item.label]}"></i>
+          </div>
+          <div class="submenu" *ngIf="openSubmenus[item.label]">
+            <a *ngFor="let child of item.children" (click)="navigate(child.route)" class="submenu-link">
+              <i [class]="child.icon"></i>
+              <span>{{child.label}}</span>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <i class="fas fa-bars menu-btn" (click)="toggleSidebar()"></i>
+        <div class="logo">
+          <!-- <img src="assets/img/logo.png" alt="Logo" /> -->
+          <span>MyEcommerce</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="profile-dropdown" (click)="toggleProfileDropdown()">
+          <!-- <img src="assets/img/admin-avatar.png" alt="Admin" class="avatar"/> -->
+          <span>Admin</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="dropdown-menu" *ngIf="profileDropdownOpen">
+          <a routerLink="/profile"><i class="fas fa-user"></i> Profile</a>
+          <a routerLink="/settings"><i class="fas fa-cogs"></i> Settings</a>
+          <a (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

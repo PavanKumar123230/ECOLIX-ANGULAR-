@@ -13,47 +13,48 @@
   flex-direction: column;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #6366f1;
-  margin-bottom: 2rem;
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
-/* ✅ Ensure vertical layout */
+.close-btn {
+  cursor: pointer;
+  display: none;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
-/* ✅ Each link should take full width and stack vertically */
-.nav-link {
+.nav-link,
+.nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   padding: 0.75rem 1rem;
-  color: #cbd5e1;
-  text-decoration: none;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  width: 100%;
+  color: #cbd5e1;
+  margin-bottom: 0.3rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 0.3s;
 }
 
-.nav-link:hover, 
-.nav-link.active {
+.nav-link:hover,
+.nav-item:hover {
   background: #334155;
   color: white;
 }
 
 .submenu {
-  margin-left: 1.5rem;
-  margin-top: 0.3rem;
   display: flex;
   flex-direction: column;
+  margin-left: 1.5rem;
+  margin-top: 0.3rem;
 }
 
 .submenu-link {
@@ -65,23 +66,24 @@
   color: #94a3b8;
   text-decoration: none;
   border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  transition: 0.2s;
 }
 
-.submenu-link:hover,
-.submenu-link.active {
+.submenu-link:hover {
   background: #475569;
   color: white;
 }
 
-/* 📱 Responsive Sidebar */
-@media (max-width: 768px) {
-  .sidebar {
+/* Responsive */
+@media(max-width: 768px){
+  .sidebar{
     transform: translateX(-100%);
     position: fixed;
   }
-
-  .sidebar.open {
+  .sidebar.open{
     transform: translateX(0);
+  }
+  .close-btn{
+    display: block;
   }
 }
