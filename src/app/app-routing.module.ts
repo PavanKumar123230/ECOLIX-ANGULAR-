@@ -51,6 +51,9 @@ import { ReceivedFundComponent } from './Components/received-fund/received-fund.
 import { MyUserComponent } from './Components/my-user/my-user.component';
 import { WelcomeBonusComponent } from './Components/welcome-bonus/welcome-bonus.component';
 import { SilverIncomeComponent } from './Components/silver-income/silver-income.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdashboardComponent } from './admin/adashboard/adashboard.component';
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
   // Public site
@@ -62,7 +65,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'product-details', component: ProductDeatilsComponent },
   { path: 'contact-us', component: ContactComponent },
-
+ { path: 'adminlogin', component: AdminLoginComponent },
   // Dashboard Layout with children
   {
     path: '',
@@ -74,13 +77,10 @@ const routes: Routes = [
       { path: 'receivedfund', component: ReceivedFundComponent },
       { path: 'my-user', component: MyUserComponent },
       { path: 'welcome-bonus', component: WelcomeBonusComponent },
-       {path:'silver',component:SilverIncomeComponent}
+       {path:'silver',component:SilverIncomeComponent},
      
-
-
-
-      
-
+       //admin components
+        { path: 'adashboard', component: AdashboardComponent, canActivate: [AuthGuard], data: { roles: ['admin'] } },
     ],
   },
 ];

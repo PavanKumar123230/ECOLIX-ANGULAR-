@@ -26,6 +26,8 @@ import { WelcomeBonusComponent } from './Components/welcome-bonus/welcome-bonus.
 import { SilverIncomeComponent } from './Components/silver-income/silver-income.component';
 import { GoldIncomeComponent } from './Components/gold-income/gold-income.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 
 
 
@@ -55,12 +57,13 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     SilverIncomeComponent,
     GoldIncomeComponent,
     AdminLoginComponent,
+    AdashboardComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
