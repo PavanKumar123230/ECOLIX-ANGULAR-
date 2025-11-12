@@ -8,7 +8,6 @@ import { HomeComponent } from './Components/home/home.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ProductComponent } from './Components/product/product.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
-import { LoginComponent } from './Components/login/login.component';
 import { ProductDeatilsComponent } from './Components/product-deatils/product-deatils.component';
 import { ContactComponent } from './Components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
@@ -31,6 +30,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { LoginComponent } from './Components/login/login.component';
 
 
 
@@ -44,7 +44,6 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
     AboutusComponent,
     ProductComponent,
     SignUpComponent,
-    LoginComponent,
     ProductDeatilsComponent,
     ContactComponent,
     AddToCartComponent,
@@ -64,6 +63,7 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
     AdminLoginComponent,
     AdashboardComponent,
     AdminLayoutComponent,
+    LoginComponent,
    
   ],
   imports: [

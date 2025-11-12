@@ -1,62 +1,151 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-select-packages',
   templateUrl: './select-packages.component.html',
   styleUrls: ['./select-packages.component.scss']
 })
-export class SelectPackagesComponent {
+export class SelectPackagesComponent implements OnInit {
   selectedPackage: string = '';
-  selectedProduct: any = null; // 👈 holds clicked product
+  selectedProduct: any = null;
+  data1: any[] = []; // Packages list
+  productdata: any[] = []; // Products for selected package
+  registerForm!: FormGroup;
 
-  packages = [
-    { name: 'Silver' },
-    { name: 'Gold' },
-    { name: 'Diamond' }
-  ];
-
-  silverProducts = [
-    { name: 'Herbal Tea', image: 'https://5.imimg.com/data5/SELLER/Default/2024/4/411336177/VH/QB/OW/1473185/green-herbal-tea-500x500.jpg', price: 299, offerPrice: 199 },
-    { name: 'Aloe Vera Gel', image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600', price: 349, offerPrice: 249 },
-    { name: 'Neem Soap', image: 'https://via.placeholder.com/250x180?text=Neem+Soap', price: 199, offerPrice: 129 },
-    { name: 'Honey Pack', image: 'https://via.placeholder.com/250x180?text=Honey+Pack', price: 399, offerPrice: 279 }
-  ];
-
-  goldProducts = [
-    { name: 'Herbal Shampoo', image: 'https://via.placeholder.com/250x180?text=Herbal+Shampoo', price: 399, offerPrice: 279 },
-    { name: 'Turmeric Cream', image: 'https://via.placeholder.com/250x180?text=Turmeric+Cream', price: 299, offerPrice: 199 },
-    { name: 'Essential Oil', image: 'https://via.placeholder.com/250x180?text=Essential+Oil', price: 499, offerPrice: 349 },
-    { name: 'Green Coffee', image: 'https://via.placeholder.com/250x180?text=Green+Coffee', price: 599, offerPrice: 399 }
-  ];
-
-  diamondProducts = [
-    { name: 'Luxury Honey Pack', image: 'https://via.placeholder.com/250x180?text=Luxury+Honey', price: 699, offerPrice: 499 },
-    { name: 'Royal Herbal Oil', image: 'https://via.placeholder.com/250x180?text=Royal+Herbal+Oil', price: 899, offerPrice: 699 },
-    { name: 'Diamond Glow Cream', image: 'https://via.placeholder.com/250x180?text=Diamond+Glow+Cream', price: 999, offerPrice: 799 },
-    { name: 'Premium Green Tea', image: 'https://via.placeholder.com/250x180?text=Premium+Green+Tea', price: 899, offerPrice: 699 }
-  ];
-
-  get selectedProducts() {
-    if (this.selectedPackage === 'Silver') return this.silverProducts;
-    if (this.selectedPackage === 'Gold') return this.goldProducts;
-    if (this.selectedPackage === 'Diamond') return this.diamondProducts;
-    return [];
+  constructor(private api: UserService, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      sponcerid: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      email: ['', [Validators.required, Validators.email]],
+      package: ['', Validators.required],
+      product: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      address: ['', Validators.required]
+    });
   }
+
+  ngOnInit() {
+    this.getPackages();
+  }
+
+  /** Fetch all packages */
+  getPackages() {
+    this.api.GetpackagesData().subscribe({
+      next: (res: any) => {
+        this.data1 = res.data || [];
+        console.log('Packages:', this.data1);
+      },
+      error: (err) => {
+        console.error('Error fetching packages', err);
+      }
+    });
+  }
+
+  /** When user selects a package, fetch its products */
+  onPackageSelect() {
+    if (this.selectedPackage) {
+      this.api.GetProductsByPackages(this.selectedPackage).subscribe({
+        next: (res: any) => {
+          this.productdata = res.data || [];
+          console.log('Products for package', this.productdata);
+        },
+        error: (err) => {
+          console.error('Error fetching products', err);
+        }
+      });
+    }
+  }
+
+
 
   openProductModal(product: any) {
     this.selectedProduct = product;
+    console.log("Selected Product:", this.selectedProduct);
+  
     const modal = document.getElementById('productModal');
     if (modal) {
-      (modal as any).style.display = 'block';
       modal.classList.add('show');
+      (modal as any).style.display = 'block';
     }
+  
+    // Autofill hidden fields for API
+    this.registerForm.patchValue({
+      package: product.package,
+      product: product.id
+    });
   }
+  
 
+  /** Close modal */
   closeModal() {
     const modal = document.getElementById('productModal');
     if (modal) {
-      (modal as any).style.display = 'none';
       modal.classList.remove('show');
+      (modal as any).style.display = 'none';
     }
   }
+/** Submit Registration */
+successData: any = null; // for storing registration response
+
+RegisterPackages() {
+  if (this.registerForm.invalid) {
+    this.registerForm.markAllAsTouched();
+    return;
+  }
+
+  const formValue = this.registerForm.value;
+  const payload = {
+    sponcerid: formValue.sponcerid,
+    name: formValue.name,
+    phone: formValue.phone,
+    email: formValue.email,
+    package: this.selectedProduct?.package || formValue.package,
+    product: this.selectedProduct?.id || formValue.product,
+    password: formValue.password,
+    address: formValue.address
+  };
+
+  console.log("Registration Payload:", payload);
+
+  this.api.Register(payload).subscribe({
+    next: (res: any) => {
+      console.log('Registration Successful:', res);
+
+      if (res.status === 1) {
+        this.successData = res.data; // store response data
+
+        // Close product modal
+        this.closeModal();
+
+        // Open success modal
+        const modal = document.getElementById('successModal');
+        if (modal) {
+          modal.classList.add('show');
+          (modal as any).style.display = 'block';
+        }
+
+        this.registerForm.reset();
+      } else {
+        alert(res.message || 'Registration failed.');
+      }
+    },
+    error: (err) => {
+      console.error('❌ Error during registration:', err);
+      alert('Registration failed. Please try again.');
+    }
+  });
+}
+
+/** Close success modal */
+closeSuccessModal() {
+  const modal = document.getElementById('successModal');
+  if (modal) {
+    modal.classList.remove('show');
+    (modal as any).style.display = 'none';
+  }
+}
+
 }

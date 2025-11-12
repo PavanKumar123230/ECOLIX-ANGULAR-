@@ -1,87 +1,16 @@
-/* Full background section */
-.img-back {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1503602642458-232111445657?w=1600') 
-                no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    padding: 20px;
-  }
-  
-  /* Glassmorphism card */
-  .signup-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 40px 35px;
-    width: 100%;
-    max-width: 420px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .signup-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  }
-  
-  /* Headings */
-  .signup-card h3 {
-    font-weight: 700;
-    color: #0d6efd;
-  }
-  
-  /* Input fields */
-  .form-control {
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 0.95rem;
-    border: 1px solid #ccc;
-  }
-  
-  .form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 5px rgba(13, 110, 253, 0.4);
-  }
-  /* Buttons */
-  .btn-primary {
-    border-radius: 10px;
-    padding: 12px;
-    font-weight: 600;
-    background: linear-gradient(90deg, #007bff, #00b4d8);
-    border: none;
-  }
-  .btn-primary:hover {
-    background: linear-gradient(90deg, #0056b3, #0096c7);
-  }
-  
-  /* Bottom text */
-  .bottom-text {
-    text-align: center;
-    font-size: 0.9rem;
-  }
+.card {
+  border: none;
+  border-radius: 15px;
+}
 
-  .bottom-text a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 600;
+.form-control,
+.form-select {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem !important;
   }
-  
-  .bottom-text a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .signup-card {
-      padding: 30px 25px;
-    }
-  }
-  @media (max-width: 576px) {
-    .signup-card {
-      padding: 25px 20px;
-      margin: 10px;
-    }
-  }
-  
+}

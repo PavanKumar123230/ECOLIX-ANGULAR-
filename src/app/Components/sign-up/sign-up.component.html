@@ -1,37 +1,96 @@
-<div class="img-back d-flex align-items-center justify-content-center">
-    <div class="signup-card shadow-lg">
-      <h3 class="text-center mb-4"> Create Account</h3>
-      <form>
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" id="name" class="form-control" placeholder="Enter your full name" required />
-        </div>
-  
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required />
-        </div>
-  
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" id="email" class="form-control" placeholder="Enter your email" required />
-        </div>
-  
-        <div class="mb-3">
-          <label for="sportid" class="form-label">sponsor ID</label>
-          <input type="text" id="sportid" class="form-control" placeholder="Enter your Sport ID" required />
-        </div>
-  
-        <div class="mb-3">
-          <label for="password" class="form-label">Create Password</label>
-          <input type="password" id="password" class="form-control" placeholder="Enter your password" required />
-        </div>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="card shadow-lg p-4 rounded-4">
+        <h3 class="text-center mb-3 text-success fw-bold">
+          <i class="bi bi-person-plus"></i> Register
+        </h3>
 
-        <button type="submit" class="btn btn-primary w-100">Create Account</button>
-        <p class="bottom-text mt-3">
-          Already have an account? <a routerLink="/login">Login here</a>
-        </p>
-      </form>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <!-- Sponsor ID -->
+          <div class="mb-3">
+            <label class="form-label">Sponsor ID</label>
+            <input type="text" class="form-control" formControlName="sponcerid"
+              (keyup)="onSponsorChange()" placeholder="Enter Sponsor ID">
+            <small class="text-muted">Sponsor Name:
+              <span class="fw-bold text-primary">{{ sponsorName }}</span>
+            </small>
+          </div>
+
+          <!-- Name -->
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter your full name">
+          </div>
+
+          <!-- Phone -->
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" formControlName="phone" maxlength="10" placeholder="Enter 10-digit phone">
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+          </div>
+
+          <!-- Package -->
+          <div class="mb-3">
+            <label class="form-label">Select Package</label>
+            <select class="form-select" formControlName="package" (change)="onPackageSelect()">
+              <option value="">-- Select Package --</option>
+              <option *ngFor="let pkg of packages" [value]="pkg.id">{{ pkg.packagename }}</option>
+            </select>
+          </div>
+
+          <!-- Product -->
+          <div class="mb-3">
+            <label class="form-label">Select Product</label>
+            <select class="form-select" formControlName="product">
+              <option value="">-- Select Product --</option>
+              <option *ngFor="let p of products" [value]="p.id">{{ p.productname }}</option>
+            </select>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+          </div>
+
+          <!-- Address -->
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea rows="2" class="form-control" formControlName="address" placeholder="Enter address"></textarea>
+          </div>
+
+          <button class="btn btn-success w-100" [disabled]="loading">
+            <span *ngIf="!loading">Register</span>
+            <span *ngIf="loading"><i class="bi bi-hourglass-split"></i> Please wait...</span>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-  
+</div>
+
+<!-- ✅ Bootstrap Modal -->
+<div class="modal fade" #successModal tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title w-100" id="successModalLabel">Registration Successful 🎉</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your ID has been registered successfully!</p>
+        <p><strong>Login Email:</strong> {{ successData?.email }}</p>
+        <p><strong>Password:</strong> {{ successData?.password }}</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,7 +26,6 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
 const routes: Routes = [
   // Public routes
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'product', component: ProductComponent },
   { path: 'sign-up', component: SignUpComponent },
@@ -42,6 +41,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['user'] },
     children: [
+      { path: 'home', component: HomeComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'packages', component: SelectPackagesComponent },
       { path: 'transferfund', component: TransferFundComponent },
@@ -55,17 +55,18 @@ const routes: Routes = [
     ]
   },
 
-  // ✅ Admin Dashboard
-{
-  path: '', 
-  component: AdminLayoutComponent,
-  canActivate: [AuthGuard],
-  data: { roles: ['admin'] },
-  children: [
-    { path: 'adashboard', component: AdashboardComponent },  
-  ]
-},
+  // ✅ Admin Dashboard Layout
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
+    children: [
+      { path: 'adashboard', component: AdashboardComponent },
+    ]
+  },
 
+  // Wildcard route
   { path: '**', redirectTo: '' }
 ];
 

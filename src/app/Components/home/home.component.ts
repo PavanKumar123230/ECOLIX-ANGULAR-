@@ -1,11 +1,20 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 declare const Swiper: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements  AfterViewInit {
+
+  homeData: any;
+
+  constructor(private api: UserService) {}
+
+  
+
   ngAfterViewInit(): void {
     new Swiper('.latest-news-swiper', {
       slidesPerView: 4,
@@ -25,4 +34,5 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
+ 
 }

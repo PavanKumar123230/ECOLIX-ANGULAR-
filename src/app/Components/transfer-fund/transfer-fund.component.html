@@ -1,8 +1,8 @@
 <div class="wallet-transfer container py-4">
     <!-- Wallet Header -->
-    <div class="card text-white gradient-header mb-4 shadow-sm rounded-4 text-center p-4">
+    <div class="card text-white gradient-header mb-4 shadow-sm rounded-4 text-center p-4"  *ngIf="profiledata">
       <h4 class="fw-semibold mb-2">Wallet Balance</h4>
-      <h1 class="fw-bold balance-display">₹{{ balance | number: '1.2-2' }}</h1>
+      <h1 class="fw-bold balance-display">₹{{ profiledata.actwallet | number: '1.2-2' }}</h1>
     </div>
   
     <!-- Transfer Form -->
@@ -19,12 +19,15 @@
               placeholder="Enter amount"
               formControlName="amount"
             />
-            <div class="text-danger small mt-1" *ngIf="transferForm.get('amount')?.invalid && transferForm.get('amount')?.touched">
+            <div
+              class="text-danger small mt-1"
+              *ngIf="transferForm.get('amount')?.invalid && transferForm.get('amount')?.touched"
+            >
               <span *ngIf="transferForm.get('amount')?.errors?.['required']">Amount is required.</span>
-              <span *ngIf="transferForm.get('amount')?.errors?.['min']">Minimum transfer amount is ₹500.</span>
+              <span *ngIf="transferForm.get('amount')?.errors?.['min']">Minimum transfer amount is ₹50.</span>
             </div>
           </div>
-  
+      
           <!-- User ID -->
           <div class="col-md-6">
             <label class="form-label">User ID</label>
@@ -32,29 +35,35 @@
               type="text"
               class="form-control"
               placeholder="User123"
-              formControlName="userId"
+              formControlName="regid"
             />
-            <div class="text-danger small mt-1" *ngIf="transferForm.get('userId')?.invalid && transferForm.get('userId')?.touched">
+            <div
+              class="text-danger small mt-1"
+              *ngIf="transferForm.get('regid')?.invalid && transferForm.get('regid')?.touched"
+            >
               User ID is required
             </div>
           </div>
-  
-          <!-- PIN -->
+      
+       
+          <!-- Remark -->
           <div class="col-md-6">
-            <label class="form-label">4-Digit PIN</label>
-            <input
-              type="password"
-              maxlength="4"
+            <label class="form-label">Remark</label>
+            <textarea
               class="form-control"
-              placeholder="••••"
-              formControlName="pin"
-            />
-            <div class="text-danger small mt-1" *ngIf="transferForm.get('pin')?.invalid && transferForm.get('pin')?.touched">
-              Enter a valid 4-digit PIN
+              rows="3"
+              placeholder="Enter your remarks..."
+              formControlName="remark"
+            ></textarea>
+            <div
+              class="text-danger small mt-1"
+              *ngIf="transferForm.get('remark')?.invalid && transferForm.get('remark')?.touched"
+            >
+              Please enter a valid remark
             </div>
           </div>
         </div>
-  
+      
         <button
           type="submit"
           class="btn btn-gradient w-100 mt-4 py-2 fw-semibold"
@@ -63,35 +72,53 @@
           Transfer Funds
         </button>
       </form>
+      
     </div>
   
     <!-- Transaction Table -->
     <div class="transactions-section mt-5">
       <h5 class="fw-semibold text-secondary text-center mb-3">Recent Transfer Transactions</h5>
   
-      <div class="table-responsive">
+      <div class="table-responsive mt-4">
         <table class="table table-bordered table-hover text-center align-middle shadow-sm">
           <thead class="table-primary">
             <tr>
               <th>S.No</th>
-              <th>Date</th>
+              <th>Date & Time</th>
               <th>User ID</th>
+              <th>Wallet Type</th>
               <th>Amount (₹)</th>
+              <th>Type</th>
+              <th>Remark</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngIf="transactions.length === 0">
-              <td colspan="4" class="text-muted">No transactions yet</td>
+              <td colspan="7" class="text-muted">No transactions found</td>
             </tr>
             <tr *ngFor="let txn of transactions; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ txn.date }}</td>
               <td>{{ txn.userId }}</td>
+              <td>{{ txn.walletType }}</td>
               <td>₹{{ txn.amount | number: '1.2-2' }}</td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="{
+                    'bg-success': txn.type === 'credit',
+                    'bg-danger': txn.type === 'debit'
+                  }"
+                >
+                  {{ txn.type | titlecase }}
+                </span>
+              </td>
+              <td>{{ txn.remark || '-' }}</td>
             </tr>
           </tbody>
         </table>
       </div>
+      
     </div>
   </div>
   

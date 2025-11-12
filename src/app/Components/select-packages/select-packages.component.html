@@ -1,136 +1,195 @@
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Select Your Package</h2>
-  
-    <!-- Package Selector -->
-    <!-- <div class="text-center mb-4">
-      <select class="form-select w-auto d-inline-block" [(ngModel)]="selectedPackage">
-        <option value="" disabled selected>Select Package</option>
-        <option *ngFor="let pkg of packages" [value]="pkg.name">{{ pkg.name }} Package</option>
-      </select>
-    </div> -->
+  <h2 class="text-center mb-4 text-success fw-bold">Select Your Package</h2>
 
-    <div class="dropdown-container">
-      <label for="packageSelect" class="label">Select Package:</label>
-      <select
-        id="packageSelect"
-        [(ngModel)]="selectedPackage"
-        class="select"
-      >
-        <option value="" disabled selected>Select Package</option>
-        <option *ngFor="let pkg of packages" [value]="pkg.name">
-          {{ pkg.name }} Package
-        </option>
-      </select>
-    </div>
-    
+  <!-- Package Dropdown -->
+  <div class="mb-4 text-center">
+    <label for="packageSelect" class="form-label fw-semibold me-2">Select Package:</label>
+    <select
+      id="packageSelect"
+      class="form-select d-inline-block w-auto"
+      [(ngModel)]="selectedPackage"
+      (change)="onPackageSelect()"
+    >
+      <option value="" disabled selected>Select Package</option>
+      <option *ngFor="let pkg of data1" [value]="pkg.id">
+        {{ pkg.pname }}
+      </option>
+    </select>
+  </div>
 
+  <!-- Product Grid -->
+  <section *ngIf="productdata.length > 0" class="latest-products py-4">
+    <div class="container text-center">
+      <h4 class="text-success mb-4">
+        Products in 
+      </h4>
 
-  
-    <!-- Product Grid -->
-    <section *ngIf="selectedPackage" class="latest-products py-5">
-      <div class="container text-center">
-        <h4 class="text-center text-success mb-4">
-          {{ selectedPackage }} Package Products
-        </h4>
-  
-        <div class="row g-4">
-          <div class="col-6 col-md-3" *ngFor="let product of selectedProducts">
-            <div class="product-card shadow-sm rounded-4 p-3">
-              <div class="product-img mb-2">
-                <img [src]="product.image" [alt]="product.name" class="img-fluid rounded-3" />
-              </div>
-              <div class="product-info">
-                <h5>{{ product.name }}</h5>
-                <p class="price">
-                  <span class="mrp text-muted text-decoration-line-through">₹{{ product.price }}</span>
-                  <span class="offer text-success fw-semibold ms-2">₹{{ product.offerPrice }}</span>
-                </p>
-                <button class="btn btn-success btn-sm" (click)="openProductModal(product)">Buy Now</button>
-              </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-3" *ngFor="let product of productdata">
+          <div class="product-card shadow-sm rounded-4 p-3 h-100">
+            <div class="product-img mb-2">
+              <img
+                [src]="product.image || 'https://via.placeholder.com/250x180?text=No+Image'"
+                [alt]="product.name"
+                class="img-fluid rounded-3"
+              />
+            </div>
+            <div class="product-info">
+              <h6 class="fw-bold">{{ product.name }}</h6>
+              <p class="price mb-2">
+                <!-- <span class="text-muted text-decoration-line-through">₹{{ product.price }}</span> -->
+                <span class="text-success fw-semibold ms-2">₹{{ product.price }}</span>
+              </p>
+              <button class="btn btn-success btn-sm w-100" (click)="openProductModal(product)">
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  
-    <!-- Product Modal -->
-    <!-- <div id="productModal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4">
-          <div class="modal-header">
-            <h5 class="modal-title text-success">{{ selectedProduct?.name }}</h5>
-            <button type="button" class="btn-close" (click)="closeModal()"></button>
-          </div>
-          <div class="modal-body text-center">
-            <img [src]="selectedProduct?.image" [alt]="selectedProduct?.name" class="img-fluid rounded mb-3" style="max-height: 200px;" />
-            <p>
-              <span class="text-muted text-decoration-line-through">₹{{ selectedProduct?.price }}</span>
-              <span class="text-success fw-bold ms-2">₹{{ selectedProduct?.offerPrice }}</span>
-            </p>
-            <h6 class="text-white bg-success p-2 rounded fw-bold">
-              Activation Fund - {{ 900 | currency:'INR':'symbol':'1.0-1' }}
-            </h6>
-          
-                      </div>
-          <div class="modal-footer">
-            <button class="btn btn-outline-secondary" (click)="closeModal()">Close</button>
-            <button class="btn btn-success">Proceed to Checkout</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    </div>
+  </section>
 
-    <div id="productModal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4">
-          <div class="modal-header">
-            <h5 class="modal-title text-success">{{ selectedProduct?.name }}</h5>
-            <button type="button" class="btn-close" (click)="closeModal()"></button>
-          </div>
-    
-          <div class="modal-body text-center">
-            <img [src]="selectedProduct?.image" [alt]="selectedProduct?.name"
-                 class="img-fluid rounded mb-3" style="max-height: 200px;" />
-    
-            <p>
-              <span class="text-muted text-decoration-line-through">₹{{ selectedProduct?.price }}</span>
-              <span class="text-success fw-bold ms-2">₹{{ selectedProduct?.offerPrice }}</span>
-            </p>
-    
-            <!-- Highlighted Activation Fund -->
-            <h6 class="text-white bg-success p-2 rounded fw-bold mb-3">
-              Activation Fund - {{ 900 | currency:'INR':'symbol':'1.0-1' }}
-            </h6>
-    
-            <!-- 🏠 Delivery Details Section -->
-            <div class="text-start mt-4">
-              <h6 class="fw-bold text-secondary mb-3">Delivery Details</h6>
-    
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Address</label>
-                <textarea class="form-control" rows="2" placeholder="Enter your delivery address"></textarea>
+  <!-- Modal -->
+  <div id="productModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title text-success">{{ selectedProduct?.name }}</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+  
+        <div class="modal-body text-center">
+          <!-- Product Image -->
+          <img
+            [src]="selectedProduct?.image || 'assets/default-product.jpg'"
+            [alt]="selectedProduct?.name"
+            class="img-fluid rounded mb-3"
+            style="max-height: 200px;"
+          />
+  
+          <!-- Product Price -->
+          <p class="fs-5 mb-3">
+            <span class="text-success fw-bold">₹{{ selectedProduct?.price }}</span>
+          </p>
+  
+          <!-- Activation Fund -->
+          <h6 class="text-white bg-success p-2 rounded fw-bold mb-4">
+            Activation Fund - {{ selectedProduct?.price | currency:'INR':'symbol':'1.0-1' }}
+          </h6>
+  
+          <!-- Registration Form -->
+          <form [formGroup]="registerForm" class="text-start">
+  
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Sponsor ID</label>
+                <input type="text" formControlName="sponcerid" class="form-control" placeholder="Enter Sponsor ID" />
+                <small *ngIf="registerForm.get('sponcerid')?.invalid && registerForm.get('sponcerid')?.touched"
+                       class="text-danger">Sponsor ID is required</small>
               </div>
-    
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label class="form-label fw-semibold">Pincode</label>
-                  <input type="text" class="form-control" placeholder="Enter Pincode" maxlength="6" />
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label class="form-label fw-semibold">State</label>
-                  <input type="text" class="form-control" placeholder="Enter State" />
-                </div>
+  
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Name</label>
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter Full Name" />
+                <small *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+                       class="text-danger">Name is required</small>
               </div>
             </div>
-          </div>
-    
-          <div class="modal-footer">
-            <button class="btn btn-outline-secondary" (click)="closeModal()">Close</button>
-            <button class="btn btn-success">Proceed to Checkout</button>
-          </div>
+  
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Phone</label>
+                <input type="text" formControlName="phone" class="form-control" placeholder="Enter 10-digit number" maxlength="10" />
+                <small *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
+                       class="text-danger">Enter valid 10-digit phone</small>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter Email" />
+                <small *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                       class="text-danger">Valid email required</small>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Address</label>
+              <textarea formControlName="address" class="form-control" rows="2" placeholder="Enter your address"></textarea>
+              <small *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched"
+                     class="text-danger">Address is required</small>
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Password</label>
+              <input type="password" formControlName="password" class="form-control" placeholder="Enter Password" maxlength="12" />
+              <small *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                     class="text-danger">Min 6 characters required</small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" (click)="closeModal()">Close</button>
+          <button class="btn btn-success" (click)="RegisterPackages()" [disabled]="registerForm.invalid">
+            Proceed to Checkout
+          </button>
         </div>
       </div>
     </div>
-    
   </div>
   
+</div>
+
+
+
+<!-- regiration -->
+<!-- ✅ Success Modal -->
+<div id="successModal" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">🎉 Registration Successful</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeSuccessModal()"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <h6 class="text-success mb-3">User Registered Successfully!</h6>
+
+        <div *ngIf="successData">
+          <table class="table table-bordered text-start">
+            <tbody>
+              <tr>
+                <th scope="row">Register ID</th>
+                <td>{{ successData.Registerid }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Sponsor ID</th>
+                <td>{{ successData.Sponcerid }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Sponsor Name</th>
+                <td>{{ successData.Sponcername }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Username</th>
+                <td>{{ successData.Username }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Password</th>
+                <td>{{ successData.password }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Transaction Password</th>
+                <td>{{ successData.transactionpassword }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button class="btn btn-success px-4" (click)="closeSuccessModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
