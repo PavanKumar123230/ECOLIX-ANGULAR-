@@ -25,6 +25,7 @@ import { MyUserComponent } from './Components/my-user/my-user.component';
 import { WelcomeBonusComponent } from './Components/welcome-bonus/welcome-bonus.component';
 import { SilverIncomeComponent } from './Components/silver-income/silver-income.component';
 import { GoldIncomeComponent } from './Components/gold-income/gold-income.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 
 
@@ -53,6 +54,7 @@ import { GoldIncomeComponent } from './Components/gold-income/gold-income.compon
     WelcomeBonusComponent,
     SilverIncomeComponent,
     GoldIncomeComponent,
+    AdminLoginComponent,
    
   ],
   imports: [
