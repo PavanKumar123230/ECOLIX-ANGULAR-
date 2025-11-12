@@ -54,6 +54,9 @@ import { SilverIncomeComponent } from './Components/silver-income/silver-income.
 import { GoldIncomeComponent } from './Components/gold-income/gold-income.component';
 import { DiamondIncomeComponent } from './Components/diamond-income/diamond-income.component';
 import { WalletComponent } from './Components/wallet/wallet.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdashboardComponent } from './admin/adashboard/adashboard.component';
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
   // Public site
@@ -65,7 +68,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'product-details', component: ProductDeatilsComponent },
   { path: 'contact-us', component: ContactComponent },
-
+ { path: 'adminlogin', component: AdminLoginComponent },
   // Dashboard Layout with children
   {
     path: '',
@@ -80,12 +83,16 @@ const routes: Routes = [
       {path:'silver',component:SilverIncomeComponent},
       {path:'gold',component:GoldIncomeComponent},
       {path:'diamond',component:DiamondIncomeComponent},
-      {path:'wallet',component:WalletComponent}
+      {path:'wallet',component:WalletComponent},
 
 
 
       
 
+       {path:'silver',component:SilverIncomeComponent},
+     
+       //admin components
+        { path: 'adashboard', component: AdashboardComponent, canActivate: [AuthGuard], data: { roles: ['admin'] } },
     ],
   },
 ];

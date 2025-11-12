@@ -1,0 +1,110 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.brand-logo {
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.brand-logo i {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group i {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  color: #888;
+  font-size: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 5px #6a11cb;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.extra-links {
+  margin-top: 15px;
+}
+
+.extra-links a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .brand-logo i {
+    font-size: 40px;
+  }
+
+  .login-btn {
+    font-size: 15px;
+  }
+}

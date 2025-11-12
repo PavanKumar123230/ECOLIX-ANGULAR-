@@ -28,6 +28,8 @@ import { GoldIncomeComponent } from './Components/gold-income/gold-income.compon
 import { DiamondIncomeComponent } from './Components/diamond-income/diamond-income.component';
 import { WalletComponent } from './Components/wallet/wallet.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 
 
 
@@ -59,12 +61,13 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     DiamondIncomeComponent,
     WalletComponent,
     AdminLoginComponent,
+    AdashboardComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
