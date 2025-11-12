@@ -1,24 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-my-user',
   templateUrl: './my-user.component.html',
   styleUrls: ['./my-user.component.scss']
 })
-export class MyUserComponent {
+export class MyUserComponent implements OnInit {
+  transactions: any[] = [];
+  data1: any[] = [];
+  selectedPackage: string = '';
 
-  
-  userTypes = [
-    { value: 'my_referrals', label: 'My Referrals' },
-    { value: 'bonus_user', label: 'Bonus User' },
-    { value: 'silver_user', label: 'Silver User' },
-    { value: 'gold_user', label: 'Gold User' },
-    { value: 'diamond_user', label: 'Diamond User' }
-  ];
+  constructor(private api: UserService) {}
 
-  selectedUserType: string = '';
+  ngOnInit(): void {
+    this.getdirectdata();
+  }
 
-  onUserTypeChange() {
-    console.log('Selected:', this.selectedUserType);
+  getdirectdata(): void {
+    this.api.DirectTeam().subscribe({
+      next: (res: any) => {
+        console.log('Direct Team Data:', res);
+        if (res.status === 1 && Array.isArray(res.data)) {
+          this.transactions = res.data;
+        } else {
+          this.transactions = [];
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching direct team data:', err);
+        this.transactions = [];
+      }
+    });
+  }
+
+  onPackageSelect(): void {
+    console.log("directteam:",this.transactions)
+    console.log('Selected Package ID:', this.selectedPackage);
+
+
   }
 }

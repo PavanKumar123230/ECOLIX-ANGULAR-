@@ -8,7 +8,6 @@ interface MenuItem {
   route?: string;
   children?: MenuItem[];
 }
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -58,6 +57,10 @@ export class SidebarComponent implements OnInit {
         { label: 'Wallet', icon: 'bi bi-cash-stack', route: '/wallet' },
         { label: 'Report', icon: 'bi bi-file-earmark-text', route: '/report' },
         { label: 'Logout', icon: 'bi bi-box-arrow-right', route: '/logout' },
+        // { label: 'Profile', icon: 'bi bi-box-arrow-right', route: '/profile' },
+
+
+
       ];
     } else if (this.isAdmin) {
       this.menuItems = [

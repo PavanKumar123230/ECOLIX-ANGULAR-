@@ -9,11 +9,8 @@ declare const Swiper: any;
 })
 export class HomeComponent implements  AfterViewInit {
 
-  homeData: any;
-
   constructor(private api: UserService) {}
 
-  
 
   ngAfterViewInit(): void {
     new Swiper('.latest-news-swiper', {
@@ -33,6 +30,19 @@ export class HomeComponent implements  AfterViewInit {
       grabCursor: true,
     });
   }
+  ngOnInit(): void {
+    this.GetallProduct();
+  }
 
+  GetallProduct() {
+    this.api.getProduct().subscribe({
+      next: (res: any) => {
+        console.log('allproduct:', res);
+      },
+      error: (err) => {
+        console.error('Error fetching home data:', err);
+      },
+    });
  
-}
+}}
+

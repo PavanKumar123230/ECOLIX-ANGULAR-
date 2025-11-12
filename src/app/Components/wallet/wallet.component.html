@@ -1,47 +1,106 @@
 <div class="container my-4">
-    <div class="card shadow-sm p-4 mx-auto withdraw-card">
-      <h2 class="text-center mb-4">Withdraw Funds</h2>
-  
-      <form>
-        <!-- Amount -->
-        <div class="mb-3">
-          <label for="amount" class="form-label">Enter Amount</label>
-          <input
-           
-            class="form-control"
-            id="amount"
-            placeholder="Enter amount"
-          />
+  <div class="card shadow-sm p-4 mx-auto withdraw-card">
+    <h2 class="text-center mb-4 text-primary">Withdraw Funds</h2>
+
+    <form [formGroup]="withdrawForm" (ngSubmit)="onWithdraw()">
+      <div class="mb-3">
+        <label for="amount" class="form-label">Enter Amount</label>
+        <input
+          class="form-control"
+          id="amount"
+          formControlName="amount"
+          placeholder="Enter amount"
+        />
+        <div *ngIf="withdrawForm.get('amount')?.touched && withdrawForm.get('amount')?.invalid" class="text-danger mt-1">
+          Amount is required
         </div>
-  
-        <!-- Bank Account Number -->
-        <div class="mb-3">
-          <label for="accountNumber" class="form-label">Bank Account Number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="accountNumber"
-            placeholder="Enter bank account number"
-          />
+      </div>
+
+      <div class="mb-3">
+        <label for="accountNumber" class="form-label">Bank Account Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="accountNumber"
+          formControlName="accountnumber"
+          placeholder="Enter bank account number"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="ifscCode" class="form-label">Bank IFSC Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="ifscCode"
+          formControlName="ifsc"
+          placeholder="Enter bank IFSC code"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Select Wallet Type</label>
+        <select class="form-select" formControlName="waltype">
+          <option value="">Select wallet type</option>
+          <option value="silver">Silver</option>
+          <option value="gold">Gold</option>
+          <option value="diamond">Diamond</option>
+        </select>
+        <div *ngIf="withdrawForm.get('waltype')?.touched && withdrawForm.get('waltype')?.invalid" class="text-danger mt-1">
+          Wallet type is required
         </div>
-  
-        <!-- IFSC Code -->
-        <div class="mb-3">
-          <label for="ifscCode" class="form-label">Bank IFSC Code</label>
-          <input
-            type="text"
-            class="form-control"
-            id="ifscCode"
-            placeholder="Enter bank IFSC code"
-          />
-        </div>
-  
-        <!-- Submit Button -->
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary w-100 w-md-auto">
-            Withdraw
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="withdrawForm.invalid">
+          Withdraw
+        </button>
+      </div>
+    </form>
   </div>
+</div>
+
+<h1 class="text-center mb-4 text-primary fw-bold">Withdraw Request Pending</h1>
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover align-middle text-center">
+    <thead class="table-success">
+      <tr>
+        <th>S.No</th>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Joined Date</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<h1 class="text-center mb-4 text-primary fw-bold">Withdraw Request complete</h1>
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover align-middle text-center">
+    <thead class="table-success">
+      <tr>
+        <th>S.No</th>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Joined Date</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+    </tbody>
+  </table>
+</div>
+
+
+
+

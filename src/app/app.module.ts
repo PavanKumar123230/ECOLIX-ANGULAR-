@@ -31,6 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { LoginComponent } from './Components/login/login.component';
+import { ReportComponent } from './Components/report/report.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 
 
@@ -64,6 +66,8 @@ import { LoginComponent } from './Components/login/login.component';
     AdashboardComponent,
     AdminLayoutComponent,
     LoginComponent,
+    ReportComponent,
+    ProfileComponent,
    
   ],
   imports: [

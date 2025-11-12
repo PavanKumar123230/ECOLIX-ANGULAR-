@@ -165,4 +165,171 @@ WalletReport(){
   }
   
 
+  DirectTeam(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Directteam', httpOptions);
+  }
+  
+
+  Wallet(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Wallet_Report', httpOptions);
+  }
+
+  getProduct(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Get_Products', httpOptions);
+  }
+
+
+  WithdrawRequest(value: {
+    amount: string;
+    waltype: string;
+  }) {
+    const token1 = this.token.getToken();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    const body = {
+      amount: value.amount,
+      waltype: value.waltype,
+    };
+  
+    return this.http.post(AUTH_API + 'Withdrawrequest', body, httpOptions);
+  }
+
+  
+
+
+  Withdrawrequestdata(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Withdrawrequestdata_pending', httpOptions);
+  }
+
+
+  Withdrawcomplate(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Withdrawrequestdata_complete', httpOptions);
+  }
+
+  
+  getProfile(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Profile', httpOptions);
+  }
+
+
+
+  updateProfile(id: any, value: {
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    bankname: string;
+    accountno: string;
+    ifsccode: string;
+  }) {
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+  
+    // ✅ Correct payload for update
+    return this.http.post(
+      AUTH_API + 'Profileiupdate',
+      {
+        id: id,
+        name: value.name,
+        email: value.email,
+        password: value.password,
+        phone: value.phone,
+        bankname: value.bankname,
+        accountno: value.accountno,
+        ifsccode: value.ifsccode
+      },
+      httpOptions
+    );
+  }
+  
+
+
+
+
+  walletLevel(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Wallet_Level', httpOptions);
+  }
+
+  walletSponcer(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Wallet_Sponcer', httpOptions);
+  }
+  
+
+  levelmembers(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Level_members', httpOptions);
+
+  }
 }

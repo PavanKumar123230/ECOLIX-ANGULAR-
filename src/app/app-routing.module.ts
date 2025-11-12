@@ -22,6 +22,8 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AuthGuard } from './service/auth.guard';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { ReportComponent } from './Components/report/report.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 const routes: Routes = [
   // Public routes
@@ -52,6 +54,10 @@ const routes: Routes = [
       { path: 'gold', component: GoldIncomeComponent },
       { path: 'diamond', component: DiamondIncomeComponent },
       { path: 'wallet', component: WalletComponent },
+      { path: 'report', component: ReportComponent },
+      { path: 'profile', component: ProfileComponent },
+
+
     ]
   },
 

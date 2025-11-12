@@ -1,0 +1,46 @@
+<div class="container my-4">
+   
+  
+    <!-- ✅ Wallet Report Table -->
+    <div class="card shadow-sm mt-5 p-3">
+      <h4 class="text-center text-success mb-3">Wallet Report</h4>
+  
+      <div *ngIf="loading" class="text-center my-3">
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
+  
+      <div *ngIf="!loading && walletData.length > 0" class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Credit (₹)</th>
+              <th>Debit (₹)</th>
+              <th>Balance (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of walletData; let i = index" class="text-center">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.credit | number: '1.2-2' }}</td>
+              <td>{{ item.debit | number: '1.2-2' }}</td>
+              <td>{{ item.balance | number: '1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div *ngIf="!loading && walletData.length === 0" class="text-center text-muted">
+        No wallet data available.
+      </div>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+  
