@@ -27,6 +27,7 @@ import { SilverIncomeComponent } from './Components/silver-income/silver-income.
 import { GoldIncomeComponent } from './Components/gold-income/gold-income.component';
 import { DiamondIncomeComponent } from './Components/diamond-income/diamond-income.component';
 import { WalletComponent } from './Components/wallet/wallet.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 
 
@@ -57,6 +58,7 @@ import { WalletComponent } from './Components/wallet/wallet.component';
     GoldIncomeComponent,
     DiamondIncomeComponent,
     WalletComponent,
+    AdminLoginComponent,
    
   ],
   imports: [
