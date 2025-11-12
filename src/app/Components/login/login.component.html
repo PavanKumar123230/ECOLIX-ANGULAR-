@@ -1,0 +1,80 @@
+<div class="login-bg d-flex align-items-center justify-content-center">
+    <div class="login-card shadow-lg">
+      <!-- Switch between Login & Forgot Password -->
+      <h3 class="text-center mb-4 text-success">
+        <i class="bi bi-box-arrow-in-right"></i>
+        {{ isForgotPassword ? 'Forgot Password' : 'Login' }}
+      </h3>
+  
+      <!-- Login Form -->
+      <form *ngIf="!isForgotPassword">
+        <!-- Email / User ID -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email or User ID</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            placeholder="Enter your email or user ID"
+            required
+          />
+        </div>
+  
+        <!-- Password -->
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              class="form-control"
+              placeholder="Enter your password"
+              required
+            />
+            <span class="input-group-text password-toggle" (click)="togglePassword()">
+              <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+            </span>
+          </div>
+        </div>
+  
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <a href="#" (click)="toggleForgotPassword($event)" class="forgot-link">
+            Forgot Password?
+          </a>
+        </div>
+        <!-- <button type="submit" class="btn btn-success-gradient w-100">Login</button> -->
+
+        <button type="submit" class="btn btn-primary w-100"  (click)="goToDashboard()">Login</button>
+        <p class="bottom-text mt-3">
+          Don’t have an account? <a routerLink="/sign-up">Sign-Up</a>
+        </p>
+      </form>
+      <!-- Forgot Password Form -->
+      <form *ngIf="isForgotPassword">
+        <p class="text-center text-muted mb-4">
+          Enter your registered <strong>User ID</strong> or <strong>Phone Number</strong> to reset your password.
+        </p>
+  
+        <div class="mb-3">
+          <label for="resetInput" class="form-label">User ID / Phone Number</label>
+          <input
+            type="text"
+            id="resetInput"
+            class="form-control"
+            placeholder="Enter your User ID or Phone Number"
+            required
+          />
+        </div>
+  
+        <!-- <button type="submit" class="btn btn-success-gradient w-100 mb-3">Send Reset Link</button> -->
+
+        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+
+  
+        <div class="text-center">
+          <a href="#" (click)="toggleForgotPassword($event)" class="forgot-link">Back to Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  

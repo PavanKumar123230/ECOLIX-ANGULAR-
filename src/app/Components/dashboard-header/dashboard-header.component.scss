@@ -1,0 +1,55 @@
+.header {
+    height: 64px;
+    background: #12437A;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title  {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+
+  }
+  .user{
+    color: white;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+    background: #6366f1;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  
+  .menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color:white;
+    cursor: pointer;
+    display: none;
+  }
+  
+  /* 📱 Show Menu Button on Mobile */
+  @media (max-width: 768px) {
+    .menu-btn {
+      display: block;
+    }
+  }
+  

@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Received Fund Transactions</h2>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle responsive-table">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>S.No</th>
+            <th>Date</th>
+            <th>User ID</th>
+            <th>Amount (₹)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let tx of transactions">
+            <td data-label="S.No">{{ tx.sno }}</td>
+            <td data-label="Date">{{ tx.date }}</td>
+            <td data-label="User ID">{{ tx.userId }}</td>
+            <td data-label="Amount">₹{{ tx.amount | number:'1.2-2' }}</td>
+            <td data-label="Status" [ngClass]="tx.status.toLowerCase()">
+              {{ tx.status }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

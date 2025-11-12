@@ -1,0 +1,19 @@
+<div class="dropdown-wrapper">
+    <div class="dropdown-container">
+      <label for="userType" class="label">Select User Type:</label>
+      <select
+        id="userType"
+        [(ngModel)]="selectedUserType"
+        (ngModelChange)="onUserTypeChange()"
+        class="select"
+      >
+        <option value="" disabled selected>Select user type</option>
+        <option *ngFor="let type of userTypes" [value]="type.value">
+          {{ type.label }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  
+  

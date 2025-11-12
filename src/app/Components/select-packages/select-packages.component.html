@@ -1,0 +1,136 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Select Your Package</h2>
+  
+    <!-- Package Selector -->
+    <!-- <div class="text-center mb-4">
+      <select class="form-select w-auto d-inline-block" [(ngModel)]="selectedPackage">
+        <option value="" disabled selected>Select Package</option>
+        <option *ngFor="let pkg of packages" [value]="pkg.name">{{ pkg.name }} Package</option>
+      </select>
+    </div> -->
+
+    <div class="dropdown-container">
+      <label for="packageSelect" class="label">Select Package:</label>
+      <select
+        id="packageSelect"
+        [(ngModel)]="selectedPackage"
+        class="select"
+      >
+        <option value="" disabled selected>Select Package</option>
+        <option *ngFor="let pkg of packages" [value]="pkg.name">
+          {{ pkg.name }} Package
+        </option>
+      </select>
+    </div>
+    
+
+
+  
+    <!-- Product Grid -->
+    <section *ngIf="selectedPackage" class="latest-products py-5">
+      <div class="container text-center">
+        <h4 class="text-center text-success mb-4">
+          {{ selectedPackage }} Package Products
+        </h4>
+  
+        <div class="row g-4">
+          <div class="col-6 col-md-3" *ngFor="let product of selectedProducts">
+            <div class="product-card shadow-sm rounded-4 p-3">
+              <div class="product-img mb-2">
+                <img [src]="product.image" [alt]="product.name" class="img-fluid rounded-3" />
+              </div>
+              <div class="product-info">
+                <h5>{{ product.name }}</h5>
+                <p class="price">
+                  <span class="mrp text-muted text-decoration-line-through">₹{{ product.price }}</span>
+                  <span class="offer text-success fw-semibold ms-2">₹{{ product.offerPrice }}</span>
+                </p>
+                <button class="btn btn-success btn-sm" (click)="openProductModal(product)">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Product Modal -->
+    <!-- <div id="productModal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header">
+            <h5 class="modal-title text-success">{{ selectedProduct?.name }}</h5>
+            <button type="button" class="btn-close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img [src]="selectedProduct?.image" [alt]="selectedProduct?.name" class="img-fluid rounded mb-3" style="max-height: 200px;" />
+            <p>
+              <span class="text-muted text-decoration-line-through">₹{{ selectedProduct?.price }}</span>
+              <span class="text-success fw-bold ms-2">₹{{ selectedProduct?.offerPrice }}</span>
+            </p>
+            <h6 class="text-white bg-success p-2 rounded fw-bold">
+              Activation Fund - {{ 900 | currency:'INR':'symbol':'1.0-1' }}
+            </h6>
+          
+                      </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" (click)="closeModal()">Close</button>
+            <button class="btn btn-success">Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="productModal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header">
+            <h5 class="modal-title text-success">{{ selectedProduct?.name }}</h5>
+            <button type="button" class="btn-close" (click)="closeModal()"></button>
+          </div>
+    
+          <div class="modal-body text-center">
+            <img [src]="selectedProduct?.image" [alt]="selectedProduct?.name"
+                 class="img-fluid rounded mb-3" style="max-height: 200px;" />
+    
+            <p>
+              <span class="text-muted text-decoration-line-through">₹{{ selectedProduct?.price }}</span>
+              <span class="text-success fw-bold ms-2">₹{{ selectedProduct?.offerPrice }}</span>
+            </p>
+    
+            <!-- Highlighted Activation Fund -->
+            <h6 class="text-white bg-success p-2 rounded fw-bold mb-3">
+              Activation Fund - {{ 900 | currency:'INR':'symbol':'1.0-1' }}
+            </h6>
+    
+            <!-- 🏠 Delivery Details Section -->
+            <div class="text-start mt-4">
+              <h6 class="fw-bold text-secondary mb-3">Delivery Details</h6>
+    
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Address</label>
+                <textarea class="form-control" rows="2" placeholder="Enter your delivery address"></textarea>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">Pincode</label>
+                  <input type="text" class="form-control" placeholder="Enter Pincode" maxlength="6" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">State</label>
+                  <input type="text" class="form-control" placeholder="Enter State" />
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" (click)="closeModal()">Close</button>
+            <button class="btn btn-success">Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  

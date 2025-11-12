@@ -1,0 +1,411 @@
+/* === Corporate Dashboard with Animated Gradients === */
+
+.dashboard-container {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #0a2540, #104070, #2563eb);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #fff;
+
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0a2540, #104070, #2563eb);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Title */
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Grid layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* === Card Base === */
+.card {
+  position: relative;
+  border-radius: 18px;
+  padding: 1.8rem;
+  color: white;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  border: none;
+  background-size: 200% 200%;
+  animation: cardGradient 6s ease infinite;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* === Gradient Variants === */
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6, #1e40af, #2563eb);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed, #6d28d9);
+}
+
+.gradient-orange {
+  background: linear-gradient(135deg, #f97316, #ea580c, #c2410c);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #10b981, #059669, #047857);
+}
+.gradient-green {
+  background: linear-gradient(135deg, #10b981, #059669, #047857);
+}
+
+.gradient-pink {
+  background: linear-gradient(135deg, #ec4899, #db2777, #be185d);
+}
+
+.gradient-cyan {
+  background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
+}
+
+.gradient-yellow {
+  background: linear-gradient(135deg, #facc15, #eab308, #ca8a04);
+}
+
+.gradient-teal {
+  background: linear-gradient(135deg, #14b8a6, #0d9488, #0f766e);
+}
+
+
+@keyframes cardGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Card Header === */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.card-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.card-header i {
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+
+/* === Card Values === */
+.card-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0.3rem 0;
+}
+
+/* === Percentage Changes === */
+.card-change {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.card-change.positive {
+  color: #a7f3d0;
+}
+
+.card-change.negative {
+  color: #fecaca;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1.2rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// sliver income level csss
+/* Outer Card Container */
+.silver-section-card {
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0a2540, #104070, #2563eb);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+/* Section Title inside card */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  border-left: 5px solid #6366f1;
+  padding-left: 10px;
+}
+
+/* Grid for inner cards */
+.silver-income-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Inner cards (same gradients as before) */
+.silver-card {
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.silver-card:hover {
+  transform: translateY(-6px);
+}
+
+.silver-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.silver-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.silver-card i {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.card-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.card-change {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+.card-change.positive {
+  color: #22c55e;
+}
+.card-change.negative {
+  color: #ef4444;
+}
+
+/* Gradient styles */
+.gradient-silver {
+  background: linear-gradient(135deg, #a1a1aa, #d4d4d8);
+}
+.gradient-gray {
+  background: linear-gradient(135deg, #64748b, #94a3b8);
+}
+.gradient-lightblue {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+.gradient-lightgreen {
+  background: linear-gradient(135deg, #16a34a, #4ade80);
+}
+.gradient-lightpurple {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+}
+.gradient-lightorange {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+}
+.gradient-lightpink {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+.gradient-lightcyan {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+}
+
+
+// 
+
+
+/* Outer Gold Section Card */
+.gold-section-card {
+  border: none;
+  border-radius: 20px;
+  background:  linear-gradient(135deg, #0a2540, #104070, #2563eb);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.25);
+  padding: 2rem;
+}
+
+/* Grid for Gold Income Cards */
+.gold-income-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Gold Cards */
+.gold-card {
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.gold-card:hover {
+  transform: translateY(-6px);
+}
+.gold-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gold-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+.gold-card i {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Gold Gradients */
+.gradient-gold {
+  background: linear-gradient(135deg, #b6862f, #f1c232);
+}
+.gradient-goldorange {
+  background: linear-gradient(135deg, #e6b325, #f9a825);
+}
+.gradient-goldyellow {
+  background: linear-gradient(135deg, #facc15, #fde047);
+}
+.gradient-goldbrown {
+  background: linear-gradient(135deg, #b45309, #d97706);
+}
+.gradient-goldlight {
+  background: linear-gradient(135deg, #fde68a, #fcd34d);
+}
+
+
+
+// diamond income
+
+
+/* Outer Diamond Section Card */
+.diamond-section-card {
+  border: none;
+  border-radius: 20px;
+  background:  linear-gradient(135deg, #0a2540, #104070, #2563eb);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+  padding: 2rem;
+}
+
+/* Grid for Diamond Income Cards */
+.diamond-income-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Diamond Cards */
+.diamond-card {
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.diamond-card:hover {
+  transform: translateY(-6px);
+}
+.diamond-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diamond-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+.diamond-card i {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Diamond-Themed Gradients */
+.gradient-diamondblue {
+  background: linear-gradient(135deg, #2563eb, #1e3a8a, #60a5fa);
+}
+.gradient-diamondpurple {
+  background: linear-gradient(135deg, #7c3aed, #9333ea, #c084fc);
+}
+.gradient-diamondpink {
+  background: linear-gradient(135deg, #ec4899, #db2777, #f472b6);
+}
+.gradient-diamondviolet {
+  background: linear-gradient(135deg, #6366f1, #4f46e5, #818cf8);
+}
+.gradient-diamondcyan {
+  background: linear-gradient(135deg, #06b6d4, #0891b2, #22d3ee);
+}
+
+
+
+

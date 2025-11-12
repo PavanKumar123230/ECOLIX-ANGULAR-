@@ -1,0 +1,61 @@
+<aside class="sidebar" [class.open]="isOpen">
+  <div class="logo">
+    CorpDash
+    <i class="bi bi-x icon-close mx-4" (click)="closeSidebar()"></i>
+  </div>
+  <nav class="nav">
+    <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-speedometer2"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <a routerLink="/packages" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-box-seam"></i>
+      <span>Select Packages</span>
+    </a>
+
+    <a routerLink="/transferfund" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-arrow-left-right"></i>
+      <span>Transfer Fund</span>
+    </a>
+
+    <a routerLink="/receivedfund" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-wallet2"></i>
+      <span>Received Fund</span>
+    </a>
+    <a routerLink="/my-user" class="nav-link">
+      <i class="bi bi-person-circle"></i>
+      <span>My Users</span>
+    </a>
+
+    <a routerLink="/welcome-bonus" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-gift"></i>
+      <span>Welcome Bonus Income</span>
+    </a>
+    <a routerLink="/silver" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-trophy"></i>
+      <span>Silver Income</span>
+    </a>
+
+    <a routerLink="/gold" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-award"></i>
+      <span>Gold Income</span>
+    </a>
+
+    <a routerLink="/diamond" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-gem"></i>
+      <span>Diamond Income</span>
+    </a>
+
+    <a routerLink="/wallet" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-cash-stack"></i>
+      <span>Wallet</span>
+    </a>
+
+    <a routerLink="/logout" class="nav-link">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Logout</span>
+    </a>
+    
+  </nav>
+</aside>

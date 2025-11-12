@@ -1,0 +1,156 @@
+/* -------------------------------------------------
+   CSS Variables – scoped to the component
+------------------------------------------------- */
+:host {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f7fa;
+    --text-color: #333;
+    --border-color: #e1e8ed;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    --approved: #28a745;
+    --pending: #ffc107;
+    --rejected: #dc3545;
+  }
+  
+  /* -------------------------------------------------
+     Container
+  ------------------------------------------------- */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+  
+  /* -------------------------------------------------
+     Desktop table
+  ------------------------------------------------- */
+  .responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .responsive-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .responsive-table tbody tr:hover {
+    background-color: #f0f4ff;
+    transition: var(--transition);
+  }
+  
+  /* -------------------------------------------------
+     Status colors
+  ------------------------------------------------- */
+  .responsive-table td.approved {
+    color: var(--approved);
+    font-weight: 600;
+  }
+  
+  .responsive-table td.pending {
+    color: var(--pending);
+    font-weight: 600;
+  }
+  
+  .responsive-table td.rejected {
+    color: var(--rejected);
+    font-weight: 600;
+  }
+  
+  /* -------------------------------------------------
+     Mobile / Android (< 760px)
+  ------------------------------------------------- */
+  @media only screen and (max-width: 760px) {
+    .responsive-table,
+    .responsive-table thead,
+    .responsive-table tbody,
+    .responsive-table th,
+    .responsive-table td,
+    .responsive-table tr {
+      display: block;
+      width: 100%;
+    }
+  
+    .responsive-table thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    .responsive-table tr {
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      margin-bottom: 15px;
+      box-shadow: var(--shadow);
+      background: white;
+      position: relative;
+      padding: 10px;
+    }
+  
+    .responsive-table tr:nth-child(even) {
+      background: #fafbfc;
+    }
+  
+    .responsive-table td {
+      border: none;
+      border-bottom: 1px dashed var(--border-color);
+      position: relative;
+      padding-left: 50%;
+      padding-right: 10px;
+      min-height: 44px; /* Touch-friendly for Android */
+      font-size: 15px;
+    }
+  
+    .responsive-table td::before {
+      content: attr(data-label) ": ";
+      position: absolute;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  
+    .responsive-table td:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  /* -------------------------------------------------
+     Tablet landscape (optional)
+  ------------------------------------------------- */
+  @media only screen and (min-width: 761px) and (max-width: 1024px) {
+    .responsive-table {
+      font-size: 14px;
+    }
+  }
+  

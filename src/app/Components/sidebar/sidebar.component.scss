@@ -1,0 +1,87 @@
+.sidebar {
+  width: 260px;
+  background: #1e293b;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 2rem;
+}
+
+/* ✅ Ensure vertical layout */
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ✅ Each link should take full width and stack vertically */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+  background: #334155;
+  color: white;
+}
+
+.submenu {
+  margin-left: 1.5rem;
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-link {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.submenu-link:hover,
+.submenu-link.active {
+  background: #475569;
+  color: white;
+}
+
+/* 📱 Responsive Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,80 @@
+<div class="dropdown-container">
+    <label for="userType" class="label">Select Welcome Bonus Type:</label>
+    <select
+      id="userType"
+      [(ngModel)]="selectedUserType"
+      (ngModelChange)="onUserTypeChange()"
+      class="select">
+      <option value="" disabled>Select Welcome Bonus</option>
+      <option *ngFor="let type of userTypes" [value]="type.value">
+        {{ type.label }}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="selectedUserType === 'level_Income'" class="container my-5">
+    <div class="card shadow-lg border-0">
+      <div class="card-header bg-primary text-white text-center py-3">
+        <h3 class="mb-0 fw-bold">Welcome Bonus Working Level Income</h3>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-borderless mb-0 align-middle">
+            <thead>
+              <tr class="text-white">
+                <th class="bg-purple text-center">S.NO</th>
+                <th class="bg-gradient-sharing text-center">SHARING PV</th>
+                                <th class="bg-gradient-member text-center">TOTAL IDS</th>
+
+                <th class="bg-gradient-earn text-center">Active</th>
+                <th class="bg-gradient-earn text-center">TOTAL EARN PV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bg-purple text-white text-center fw-bold"></td>
+                <td class="bg-light-blue text-center"></td>
+                <td class="bg-light-green text-center"></td>
+                <td class="bg-light-green text-center"></td>
+                <td class="bg-light-green text-center"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedUserType  === 'bonanaza_income'" class="container my-5">
+    <div class="card shadow-lg border-0">
+      <div class="card-header bg-primary text-white text-center py-3">
+        <h3 class="mb-0 fw-bold">Extra Welcome Bonus Rewards
+        </h3>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-borderless mb-0 align-middle">
+            <thead>
+              <tr class="text-white">
+                <th class="bg-purple text-center">LEVELS</th>
+                <th class="bg-gradient-member text-center"> Target Days
+                </th>
+                <th class="bg-gradient-sharing text-center">SHARING PV</th>
+                <th class="bg-gradient-earn text-center">TOTAL ID'S</th>
+
+                <th class="bg-gradient-earn text-center">Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bg-purple text-white text-center fw-bold">1</td>
+                <td class="bg-light-blue text-center">10 Ids</td>
+                <td class="bg-light-green text-center">5 PV</td>
+                <td class="bg-light-green text-center">2</td>
+                <td class="bg-light-green text-center">50 PV</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

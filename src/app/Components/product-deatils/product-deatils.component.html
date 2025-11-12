@@ -1,0 +1,226 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Vertical Thumbnails -->
+    <div class="col-md-2 d-flex flex-column gap-4 align-items-start">
+      <div >
+        <img src="assets/HerbalMedicine_share.jpg" alt="Brand Thumbnail" class="img-fluid border rounded" width="80" height="80" />
+        
+      </div>
+    </div>
+    <!-- Main Product Image -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center"  style="height: 700px;">
+      <img src="assets/HerbalMedicine_share.jpg" alt="Main Product" class="img-fluid " style="max-height: 100%; max-width: 100%;" />
+    </div>
+    <!-- Product Info -->
+    <div class="col-md-4" >
+      <h4 class="text-muted">Herabal Product</h4>
+      <h5 class="fw-bold">aslkdhausdh</h5>
+      <p>aksfhkashfiusdafiudf
+      </p>
+      <h5 class="fw-bold text-primary">83837 </h5>
+      <p class="fw-bold text-danger"> 7000 </p>
+      <p>   <span class="text-success fw-bold"> 98% OFF</span></p>
+
+      <del>MRP: {{ 9000 | currency:'INR':'symbol':'1.0-1' }}</del>
+
+      <h6 class="mt-3">Color:
+        <span class="fw-normal">Country Wash, Bluewash, Ebony</span>
+      </h6>
+
+      <!-- <div class="d-grid gap-2 col-12 mt-4" *ngIf="mainData">
+        <button  {{main.productUrl}}  type="button" class="btn btn-dark">Visit Store</button>
+      </div> -->
+      <div class="d-grid gap-2 col-12 mt-4" >
+        <a href="ljssjsaj" target="_blank" class="btn btn-dark">Add to Cart</a>
+      </div>
+      
+      <div class="btn-light mt-3" >
+        <div class="d-flex">
+          <a class="text-muted" routerLink="/product/Signup"></a> &nbsp; &nbsp;<p>For ShopGlobal to get Top Deals, Easy Package Tracking and Exclusive Benefits.</p>
+        </div>
+      </div>
+
+      <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+               <strong>Product Details</strong>
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+             <strong> Shipping and Returns</strong> 
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mb-5" >
+  <h1 class="fw-bold mb-4">More picks you might like</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    <!-- Product Card -->
+    <div class="col" >
+      <div class="card h-100 border-0 shadow-sm position-relative">
+        <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+        <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+          <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+        </button>
+        <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+          <i class="fas fa-circle me-1 text-muted"></i>2
+        </div> -->
+        <div class="card-body px-3">
+          <h6 class="fw-bold mb-1">Herbal Product </h6>
+          <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+          <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+          <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+        </div>
+      </div>
+    </div>
+    <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+
+            
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900| currency:'INR':'symbol':'1.0-1'}}</p>
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card h-100 border-0 shadow-sm position-relative">
+          <img src="assets/HerbalMedicine_share.jpg" class="card-img-top" alt="Product Image">
+          <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm">
+            <!-- <i class="fa" [ngClass]="isFavorite ? 'fa-heart text-danger' : 'fa-heart-o'" aria-hidden="true"></i> -->
+          </button>
+          <!-- <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded-pill px-2 py-1 d-flex align-items-center small shadow">
+            <i class="fas fa-circle me-1 text-muted"></i>2
+          </div> -->
+          <div class="card-body px-3">
+            <h6 class="fw-bold mb-1">Herbal Product </h6>
+            <!-- <p class="card-text text-muted small mb-2">aksahkhgakshdf</p> -->
+            <p class="fw-semibold mb-1">{{900 | currency:'INR':'symbol':'1.0-1'}}</p>
+
+            <a  style="cursor: pointer;" class="text-decoration-underline small">View details</a>
+          </div>
+        </div>
+      </div>
+
+    <!-- Repeat the card for other products -->
+    <!-- Just change img src, color count, name, and price -->
+  </div>
+</div>
+<app-footer></app-footer>
+

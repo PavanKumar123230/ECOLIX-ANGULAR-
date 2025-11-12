@@ -1,0 +1,122 @@
+/* Background */
+.login-bg {
+    height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url('https://images.unsplash.com/photo-1503602642458-232111445657?w=1600')
+        no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+  }
+  
+  /* Card with glassmorphism */
+  .login-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px);
+    border-radius: 18px;
+    padding: 40px 35px;
+    width: 100%;
+    max-width: 420px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .login-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Title */
+  .login-card h3 {
+    font-weight: 700;
+    color: #0066ff;
+  }
+  
+  /* Input fields */
+  .form-control {
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+  }
+  
+  .form-control:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 5px rgba(0, 102, 255, 0.4);
+  }
+  
+  /* Eye icon inside input */
+  .password-eye {
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 1.2rem;
+  }
+  
+  .password-eye:hover {
+    color: #0066ff;
+  }
+  
+  /* Button */
+  .btn-primary {
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #0066ff, #00b4d8);
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #0046b3, #0096c7);
+  }
+  
+  /* Forgot password link */
+  .forgot-link {
+    color: #0066ff;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .forgot-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Bottom text */
+  .bottom-text {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .bottom-text a {
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .bottom-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .login-card {
+      padding: 30px 25px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .login-card {
+      padding: 25px 20px;
+      margin: 10px;
+    }
+  }
+
+
+
+  
