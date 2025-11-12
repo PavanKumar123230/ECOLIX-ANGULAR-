@@ -1,22 +1,154 @@
 <div class="admin-dashboard">
   <h2>Welcome, Admin!</h2>
 
-  <div class="cards">
+  <!-- Loading -->
+  <div *ngIf="!data1" class="loading">Loading dashboard...</div>
+
+  <div class="cards" *ngIf="data1">
+    <!-- Total Users -->
     <div class="card">
-      <h3>Total Users</h3>
-      <p>1250</p>
+      <div class="card-icon"><i class="fas fa-users"></i></div>
+      <div class="card-content">
+        <h3>Total Users</h3>
+        <p>{{ data1.totalusers || 0 }}</p>
+      </div>
     </div>
+
+    <!-- Active Users -->
     <div class="card">
-      <h3>Pending Payments</h3>
-      <p>45</p>
+      <div class="card-icon"><i class="fas fa-user-check"></i></div>
+      <div class="card-content">
+        <h3>Total Active</h3>
+        <p>{{ data1.totalactive || 0 }}</p>
+      </div>
     </div>
+
+    <!-- Inactive Users -->
     <div class="card">
-      <h3>Revenue</h3>
-      <p>$12,500</p>
+      <div class="card-icon"><i class="fas fa-user-times"></i></div>
+      <div class="card-content">
+        <h3>Total Inactive</h3>
+        <p>{{ data1.totalinactive || 0 }}</p>
+      </div>
     </div>
+
+    <!-- Wallet Amount -->
     <div class="card">
-      <h3>Reports</h3>
-      <p>23</p>
+      <div class="card-icon"><i class="fas fa-wallet"></i></div>
+      <div class="card-content">
+        <h3>Total Wallet</h3>
+        <p>{{ data1.totalwalamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
     </div>
+
+    <!-- Total Wallet in Active Accounts -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-coins"></i></div>
+      <div class="card-content">
+        <h3>Total Active Wallet</h3>
+        <p>{{ data1.totalactwallet || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Total Transfer -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+      <div class="card-content">
+        <h3>Total Transfer</h3>
+        <p>{{ data1.totaltransferamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Total Commission -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-hand-holding-usd"></i></div>
+      <div class="card-content">
+        <h3>Total Commission</h3>
+        <p>{{ data1.totalcommissionamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Today's Join -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-user-plus"></i></div>
+      <div class="card-content">
+        <h3>Today's Join</h3>
+        <p>{{ data1.todayjoin || 0 }}</p>
+      </div>
+    </div>
+
+    <!-- Today's Active -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-user-clock"></i></div>
+      <div class="card-content">
+        <h3>Today's Active</h3>
+        <p>{{ data1.todayactive || 0 }}</p>
+      </div>
+    </div>
+
+    <!-- Today's Topup -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-arrow-up"></i></div>
+      <div class="card-content">
+        <h3>Today's Topup</h3>
+        <p>{{ data1.todaytopup || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Today's Transfer -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+      <div class="card-content">
+        <h3>Today's Transfer</h3>
+        <p>{{ data1.todaytransferamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Package-wise Users -->
+    <div class="card card-silver">
+      <div class="card-icon"><i class="fas fa-gem"></i></div>
+      <div class="card-content">
+        <h3>Silver Users</h3>
+        <p>{{ data1.totsilver || 0 }}</p>
+        <small>Wallet: {{ data1.totsilverwal || 0 | currency:'INR':'symbol' }}</small>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="card-icon"><i class="fas fa-gem"></i></div>
+      <div class="card-content">
+        <h3>Gold Users</h3>
+        <p>{{ data1.totgold || 0 }}</p>
+        <small>Wallet: {{ data1.totgoldwal || 0 | currency:'INR':'symbol' }}</small>
+      </div>
+    </div>
+
+    <div class="card card-diamond">
+      <div class="card-icon"><i class="fas fa-gem"></i></div>
+      <div class="card-content">
+        <h3>Diamond Users</h3>
+        <p>{{ data1.totdiamond || 0 }}</p>
+        <small>Wallet: {{ data1.totdiamondwal || 0 | currency:'INR':'symbol' }}</small>
+      </div>
+    </div>
+
+    <!-- Total Withdraw -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-hand-holding-usd"></i></div>
+      <div class="card-content">
+        <h3>Total Withdraw</h3>
+        <p>{{ data1.totalwithdrawamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div>
+
+    <!-- Total Stake -->
+    <!-- <div class="card">
+      <div class="card-icon"><i class="fas fa-coins"></i></div>
+      <div class="card-content">
+        <h3>Total Stake</h3>
+        <p>{{ data1.totalstakeamount || 0 | currency:'INR':'symbol' }}</p>
+      </div>
+    </div> -->
+
   </div>
 </div>

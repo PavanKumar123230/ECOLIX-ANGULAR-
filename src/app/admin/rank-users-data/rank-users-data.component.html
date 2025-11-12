@@ -1,0 +1,55 @@
+<div class="rank-users-dashboard">
+  <h2 class="title">
+    <i class="fas fa-users"></i> Rank Based Users Data
+  </h2>
+
+  <!-- 🔹 Rank Selector -->
+  <div class="rank-select card">
+    <label for="rank"><i class="fas fa-medal"></i> Select Rank:</label>
+    <select id="rank" (change)="onRankChange($event)">
+      <option value="">-- Select --</option>
+      <option value="silver">Silver Users</option>
+      <option value="gold">Gold Users</option>
+      <option value="diamond">Diamond Users</option>
+    </select>
+  </div>
+
+  <!-- 🔹 Loader -->
+  <div *ngIf="loading" class="loading">Loading users...</div>
+
+  <!-- 🔹 Error Message -->
+  <div *ngIf="errorMsg && !loading" class="alert error">{{ errorMsg }}</div>
+
+  <!-- 🔹 Users Table -->
+  <div *ngIf="!loading && users.length > 0" class="card table-container">
+    <h3 class="table-title">
+      <i class="fas fa-database"></i>
+      {{ selectedRank | titlecase }} Users List
+    </h3>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Join Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ u.regid || u.id }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.joindate || u.cdate }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

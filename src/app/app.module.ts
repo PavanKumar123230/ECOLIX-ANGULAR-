@@ -31,6 +31,19 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { AddPackageComponent } from './admin/add-package/add-package.component';
+import { AddProductsComponent } from './admin/add-products/add-products.component';
+import { TodayActiveUsersComponent } from './admin/today-active-users/today-active-users.component';
+import { TotalUsersDataComponent } from './admin/total-users-data/total-users-data.component';
+import { TotalActiveUsersComponent } from './admin/total-active-users/total-active-users.component';
+import { UpgradeUsersComponent } from './admin/upgrade-users/upgrade-users.component';
+import { TransferWallettoUserComponent } from './admin/transfer-walletto-user/transfer-walletto-user.component';
+import { RankUsersDataComponent } from './admin/rank-users-data/rank-users-data.component';
+import { SilverCaderUsersComponent } from './admin/silver-cader-users/silver-cader-users.component';
+import { GoldCaderUsersComponent } from './admin/gold-cader-users/gold-cader-users.component';
+import { DiamondCaderUsersComponent } from './admin/diamond-cader-users/diamond-cader-users.component';
+import { WithdrawUsersListComponent } from './admin/withdraw-users-list/withdraw-users-list.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
 
 
@@ -64,6 +77,19 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
     AdminLoginComponent,
     AdashboardComponent,
     AdminLayoutComponent,
+    AddPackageComponent,
+    AddProductsComponent,
+    TodayActiveUsersComponent,
+    TotalUsersDataComponent,
+    TotalActiveUsersComponent,
+    UpgradeUsersComponent,
+    TransferWallettoUserComponent,
+    RankUsersDataComponent,
+    SilverCaderUsersComponent,
+    GoldCaderUsersComponent,
+    DiamondCaderUsersComponent,
+    WithdrawUsersListComponent,
+    AdminProfileComponent,
    
   ],
   imports: [

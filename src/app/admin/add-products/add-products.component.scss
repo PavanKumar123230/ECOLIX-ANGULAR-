@@ -1,0 +1,128 @@
+.admin-dashboard {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+
+  .title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+  .product-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      input, select, textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s;
+
+        &:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+          outline: none;
+        }
+      }
+    }
+
+    .btn-group {
+      grid-column: span 2;
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+
+      .btn {
+        padding: 10px 20px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+
+        &.btn-primary {
+          background: #007bff;
+          color: white;
+        }
+
+        &.btn-secondary {
+          background: #6c757d;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .product-list {
+    margin-top: 25px;
+    background: white;
+    border-radius: 10px;
+    overflow-x: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      th {
+        background: #007bff;
+        color: white;
+        font-weight: 500;
+      }
+
+      tr:hover {
+        background: #f1f1f1;
+      }
+
+      .btn-edit {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        i {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-form {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      font-size: 12px;
+    }
+
+    .btn-group {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

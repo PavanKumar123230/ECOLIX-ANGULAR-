@@ -1,0 +1,136 @@
+<div class="admin-dashboard">
+  <h2 class="title">User Insights</h2>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn" [class.active]="activeTab === 'active'" (click)="switchTab('active')">
+      <i class="fas fa-bolt"></i> Today Active Users
+    </button>
+    <button class="tab-btn" [class.active]="activeTab === 'join'" (click)="switchTab('join')">
+      <i class="fas fa-user-plus"></i> Today Joined Users
+    </button>
+  </div>
+
+  <div class="tab-content">
+    <div *ngIf="loading" class="loading">Loading...</div>
+
+    <!-- Active Users -->
+    <div *ngIf="activeTab === 'active' && !loading" class="table-container">
+      <h3>Active Users</h3>
+      <table *ngIf="activeUsers.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of activeUsers; let i=index;">
+            <td>{{ i + 1 }}</td>
+            <td>{{ u.regid }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>
+              <span [class.text-success]="u.status == 1" [class.text-danger]="u.status == 0">
+                {{ u.status == 1 ? 'Active' : 'Blocked' }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="openEditModal(u)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button *ngIf="u.status == 1" class="btn btn-sm btn-danger" (click)="blockUser(u.regid)">
+                <i class="fas fa-ban"></i>
+              </button>
+              <button *ngIf="u.status == 0" class="btn btn-sm btn-success" (click)="unblockUser(u.regid)">
+                <i class="fas fa-unlock"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="activeUsers.length === 0" class="no-data">No active users found.</div>
+    </div>
+
+    <!-- Joined Users -->
+    <div *ngIf="activeTab === 'join' && !loading" class="table-container">
+      <h3>Joined Users</h3>
+      <table *ngIf="joinUsers.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of joinUsers; let i=index;">
+            <td>{{ i+1 }}</td>
+            <td>{{ u.regid }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="openEditModal(u)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button *ngIf="u.status == 1" class="btn btn-sm btn-danger" (click)="blockUser(u.regid)">
+                <i class="fas fa-ban"></i>
+              </button>
+              <button *ngIf="u.status == 0" class="btn btn-sm btn-success" (click)="unblockUser(u.regid)">
+                <i class="fas fa-unlock"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="joinUsers.length === 0" class="no-data">No joined users found today.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Edit Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-edit"></i> Edit User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="saveProfile()">
+          <div class="mb-3">
+            <label>Name</label>
+            <input formControlName="name" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label>Phone</label>
+            <input formControlName="phone" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input formControlName="email" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" />
+          </div>
+          <button class="btn btn-success w-100" type="submit">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

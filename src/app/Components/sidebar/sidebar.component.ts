@@ -62,12 +62,13 @@ export class SidebarComponent implements OnInit {
     } else if (this.isAdmin) {
       this.menuItems = [
         { label: 'Dashboard', icon: 'bi bi-speedometer2', route: '/adashboard' },
+        { label: 'Add Package', icon: 'bi bi-speedometer2', route: '/addpackage' },
         {
           label: 'Users',
           icon: 'bi bi-people',
           children: [
             { label: 'All Users', icon: 'bi bi-list', route: '/users' },
-            { label: 'Add User', icon: 'bi bi-person-plus', route: '/users/add' }
+            { label: 'Add User', icon: 'bi bi-person-plus', route: '/users/add' },
           ]
         },
         {

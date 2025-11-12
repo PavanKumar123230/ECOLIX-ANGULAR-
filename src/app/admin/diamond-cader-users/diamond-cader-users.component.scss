@@ -1,0 +1,85 @@
+.diamond-cader-dashboard {
+  padding: 20px;
+
+  .title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    i {
+      color: #b9f2ff; // diamond color
+      margin-right: 8px;
+    }
+  }
+
+  .selector-box {
+    margin-bottom: 20px;
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+      i {
+        color: #b9f2ff;
+        margin-right: 5px;
+      }
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      background: #f0f8ff;
+      &:focus {
+        outline: none;
+        border-color: #b9f2ff;
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    font-weight: 600;
+    color: #b9f2ff;
+    padding: 10px;
+  }
+
+  .alert.error {
+    background: #f8d7da;
+    color: #842029;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .table-container {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      th, td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 14px;
+        text-align: left;
+      }
+      th {
+        background: #b9f2ff;
+        color: #000;
+      }
+      tr:hover {
+        background: #e0ffff;
+      }
+    }
+    .table-responsive {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .table-container table {
+      font-size: 12px;
+    }
+  }
+}
