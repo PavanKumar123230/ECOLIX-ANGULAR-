@@ -1,39 +1,3 @@
-// import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
-// import { HomeComponent } from './Components/home/home.component';
-// import { AboutusComponent } from './Components/aboutus/aboutus.component';
-// import { ProductComponent } from './Components/product/product.component';
-// import { SignUpComponent } from './Components/sign-up/sign-up.component';
-// import { LoginComponent } from './Components/login/login.component';
-// import { ProductDeatilsComponent } from './Components/product-deatils/product-deatils.component';
-// import { ContactComponent } from './Components/contact/contact.component';
-// import { DashboardComponent } from './Components/dashboard/dashboard.component';
-// import { SelectPackagesComponent } from './Components/select-packages/select-packages.component';
-
-// const routes: Routes = [
-//   { path: '', component: HomeComponent },
-//   { path: 'home', component: HomeComponent },
-//   { path: 'aboutus', component: AboutusComponent },
-//   { path: 'product', component: ProductComponent },
-//   { path: 'sign-up', component: SignUpComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'product-details', component: ProductDeatilsComponent },
-//   { path: 'contact-us', component: ContactComponent },
-
-//   // Dashboard (Protected route after login)
-//   { path: 'dashboard', component: DashboardComponent },
-//   { path: 'packages', component: SelectPackagesComponent },
-
-// ];
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-// export class AppRoutingModule {}
-
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -59,7 +23,7 @@ import { AdashboardComponent } from './admin/adashboard/adashboard.component';
 import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
-  // Public site
+  // Public routes
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -68,11 +32,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'product-details', component: ProductDeatilsComponent },
   { path: 'contact-us', component: ContactComponent },
- { path: 'adminlogin', component: AdminLoginComponent },
-  // Dashboard Layout with children
+  { path: 'adminlogin', component: AdminLoginComponent },
+
+  // ✅ User Dashboard Layout
   {
     path: '',
-    component: DashboardLayoutComponent, // This contains header + sidebar
+    component: DashboardLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['user'] },
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'packages', component: SelectPackagesComponent },
@@ -80,21 +47,24 @@ const routes: Routes = [
       { path: 'receivedfund', component: ReceivedFundComponent },
       { path: 'my-user', component: MyUserComponent },
       { path: 'welcome-bonus', component: WelcomeBonusComponent },
-      {path:'silver',component:SilverIncomeComponent},
-      {path:'gold',component:GoldIncomeComponent},
-      {path:'diamond',component:DiamondIncomeComponent},
-      {path:'wallet',component:WalletComponent},
-
-
-
-      
-
-       {path:'silver',component:SilverIncomeComponent},
-     
-       //admin components
-        { path: 'adashboard', component: AdashboardComponent, canActivate: [AuthGuard], data: { roles: ['admin'] } },
-    ],
+      { path: 'silver', component: SilverIncomeComponent },
+      { path: 'gold', component: GoldIncomeComponent },
+      { path: 'diamond', component: DiamondIncomeComponent },
+      { path: 'wallet', component: WalletComponent },
+    ]
   },
+
+  // ✅ Admin Dashboard
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
+    children: [
+      { path: 'adashboard', component: AdashboardComponent }
+    ]
+  },
+
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -102,4 +72,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
