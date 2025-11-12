@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-gold-income',
-  templateUrl: './gold-income.component.html',
-  styleUrls: ['./gold-income.component.scss']
+  selector: 'app-diamond-income',
+  templateUrl: './diamond-income.component.html',
+  styleUrls: ['./diamond-income.component.scss']
 })
-export class GoldIncomeComponent {
-
+export class DiamondIncomeComponent {
   userTypes = [
     { value: 'level_Income', label: 'Level Income' },
     { value: 'bonanaza_income', label: 'Bonanaza Income' },

@@ -1,11 +1,11 @@
 <div class="dropdown-container">
-    <label for="userType" class="label">Select  Gold Income:</label>
+    <label for="userType" class="label">Select  Diamond Income:</label>
     <select
       id="userType"
       [(ngModel)]="selectedUserType"
       (ngModelChange)="onUserTypeChange()"
       class="select">
-      <option value="" disabled> Select Gold Income </option>
+      <option value="" disabled> Select Diamond Income </option>
       <option *ngFor="let type of userTypes" [value]="type.value">
         {{ type.label }}
       </option>

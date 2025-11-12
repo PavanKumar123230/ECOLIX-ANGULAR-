@@ -51,6 +51,9 @@ import { ReceivedFundComponent } from './Components/received-fund/received-fund.
 import { MyUserComponent } from './Components/my-user/my-user.component';
 import { WelcomeBonusComponent } from './Components/welcome-bonus/welcome-bonus.component';
 import { SilverIncomeComponent } from './Components/silver-income/silver-income.component';
+import { GoldIncomeComponent } from './Components/gold-income/gold-income.component';
+import { DiamondIncomeComponent } from './Components/diamond-income/diamond-income.component';
+import { WalletComponent } from './Components/wallet/wallet.component';
 
 const routes: Routes = [
   // Public site
@@ -74,8 +77,10 @@ const routes: Routes = [
       { path: 'receivedfund', component: ReceivedFundComponent },
       { path: 'my-user', component: MyUserComponent },
       { path: 'welcome-bonus', component: WelcomeBonusComponent },
-       {path:'silver',component:SilverIncomeComponent}
-     
+      {path:'silver',component:SilverIncomeComponent},
+      {path:'gold',component:GoldIncomeComponent},
+      {path:'diamond',component:DiamondIncomeComponent},
+      {path:'wallet',component:WalletComponent}
 
 
 
