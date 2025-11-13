@@ -29,8 +29,11 @@ export class DashboardHeaderComponent {
       }
     });
   }
+  logout(){
+    
+  }
   
-  
-
 }
+
+
 
