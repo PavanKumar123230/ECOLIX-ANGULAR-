@@ -514,31 +514,22 @@ WalletReport(){
     };
     return this.http.get(AUTH_API + 'Withdrawrequestdata_complete', httpOptions);
   }
-
-  
-  getProfile(){
+  getProfile() {
     const token1 = this.token.getToken();
+  
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token1
       })
     };
+  
     return this.http.get(AUTH_API + 'Profile', httpOptions);
   }
-
-
-
-  updateProfile(id: any, value: {
-    name: string;
-    email: string;
-    password: string;
-    phone: string;
-    bankname: string;
-    accountno: string;
-    ifsccode: string;
-  }) {
+  
+  updateProfile(id: any, value: any) {
     const token1 = this.token.getToken();
+  
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -546,22 +537,46 @@ WalletReport(){
       })
     };
   
-    // ✅ Correct payload for update
     return this.http.post(
       AUTH_API + 'Profileiupdate',
       {
         id: id,
+  
+        // Basic
         name: value.name,
+        phone: value.phone,
+        state: value.state,
         email: value.email,
         password: value.password,
-        phone: value.phone,
+        address: value.address,
+  
+        // KYC
+        aadhar: value.aadharno,
+        pancard: value.panno,
+  
+        // Bank
+        payeename: value.payeename,
         bankname: value.bankname,
+        branch: value.branch,
+        ifsccode: value.ifsccode,
         accountno: value.accountno,
-        ifsccode: value.ifsccode
+  
+        // Nominee
+        nname: value.nname,
+        nrelation: value.nrelation,
+        npanno: value.npanno,
+        naadhar: value.naadhar,
+        nmobile: value.nmobile,
+        nemail: value.nemail,
+        naccountno: value.naccountno,
+        nbankname: value.nbankname,
+        nbranch: value.nbranch,
+        nifsccode: value.nifsccode
       },
       httpOptions
     );
   }
+  
   
 
 

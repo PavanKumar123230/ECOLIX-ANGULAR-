@@ -928,4 +928,123 @@ DiamondDirector(){
 }
 
 
+// getBanner(){
+//   const token1 = this.token.getToken();
+//   const httpOptions = {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token1
+//     })
+//   }
+//   return this.http.get(
+//     AUTH_API + 'Get_Banners',
+//     httpOptions
+//   );   
+// }
+// addBanner(value: any) {
+//   const token1 = this.token.getToken();
+//   const httpOptions = {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token1
+//     })
+//   };
+
+//   return this.http.post(
+//     AUTH_API + 'Add_Banners',
+//     {
+//       "sponcerid": value.sponcerid,
+//       "bannertype":value.bannertype,
+//       "name":value.name,
+//       "desc":value.desc,
+//       "image":value.image
+//     },
+//     httpOptions
+//   );
+// } 
+
+
+// deleteBanner(){
+//   const token1 = this.token.getToken();
+//   const httpOptions = {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token1
+//     })
+//   }
+//   return this.http.del(
+//     AUTH_API + 'Deletebanner/$id',
+//     httpOptions
+//   );   
+// }
+
+
+// getBannerid (){
+//   $type->bannertype
+//   const token1 = this.token.getToken();
+//   const httpOptions = {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token1
+//     })
+//   }
+//   return this.http.del(
+//     AUTH_API + 'Get_Bannersbytype/$type',
+//     httpOptions
+//   );   
+// }
+
+
+getBanner() {
+  const token1 = this.token.getToken();
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token1
+    })
+  };
+  return this.http.get(AUTH_API + 'Get_Banners', httpOptions);
+}
+
+addBanner(formData: FormData) {
+  const token = this.token.getToken();
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    })
+  };
+
+  return this.http.post(AUTH_API + 'Add_Banners', formData, httpOptions);
+}
+
+
+deleteBanner(id: any) {
+  const token1 = this.token.getToken();
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + token1
+    })
+  };
+
+  return this.http.get(
+    `${AUTH_API}Deletebanner/${id}`,
+    httpOptions
+  );
+}
+
+getBannerByType(type: any) {
+  const token1 = this.token.getToken();
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token1
+    })
+  };
+
+  return this.http.get(AUTH_API + 'Get_Bannersbytype/' + type, httpOptions);
+}
+
+
 }

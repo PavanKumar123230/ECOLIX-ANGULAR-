@@ -50,6 +50,7 @@ import { SilverManagersDataComponent } from './Components/silver-managers-data/s
 import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-managers-data.component';
 import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
 import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
+import { BannerComponent } from './admin/banner/banner.component';
 
 
 
@@ -102,6 +103,7 @@ import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-re
     GoldManagersDataComponent,
     DiamondManagersDataComponent,
     AdminRegisterUserComponent,
+    BannerComponent,
    
   ],
   imports: [

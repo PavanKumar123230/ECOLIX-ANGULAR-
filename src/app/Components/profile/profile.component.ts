@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -8,69 +9,91 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
   profileForm!: FormGroup;
   profileData: any;
+  showPass = false;
+  saving = false;
 
-  constructor(private api: UserService, private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private api: UserService) {}
 
   ngOnInit(): void {
     this.initForm();
-    this.getProfile();
+    this.loadProfile();
   }
 
   initForm(): void {
     this.profileForm = this.fb.group({
-      name: [''],
-      email: [''],
-      phone: [''],
-      password: [''],
-      accountno: [''],
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      state: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      address: [''],
+
+      // KYC
+      aadharno: [''],
+      panno: [''],
+
+      // Bank
+      payeename: [''],
       bankname: [''],
-      ifsccode: ['']
+      branch: [''],
+      ifsccode: [''],
+      accountno: [''],
+
+      // Nominee
+      nname: [''],
+      nrelation: [''],
+      npanno: [''],
+      naadhar: [''],
+      nmobile: [''],
+      nemail: [''],
+      naccountno: [''],
+      nbankname: [''],
+      nbranch: [''],
+      nifsccode: ['']
     });
   }
 
-  getProfile(): void {
+  togglePass() {
+    this.showPass = !this.showPass;
+  }
+
+  loadProfile() {
     this.api.getProfile().subscribe({
       next: (res: any) => {
-        if (res && res.data && res.data.length > 0) {
+        if (res?.data?.length > 0) {
           this.profileData = res.data[0];
-          this.profileForm.patchValue({
-            name: this.profileData.name,
-            email: this.profileData.email,
-            phone: this.profileData.phone,
-            password: this.profileData.password,
-            accountno: this.profileData.accountno,
-            bankname: this.profileData.bankname,
-            ifsccode: this.profileData.ifsccode
-          });
+
+          this.profileForm.patchValue(this.profileData);
         }
-        console.log('Profile Data:', this.profileData);
       },
-      error: (err) => {
-        console.error('Error fetching profile:', err);
-      }
+      error: err => console.error("Profile Load Error", err)
     });
   }
 
-  onSave(): void {
-    if (!this.profileData || !this.profileData.id) {
-      console.error('No profile ID found!');
+  onSave() {
+    if (this.profileForm.invalid) {
+      this.profileForm.markAllAsTouched();
       return;
     }
 
-    const updatedData = this.profileForm.value;
-    console.log('Updated Profile:', updatedData);
+    if (!this.profileData?.id) {
+      alert("Profile ID not found!");
+      return;
+    }
 
-    this.api.updateProfile(this.profileData.id, updatedData).subscribe({
-      next: (res: any) => {
-        console.log('Profile Updated Successfully:', res);
-        alert('Profile updated successfully!');
-      },
-      error: (err) => {
-        console.error('Error updating profile:', err);
-        alert('Error updating profile. Please try again.');
-      }
-    });
+    this.saving = true;
+
+    this.api.updateProfile(this.profileData.id, this.profileForm.value)
+      .pipe(finalize(() => this.saving = false))
+      .subscribe({
+        next: () => alert("Profile updated successfully!"),
+        error: err => {
+          console.error("Update Error", err);
+          alert("Profile update failed!");
+        }
+      });
   }
 }

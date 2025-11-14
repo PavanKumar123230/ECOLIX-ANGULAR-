@@ -73,6 +73,8 @@ export class AdminLayoutComponent {
         { label: 'Add Package', icon: 'bi bi-speedometer2', route: '/addpackage' },
          { label: 'Add Products', icon: 'bi bi-speedometer2', route: '/addproduct' },
          { label: 'Registration', icon: 'fas fa-tachometer-alt', route: '/adminregister' },
+         { label: 'Add Banner', icon: 'fas fa-tachometer-alt', route: '/banner' },
+
           { label: 'Profile', icon: 'fas fa-edit', route: '/aprofile' },
         {
           label: 'Users',

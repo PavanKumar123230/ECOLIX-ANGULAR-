@@ -41,6 +41,7 @@ import { SilverManagersDataComponent } from './Components/silver-managers-data/s
 import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-managers-data.component';
 import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
 import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
+import { BannerComponent } from './admin/banner/banner.component';
 
 const routes: Routes = [
   // Public routes
@@ -102,7 +103,10 @@ const routes: Routes = [
     { path: 'diamondcaderusers', component: DiamondCaderUsersComponent },
     { path: 'withdrawusers', component: WithdrawUsersListComponent },
     { path: 'aprofile', component: AdminProfileComponent }, 
-      { path: 'adminregister', component: AdminRegisterUserComponent },                 
+      { path: 'adminregister', component: AdminRegisterUserComponent },      
+      { path: 'banner', component: BannerComponent },      
+
+
   ]
 },
   // ✅ Admin Dashboard Layout
