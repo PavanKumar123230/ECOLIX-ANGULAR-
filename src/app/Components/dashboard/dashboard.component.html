@@ -48,7 +48,7 @@
       <p class="card-value">
         {{ homeData.levelincome | currency : "INR" : "symbol" : "1.0-0" }}
       </p>
-      <p class="card-change positive">+12.5% from last month</p>
+   
     </div>
 
     <div class="card gradient-cyan">
@@ -57,7 +57,7 @@
         <i class="bi bi-people"></i>
       </div>
       <p class="card-value">{{ homeData.sponsors }}</p>
-      <p class="card-change positive">+8.1% from last week</p>
+ 
     </div>
 
     <div class="card gradient-yellow">
@@ -66,7 +66,7 @@
         <i class="bi bi-person-badge"></i>
       </div>
       <p class="card-value">{{ homeData.activesponsors }}</p>
-      <p class="card-change positive">+5.4% from yesterday</p>
+      <!-- <p class="card-change positive">+5.4% from yesterday</p> -->
     </div>
 
     <div class="card gradient-teal">
@@ -77,7 +77,7 @@
       <p class="card-value">
         {{ homeData.sponcerincome | currency : "INR" : "symbol" : "1.0-0" }}
       </p>
-      <p class="card-change positive">+3.8% this week</p>
+  
     </div>
   </div>
 </div>
@@ -93,7 +93,7 @@
           <i class="bi bi-gift"></i>
         </div>
         <p class="card-value">{{ homeData.silversponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+10.5% this month</p>
+    
       </div>
 
       <!-- Silver Working Level Income -->
@@ -103,67 +103,67 @@
           <i class="bi bi-bar-chart-line"></i>
         </div>
         <p class="card-value">{{ homeData.silverincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+6.3% from last week</p>
+
       </div>
 
       <!-- Silver Bonanza’s -->
-      <div class="card silver-card gradient-lightblue">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
-          <h3>Silver Bonanza’s</h3>
+          <h3>Silver Bonanza's</h3>
           <i class="bi bi-stars"></i>
         </div>
         <p class="card-value">{{ homeData.silverbonanzaincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+9.2% this quarter</p>
+    
       </div>
 
       <!-- Silver Monthly Salary Income -->
-      <div class="card silver-card gradient-lightgreen">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Silver Monthly Salary Income</h3>
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.silversalaryincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+2.8% this month</p>
+      
       </div>
 
       <!-- Silver Loan Income -->
-      <div class="card silver-card gradient-lightpurple">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Silver Loan Income</h3>
           <i class="bi bi-bank"></i>
         </div>
         <p class="card-value">{{ homeData.silverloanincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+4.1% from last month</p>
+
       </div>
 
       <!-- Regular Loan Income (Total loanincome field if available) -->
-      <div class="card silver-card gradient-lightorange">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Loan Income</h3>
           <i class="bi bi-cash-coin"></i>
         </div>
         <p class="card-value">{{ homeData.loanincome || 0 | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change negative">-1.2% this week</p>
+   
       </div>
 
       <!-- Today Income (if no field in API, can use silverincome as placeholder) -->
-      <div class="card silver-card gradient-lightpink">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Today Income</h3>
           <i class="bi bi-sun"></i>
         </div>
         <p class="card-value">{{ homeData.silverincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+5.6% today</p>
+     
       </div>
 
       <!-- Franchise Income (if exists in API) -->
-      <div class="card silver-card gradient-lightcyan">
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Franchise Income</h3>
           <i class="bi bi-building"></i>
         </div>
         <p class="card-value">{{ homeData.franchiseincome || 0 | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+7.3% from last week</p>
+     
       </div>
 
     </div>
@@ -184,47 +184,47 @@
           <i class="bi bi-trophy"></i>
         </div>
         <p class="card-value">{{ homeData.goldincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+11.2% this month</p>
+  
       </div>
 
       <!-- Gold Bonanza Income -->
-      <div class="card gold-card gradient-goldorange">
+      <div class="card gold-card gradient-gold">
         <div class="card-header">
           <h3>Gold Bonanza Income</h3>
           <i class="bi bi-stars"></i>
         </div>
         <p class="card-value">{{ homeData.goldbonanzaincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+8.9% from last week</p>
+
       </div>
 
       <!-- Gold Salary Income -->
-      <div class="card gold-card gradient-goldyellow">
+      <div class="card gold-card gradient-gold">
         <div class="card-header">
           <h3>Gold Salary Income</h3>
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.goldsalaryincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+6.4% from last month</p>
+  
       </div>
 
       <!-- Gold Loan Income -->
-      <div class="card gold-card gradient-goldbrown">
+      <div class="card gold-card gradient-gold">
         <div class="card-header">
           <h3>Gold Loan Income</h3>
           <i class="bi bi-bank"></i>
         </div>
         <p class="card-value">{{ homeData.goldloanincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+5.3% this quarter</p>
+ 
       </div>
 
       <!-- Gold Today Income -->
-      <div class="card gold-card gradient-goldlight">
+      <div class="card gold-card gradient-gold">
         <div class="card-header">
           <h3>Gold Today Income</h3>
           <i class="bi bi-sun"></i>
         </div>
         <p class="card-value">{{ homeData.goldincome | currency:'INR':'symbol':'1.0-0' }}</p>
-        <p class="card-change positive">+3.2% today</p>
+ 
       </div>
 
     </div>
@@ -244,43 +244,43 @@
           <i class="bi bi-gem"></i>
         </div>
         <p class="card-value">{{ homeData.diamondincome | currency:'INR':'symbol' }}</p>
-        <p class="card-change positive">+15.3% this month</p>
+   
       </div>
 
-      <div class="card diamond-card gradient-diamondpurple">
+      <div class="card diamond-card gradient-diamondblue">
         <div class="card-header">
           <h3>Diamond Bonanza Income</h3>
           <i class="bi bi-stars"></i>
         </div>
         <p class="card-value">{{ homeData.diamondbonanzaincome | currency:'INR':'symbol' }}</p>
-        <p class="card-change positive">+9.5% from last week</p>
+      
       </div>
 
-      <div class="card diamond-card gradient-diamondpink">
+      <div class="card diamond-card gradient-diamondblue">
         <div class="card-header">
           <h3>Diamond Salary Income</h3>
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.diamondsalaryincome | currency:'INR':'symbol' }}</p>
-        <p class="card-change positive">+7.4% this month</p>
+     
       </div>
 
-      <div class="card diamond-card gradient-diamondviolet">
+      <div class="card diamond-card gradient-diamondblue">
         <div class="card-header">
           <h3>Diamond Loan Income</h3>
           <i class="bi bi-bank"></i>
         </div>
         <p class="card-value">{{ homeData.diamondloanincome | currency:'INR':'symbol' }}</p>
-        <p class="card-change positive">+5.9% this quarter</p>
+
       </div>
 
-      <div class="card diamond-card gradient-diamondcyan">
+      <div class="card diamond-card gradient-diamondblue">
         <div class="card-header">
           <h3>Diamond Today Income</h3>
           <i class="bi bi-sun"></i>
         </div>
         <p class="card-value">{{ homeData.diamondsponcerincome | currency:'INR':'symbol' }}</p>
-        <p class="card-change positive">+3.1% today</p>
+
       </div>
     </div>
   </div>
