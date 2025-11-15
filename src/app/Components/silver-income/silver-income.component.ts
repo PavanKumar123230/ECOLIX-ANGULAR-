@@ -11,12 +11,12 @@ export class SilverIncomeComponent implements OnInit {
   constructor(private api: UserService) { }
 
   userTypes = [
+    { value: 'WalletSponcer', label: 'Sponcer Income' },
     { value: 'level_Income', label: 'Level Income' },
     { value: 'bonanaza_income', label: 'Bonanaza Income' },
     { value: 'salary_income', label: 'Salary' },
     { value: 'loan', label: 'Loan' },
     { value: 'franchise', label: 'Franchise' },
-    { value: 'WalletSponcer', label: 'Wallet Sponcer' },
   ];
   
 

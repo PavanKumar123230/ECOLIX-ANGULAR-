@@ -33,7 +33,7 @@
             <tr *ngFor="let row of tableData; let i = index">
               <td class="bg-purple text-white text-center fw-bold">{{ i + 1 }}</td>
               <td class="bg-light-blue text-center">{{ row.userid }}</td>
-              <td class="bg-light-green text-center">{{ row.amount }}</td>
+              <td class="bg-light-green text-center">₹{{ row.amount }}</td>
               <!-- <td class="bg-light-green text-center">{{ row.phone }}</td> -->
               <td class="bg-light-green text-center">{{ row.level }}</td>
             </tr>
@@ -46,7 +46,7 @@
 
 
 <!-- Wallet Sponcer Table -->
-<div *ngIf="selectedUserType === 'Wallet_Sponcer'" class="container my-5">
+<!-- <div *ngIf="selectedUserType === 'Wallet_Sponcer'" class="container my-5">
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center py-3">
       <h3 class="mb-0 fw-bold">Wallet Sponcer Bonus</h3>
@@ -59,7 +59,6 @@
               <th class="bg-purple text-center">S.NO</th>
               <th class="bg-gradient-member text-center">Userid</th>
               <th class="bg-gradient-sharing text-center">Awallet</th>
-              <th class="bg-gradient-earn text-center">phone</th>
               <th class="bg-gradient-earn text-center">Level</th>
             </tr>
           </thead>
@@ -67,16 +66,15 @@
             <tr *ngFor="let row of tableData; let i = index">
               <td class="bg-purple text-white text-center fw-bold">{{ i + 1 }}</td>
               <td class="bg-light-blue text-center">{{ row.sponsorPV }}</td>
-              <td class="bg-light-green text-center">{{ row.totalIds }}</td>
               <td class="bg-light-green text-center">{{ row.active }}</td>
-              <td class="bg-light-green text-center">{{ row.totalEarnPV }}</td>
+              <td class="bg-light-green text-center">{{ row.level }}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Level Members Table -->
 <div *ngIf="selectedUserType === 'Level_members'" class="container my-5">
@@ -93,18 +91,34 @@
               <th class="bg-gradient-member text-center">TARGET DAYS</th>
               <th class="bg-gradient-sharing text-center">SHARING PV</th>
               <th class="bg-gradient-earn text-center">TOTAL ID'S</th>
-              <th class="bg-gradient-earn text-center">Active</th>
+              <th class="bg-gradient-earn text-center">New Count</th>
+              <th class="bg-gradient-earn text-center">Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr >
-              <td class="bg-purple text-white text-center fw-bold">Level 1</td>
-              <td class="bg-light-blue text-center"> 9 </td>
-              <td class="bg-light-green text-center"> </td>
-              <td class="bg-light-green text-center"> </td>
-              <td class="bg-light-green text-center"> </td>
-            </tr>
-          </tbody>
+  <tr *ngFor="let row of tableData">
+    <td class="bg-purple text-white text-center fw-bold">{{ row.level }}</td>
+
+    <!-- TARGET DAYS (display the numeric target from logic) -->
+    <td class="bg-light-blue text-center">{{ row.target }}</td>
+
+    <!-- SHARING PV (keeps your PV label) -->
+    <td class="bg-light-green text-center">{{ row.pv }}</td>
+
+    <!-- TOTAL ID'S (static labels you originally had) -->
+    <td class="bg-light-green text-center">{{ row.totalLabel }}</td>
+
+    <!-- NEW COUNT (from API) -->
+    <td class="bg-light-green text-center">{{ row.count }}</td>
+
+    <!-- STATUS (colored cell) -->
+    <td class="text-center"
+        [ngStyle]="{ 'background': row.status, 'font-weight': 'bold' }">
+      {{ row.status | uppercase }}
+    </td>
+  </tr>
+</tbody>
+
         </table>
       </div>
     </div>
