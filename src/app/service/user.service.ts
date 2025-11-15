@@ -571,7 +571,8 @@ WalletReport(){
         naccountno: value.naccountno,
         nbankname: value.nbankname,
         nbranch: value.nbranch,
-        nifsccode: value.nifsccode
+        nifsccode: value.nifsccode,
+        ndob:value.ndob
       },
       httpOptions
     );

@@ -1,8 +1,7 @@
 <app-header></app-header>
 <h1 class="mt-3 pt-5"></h1>
-<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+<!-- <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000" >
   <div class="carousel-inner">
-    <!-- Banner 1 -->
     <div class="carousel-item active">
       <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=1200" 
            class="d-block w-100 banner-img" alt="Fashion">
@@ -13,7 +12,6 @@
       </div>
     </div>
 
-    <!-- Banner 2 -->
     <div class="carousel-item">
       <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200" 
            class="d-block w-100 banner-img" alt="Electronics">
@@ -24,7 +22,6 @@
       </div>
     </div>
 
-    <!-- Banner 3 -->
     <div class="carousel-item">
       <img src="https://images.unsplash.com/photo-1607083204219-aa7f7eaf1d54?w=1200" 
            class="d-block w-100 banner-img" alt="Furniture">
@@ -35,7 +32,6 @@
       </div>
     </div>
 
-    <!-- Banner 4 -->
     <div class="carousel-item">
       <img src="https://images.unsplash.com/photo-1585386959984-a4155222b979?w=1200" 
            class="d-block w-100 banner-img" alt="Shoes">
@@ -46,7 +42,6 @@
       </div>
     </div>
 
-    <!-- Banner 5 -->
     <div class="carousel-item">
       <img src="https://images.unsplash.com/photo-1607083204219-aa7f7eaf1d54?w=1200" 
            class="d-block w-100 banner-img" alt="Beauty">
@@ -58,6 +53,33 @@
     </div>
   </div>
 
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div> -->
+
+<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+  <div class="carousel-inner">
+
+    <!-- Dynamic banners -->
+    <div
+      class="carousel-item"
+      *ngFor="let b of banners; let i = index"
+      [class.active]="i === 0"
+    >
+      <img [src]="b.image" class="d-block w-100 banner-img" alt="Banner">
+      <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+        <h2>{{ b.name }}</h2>
+        <p>{{ b.bannertype }}</p>
+        <a href="#" class="btn btn-shop">Shop Now</a>
+      </div>
+    </div>
+
+  </div>
+
   <!-- Controls -->
   <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -66,6 +88,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
   </button>
 </div>
+
 
 <section class="latest-products py-5">
     <div class="container text-center">

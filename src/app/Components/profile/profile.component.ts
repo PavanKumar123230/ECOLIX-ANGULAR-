@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
       // Nominee
       nname: [''],
       nrelation: [''],
+      ndob:[''],
       npanno: [''],
       naadhar: [''],
       nmobile: [''],

@@ -129,9 +129,19 @@ export class SidebarComponent implements OnInit {
     this.openSubmenus[key] = !this.openSubmenus[key];
   }
 
+  // navigate(route?: string) {
+  //   if (route) this.router.navigate([route]);
+  // }
+
   navigate(route?: string) {
-    if (route) this.router.navigate([route]);
+    if (route) {
+      this.router.navigate([route]);
+    }
+  
+    // 🔥 Close sidebar after clicking
+    this.sidebarService.toggleSidebar();
   }
+  
 
   logout() {
     this.tokenService.signOut1();
