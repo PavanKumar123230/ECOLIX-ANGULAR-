@@ -157,7 +157,7 @@ export class SidebarComponent implements OnInit {
     if (this.isUser) {
       this.menuItems = [
         { label: 'Dashboard', icon: 'bi bi-speedometer2', route: '/dashboard' },
-        { label: 'Packages', icon: 'bi bi-box-seam', route: '/packages' },
+        // { label: 'Packages', icon: 'bi bi-box-seam', route: '/packages' },
         { label: 'Transfer Fund', icon: 'bi bi-arrow-left-right', route: '/transferfund' },
         { label: 'Received Fund', icon: 'bi bi-wallet2', route: '/receivedfund' },
         { label: 'My Users', icon: 'bi bi-person-circle', route: '/my-user' },
