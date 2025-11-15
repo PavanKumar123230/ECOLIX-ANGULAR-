@@ -19,6 +19,8 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {
     this.bannerForm = this.fb.group({
       bannertype: ['home'],
+      // sponcerid: [''],
+      // bannertype: [''],
       name: [''],
       desc: ['home banner']
     });
@@ -49,6 +51,7 @@ export class BannerComponent implements OnInit {
     const formData = new FormData();
     // formData.append("sponcerid", this.bannerForm.value.sponcerid);
     formData.append("bannertype", this.bannerForm.value.bannertype);
+    // formData.append("bannertype", this.bannerForm.value.bannertype);
     formData.append("name", this.bannerForm.value.name);
     formData.append("desc", this.bannerForm.value.desc);
     formData.append("image", this.selectedFile);  // REQUIRED: File

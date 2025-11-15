@@ -82,6 +82,18 @@ export class UserService {
     return this.http.get(AUTH_API + 'Get_Packages', httpOptions);
   }
 
+  LevelMembersDataBYDate() {
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'Levelmembersbydate', httpOptions);
+  }
+
+
   GetProductsByPackages(id: string) {
     const token1 = this.token.getToken();
     const httpOptions = {

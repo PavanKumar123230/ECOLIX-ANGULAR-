@@ -44,7 +44,7 @@ export class WelcomeBonusComponent implements OnInit {
         error: (err) => console.error("Wallet Sponcer Error:", err)
       });
     } else if (type === 'Level_members') {
-      this.api.levelmembers().subscribe({
+      this.api.LevelMembersDataBYDate().subscribe({
         next: (res: any) => {
           this.tableData = res.data || [];
           console.log("Level Members Response:", res); // ✅ Log API response
