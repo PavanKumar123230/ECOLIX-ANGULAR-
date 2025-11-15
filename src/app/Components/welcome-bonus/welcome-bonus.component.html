@@ -15,7 +15,7 @@
 <div *ngIf="selectedUserType === 'Wallet_Level'" class="container my-5">
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center py-3">
-      <h3 class="mb-0 fw-bold">Wallet Level Income</h3>
+      <h3 class="mb-0 fw-bold">Welcome Bonus Level Income</h3>
     </div>
     <div class="card-body p-0">
       <div class="table-responsive">
@@ -32,7 +32,7 @@
           <tbody>
             <tr *ngFor="let row of tableData; let i = index">
               <td class="bg-purple text-white text-center fw-bold">{{ i + 1 }}</td>
-              <td class="bg-light-blue text-center">{{ row.userid }}</td>
+              <td class="bg-light-blue text-center">{{ row.forid }}</td>
               <td class="bg-light-green text-center">₹{{ row.amount }}</td>
               <!-- <td class="bg-light-green text-center">{{ row.phone }}</td> -->
               <td class="bg-light-green text-center">{{ row.level }}</td>
@@ -80,7 +80,7 @@
 <div *ngIf="selectedUserType === 'Level_members'" class="container my-5">
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center py-3">
-      <h3 class="mb-0 fw-bold">Level Members Bonus</h3>
+      <h3 class="mb-0 fw-bold">Extra Welcome Bonus Rewards</h3>
     </div>
     <div class="card-body p-0">
       <div class="table-responsive">

@@ -407,4 +407,38 @@
 
 
 
+.welcome-card {
+  background: linear-gradient(135deg, #5f27cd, #341f97);
+  color: #fff;
+  border-radius: 18px;
+  padding: 25px 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.welcome-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.welcome-info {
+  margin: 4px 0;
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+.welcome-right {
+  font-size: 70px;
+  opacity: 0.85;
+}
+
+.welcome-icon {
+  font-size: 70px;
+}
 

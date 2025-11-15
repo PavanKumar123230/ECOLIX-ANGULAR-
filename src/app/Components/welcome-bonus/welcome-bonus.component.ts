@@ -9,12 +9,12 @@ import { UserService } from 'src/app/service/user.service';
 export class WelcomeBonusComponent implements OnInit {
 
   userTypes = [
-    { value: 'Wallet_Level', label: 'Wallet Level' },
-    { value: 'Level_members', label: 'Level Members' }
+    { value: 'Wallet_Level', label: 'Welcome Bonus Level Income' },
+    { value: 'Level_members', label: 'Extra Welcome Bonus Rewards' }
   ];
 
   selectedUserType: string = '';
-  tableData: any[] = [];
+  tableData: any;
 
   today = new Date();
 
@@ -30,7 +30,7 @@ export class WelcomeBonusComponent implements OnInit {
     if (type === 'Wallet_Level') {
       this.api.walletLevel().subscribe({
         next: (res: any) => {
-          this.tableData = res.data || [];
+           this.tableData = res.data.filter((x: any) => x.paytype === 'join');
           console.log("Wallet Level Response:", res);
         },
         error: (err) => console.error("Wallet Level Error:", err)
@@ -71,7 +71,7 @@ prepareLevels(data: any) {
 
   const rows = [
     { key: 'Levelone', label: 'Level 1', target: 9, pv: '5 pv', date: data.Levelonedate },
-    { key: 'Leveltwo', label: 'Level 2', target: 15, pv: '5 pv', date: data.Leveltwodate },
+    { key: 'Leveltwo', label: 'Level 2', target: 18, pv: '5 pv', date: data.Leveltwodate },
     { key: 'Levelthree', label: 'Level 3', target: 30, pv: 'Bangkok', date: data.Levelthreedate },
     { key: 'Levelfour', label: 'Level 4', target: 60, pv: '5 pv', date: data.Levelfourdate },
     { key: 'Levelfive', label: 'Level 5', target: 90, pv: '10 pv', date: data.Levelfivedate },
