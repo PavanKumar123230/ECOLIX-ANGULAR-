@@ -1,0 +1,91 @@
+<div class="container py-4 support-container">
+
+    <!-- Page Title -->
+    <h2 class="text-center mb-4 support-title">
+      <i class="bi bi-headset"></i> Support Center
+    </h2>
+  
+    <div class="row g-4">
+  
+      <!-- LEFT SIDE : Support Form -->
+      <div class="col-lg-5 col-md-6">
+        <div class="card shadow-sm support-card p-3">
+          <h5 class="mb-3">Create Support Ticket</h5>
+  
+          <form [formGroup]="supportForm" (ngSubmit)="submitSupport()">
+  
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <input type="text" formControlName="subject" class="form-control" placeholder="Enter subject" />
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label">Query</label>
+              <textarea formControlName="query" class="form-control" rows="4"
+                placeholder="Describe your issue..."></textarea>
+            </div>
+  
+            <button class="btn btn-primary w-100">
+              <i class="bi bi-send"></i> Submit Ticket
+            </button>
+  
+          </form>
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE : Support List -->
+      <div class="col-lg-7 col-md-6">
+        <div class="card shadow-sm p-3 support-card">
+          <h5 class="mb-3">My Support Tickets</h5>
+  
+          <div *ngIf="supportList?.length === 0" class="text-center text-muted py-4">
+            <i class="bi bi-envelope-open"></i><br>
+            No support tickets found.
+          </div>
+  
+          <!-- Ticket Loop -->
+          <div *ngFor="let item of supportList" class="ticket-box mb-3 p-3 rounded shadow-sm">
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="mb-1">
+                <i class="bi bi-chat-left-text"></i> {{ item.subject }}
+              </h6>
+  
+              <!-- Status Badge -->
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-warning text-dark': item.status == '0',
+                  'bg-success': item.status == '1'
+                }"
+              >
+                {{ item.status == '0' ? 'Pending' : 'Replied' }}
+              </span>
+            </div>
+  
+            <p class="text-muted small mt-2">{{ item.query }}</p>
+  
+            <!-- Reply Box -->
+            <div *ngIf="item.reply" class="reply-box p-2 mt-2">
+              <strong>Admin Reply:</strong>
+              <p class="m-0">{{ item.reply }}</p>
+  
+              <small class="text-muted">
+                {{ item.rdate }} {{ item.rtime }}
+              </small>
+            </div>
+  
+            <!-- Date -->
+            <div class="text-muted small mt-2">
+              <i class="bi bi-clock"></i>
+              {{ item.cdate }} {{ item.ctime }}
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  

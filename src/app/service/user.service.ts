@@ -629,4 +629,38 @@ WalletReport(){
     return this.http.get(AUTH_API + 'Level_members', httpOptions);
 
   }
+
+
+
+  support(value: {
+    query: string;
+    subject: string;
+  }) {
+    const token1 = this.token.getToken();
+  
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    const body = {
+      query: value.query,
+      subject: value.query,
+    };
+  
+    return this.http.post(AUTH_API + 'Add_Supporttoken', body, httpOptions);
+  }
+  getSupport(){
+    const token1 = this.token.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token1
+      })
+    };
+    return this.http.get(AUTH_API + 'User_Supporttokens', httpOptions);
+
+  }
+
 }

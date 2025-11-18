@@ -169,7 +169,9 @@ export class SidebarComponent implements OnInit {
         { label: 'Report', icon: 'bi bi-file-earmark-text', route: '/report' },
         { label: 'Silver Manager', icon: 'bi bi-file-earmark-text', route: '/silvermanager' },
         { label: 'Gold Manager', icon: 'bi bi-file-earmark-text', route: '/goldmanager' },
-        { label: 'Diamond Manager', icon: 'bi bi-file-earmark-text', route: '/diamondmanager' }
+        { label: 'Diamond Manager', icon: 'bi bi-file-earmark-text', route: '/diamondmanager' },
+        { label: 'Support', icon: 'bi bi-file-earmark-text', route: '/support' }
+
       ];
     } else if (this.isAdmin) {
       this.menuItems = [

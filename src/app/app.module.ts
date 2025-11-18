@@ -51,6 +51,7 @@ import { GoldManagersDataComponent } from './Components/gold-managers-data/gold-
 import { DiamondManagersDataComponent } from './Components/diamond-managers-data/diamond-managers-data.component';
 import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 import { BannerComponent } from './admin/banner/banner.component';
+import { SupportComponent } from './Components/support/support.component';
 
 
 
@@ -104,6 +105,7 @@ import { BannerComponent } from './admin/banner/banner.component';
     DiamondManagersDataComponent,
     AdminRegisterUserComponent,
     BannerComponent,
+    SupportComponent,
    
   ],
   imports: [
