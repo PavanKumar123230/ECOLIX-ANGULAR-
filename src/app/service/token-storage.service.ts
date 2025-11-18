@@ -26,7 +26,7 @@ export class TokenStorageService {
    signOut1() {
     this.user = null;
     window.localStorage.clear();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
   }
 
    signOut2() {
