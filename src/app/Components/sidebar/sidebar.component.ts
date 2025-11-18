@@ -145,7 +145,6 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.tokenService.signOut1();
-    this.router.navigate(['/login']);
   }
 
   checkRole() {

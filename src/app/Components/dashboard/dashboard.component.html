@@ -12,7 +12,7 @@
       </p>
 
       <p class="welcome-info">
-        <strong>Activation Date:</strong> {{ profiledata.adate | date:'dd MMM yyyy' }}
+        <strong>Activation Date:</strong> {{ profiledata.cdate | date:'dd MMM yyyy' }}
       </p>
 
       <p class="welcome-info">
@@ -68,13 +68,23 @@
     
     <div class="card gradient-pink">
       <div class="card-header">
-        <h3>Level Income</h3>
+        <h3>Welcome Bonus Income</h3>
         <i class="bi bi-graph-up"></i>
       </div>
       <p class="card-value">
         {{ homeData.levelincome | currency : "INR" : "symbol" : "1.0-0" }}
       </p>
    
+    </div>
+
+    
+     <div class="card gradient-cyan">
+      <div class="card-header">
+        <h3>Extra Welcome Bonus Income</h3>
+        <i class="bi bi-person-badge"></i>
+      </div>
+       <p class="card-value">₹0</p>
+      <!-- <p class="card-change positive">+5.4% from yesterday</p> -->
     </div>
 
     <!-- <div class="card gradient-cyan">
@@ -95,7 +105,7 @@
       <!-- <p class="card-change positive">+5.4% from yesterday</p> -->
     </div>
 
-    <div class="card gradient-teal">
+    <!-- <div class="card gradient-teal">
       <div class="card-header">
         <h3>Referrals Income</h3>
         <i class="bi bi-briefcase"></i>
@@ -103,26 +113,26 @@
       <p class="card-value">
         {{ homeData.sponcerincome | currency : "INR" : "symbol" : "1.0-0" }}
       </p>
-    </div>
+    </div> -->
 
-     <div class="card gradient-cyan">
-      <div class="card-header">
-        <h3>Extra Welcome Bonus Income</h3>
-        <i class="bi bi-person-badge"></i>
-      </div>
-       <p class="card-value">{{ homeData.levelincome | currency:'INR':'symbol':'1.0-0' }}</p>
-      <!-- <p class="card-change positive">+5.4% from yesterday</p> -->
-    </div>
 
   </div>
 </div>
 <!-- silver income -->
 <div class="card silver-section-card mt-3" *ngIf="homeData">
   <div class="card-body">
-    <h2 class="section-title mb-4">Silver Level Income</h2>
+    <h2 class="section-title mb-4">Silver Income Overview</h2>
     <div class="silver-income-grid">
       <!-- Welcome Bonus Income (Silver Sponsor Income) -->
    
+       <div class="card silver-card gradient-gray">
+        <div class="card-header">
+          <h3>Silver Referal Income</h3>
+          <i class="bi bi-bar-chart-line"></i>
+        </div>
+         <p class="card-value">{{ homeData.silversponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
+
+      </div>
 
       <!-- Silver Working Level Income -->
       <div class="card silver-card gradient-gray">
@@ -201,9 +211,19 @@
 <!-- Gold Level Income - Outer Card -->
 <div class="card gold-section-card mt-5" *ngIf="homeData">
   <div class="card-body">
-    <h2 class="section-title mb-4">Gold Level Income Overview</h2>
+    <h2 class="section-title mb-4">Gold Income Overview</h2>
 
     <div class="gold-income-grid">
+
+      <!-- Gold Level Income -->
+      <div class="card gold-card gradient-gold">
+        <div class="card-header">
+          <h3>Gold Referral Income</h3>
+          <i class="bi bi-trophy"></i>
+        </div>
+       <p class="card-value">{{ homeData.goldsponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
+  
+      </div>
 
       <!-- Gold Level Income -->
       <div class="card gold-card gradient-gold">
@@ -263,9 +283,19 @@
 <!-- Diamond Level Income - Outer Card -->
 <div class="card diamond-section-card mt-5" *ngIf="homeData">
   <div class="card-body">
-    <h2 class="section-title mb-4">Diamond Level Income Overview</h2>
+    <h2 class="section-title mb-4">Diamond Income Overview</h2>
 
     <div class="diamond-income-grid">
+
+      <div class="card diamond-card gradient-diamondblue">
+        <div class="card-header">
+          <h3>Diamond Referral Income</h3>
+          <i class="bi bi-gem"></i>
+        </div>
+       <p class="card-value">{{ homeData.diamondsponcerincome | currency:'INR':'symbol' }}</p>
+   
+      </div>
+
       <div class="card diamond-card gradient-diamondblue">
         <div class="card-header">
           <h3>Diamond Level Income</h3>
