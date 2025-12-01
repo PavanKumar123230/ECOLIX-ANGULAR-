@@ -31,13 +31,7 @@ export class ReportComponent implements OnInit {
 
         if (res.status === 1 && Array.isArray(res.data)) {
           // Transform API response for display
-          this.walletData = res.data.map((item: any) => ({
-            date: `${item.cdate} ${item.ctime}`,
-            description: item.remark || item.method || 'N/A',
-            credit: item.type === 'credit' ? +item.amount : 0,
-            debit: item.type === 'debit' ? +item.amount : 0,
-            balance: +item.awallet || 0
-          }));
+          this.walletData = res.data;
         } else {
           this.walletData = [];
           this.errorMessage = 'No wallet data found.';
