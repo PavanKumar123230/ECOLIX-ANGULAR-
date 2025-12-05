@@ -1,8 +1,6 @@
-<div class="admin-dashboard">
+<!-- <div class="admin-dashboard">
   <h2>Admin Profile</h2>
-
   <div *ngIf="loading" class="loading">Loading...</div>
-
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
     <div class="form-group">
       <label>Name</label>
@@ -11,7 +9,6 @@
         Name is required
       </div>
     </div>
-
     <div class="form-group">
       <label>Phone</label>
       <input type="text" formControlName="phone" placeholder="Enter Phone" />
@@ -19,7 +16,6 @@
         Valid 10-digit phone number required
       </div>
     </div>
-
     <div class="form-group">
       <label>Email</label>
       <input type="email" formControlName="email" placeholder="Enter Email" />
@@ -27,7 +23,6 @@
         Valid email required
       </div>
     </div>
-
     <div class="form-group">
       <label>Password</label>
       <input type="password" formControlName="password" placeholder="Enter Password" />
@@ -35,7 +30,6 @@
         Password is required
       </div>
     </div>
-
     <button type="submit" [disabled]="loading || profileForm.invalid" class="btn">
       {{ loading ? 'Updating...' : 'Update Profile' }}
     </button>
@@ -44,4 +38,59 @@
 
   <div *ngIf="successMsg" class="alert success">{{ successMsg }}</div>
   <div *ngIf="errorMsg" class="alert error">{{ errorMsg }}</div>
+</div> -->
+
+
+
+
+<div class="container my-5">
+  <div class="card profile-card shadow-lg border-0 p-4 mx-auto">
+
+    <div class="text-center mb-4">
+      <div class="profile-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center">
+        <i class="bi bi-person-fill fs-1"></i>
+      </div>
+      <h3 class="mt-3 text-primary fw-bold">Admin Profile</h3>
+    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+      <h5 class="fw-bold text-primary mb-3">Basic Details</h5>
+
+      <div class="row">
+        
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Name</label>
+          <input class="form-control form-control-lg" formControlName="user" placeholder="Enter Name" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Phone</label>
+          <input class="form-control form-control-lg" formControlName="phone" placeholder="Enter Phone" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Email</label>
+          <input class="form-control form-control-lg" formControlName="email" placeholder="Enter Email" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Password</label>
+          <div class="input-group">
+            <input [type]="showPass ? 'text' : 'password'" class="form-control form-control-lg" formControlName="password" />
+            <span class="input-group-text" style="cursor:pointer" (click)="togglePass()">
+              <i class="bi" [ngClass]="showPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-5 py-2" [disabled]="saving || loading || profileForm.invalid">
+          {{ saving ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  
+
+  </div>
 </div>
+

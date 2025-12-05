@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 import { finalize } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
 
@@ -15,7 +16,15 @@ export class ProfileComponent implements OnInit {
   showPass = false;
   saving = false;
 
-  constructor(private fb: FormBuilder, private api: UserService) {}
+  // ⭐ Added For Image Upload
+  previewImage: any = null;
+  selectedImageFile: any = null;
+
+  constructor(
+    private fb: FormBuilder,
+    private api: UserService,
+    private toast: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -30,30 +39,26 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       address: [''],
-
-      // KYC
+      image: [''],   // keep base64 image
+      pincode: [''],
       aadharno: [''],
       panno: [''],
-
-      // Bank
       payeename: [''],
       bankname: [''],
       branch: [''],
       ifsccode: [''],
       accountno: [''],
-
-      // Nominee
       nname: [''],
       nrelation: [''],
-      ndob:[''],
       npanno: [''],
       naadhar: [''],
       nmobile: [''],
       nemail: [''],
+      ndob: [''],
       naccountno: [''],
       nbankname: [''],
       nbranch: [''],
-      nifsccode: ['']
+      nifsccode: [''],
     });
   }
 
@@ -61,40 +66,65 @@ export class ProfileComponent implements OnInit {
     this.showPass = !this.showPass;
   }
 
+  // ⭐ Load Profile + Image Preview
   loadProfile() {
     this.api.getProfile().subscribe({
       next: (res: any) => {
+        console.log("profile", res);
+
         if (res?.data?.length > 0) {
           this.profileData = res.data[0];
-
           this.profileForm.patchValue(this.profileData);
+
+          // ⭐ If image exists in DB → show in preview
+          if (this.profileData.image) {
+            this.previewImage = this.profileData.image;
+          }
         }
       },
-      error: err => console.error("Profile Load Error", err)
+      error: (err) => {
+        console.error('Profile Load Error', err);
+        this.toast.error('Failed to load profile!', 'Error');
+      }
     });
   }
 
+  onImageSelect(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+  
+    this.selectedImageFile = file;
+  
+    // Show Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewImage = reader.result;
+    };
+    reader.readAsDataURL(file);
+  
+    // Save actual file in form
+    this.profileForm.patchValue({
+      image: file
+    });
+  }
+  
+
   onSave() {
-    if (this.profileForm.invalid) {
-      this.profileForm.markAllAsTouched();
-      return;
-    }
-
-    if (!this.profileData?.id) {
-      alert("Profile ID not found!");
-      return;
-    }
-
-    this.saving = true;
-
+    console.log("🔥 BEFORE SAVE:", this.profileForm.value);
+  
     this.api.updateProfile(this.profileData.id, this.profileForm.value)
       .pipe(finalize(() => this.saving = false))
       .subscribe({
-        next: () => alert("Profile updated successfully!"),
-        error: err => {
-          console.error("Update Error", err);
-          alert("Profile update failed!");
+        next: (res) => {
+          console.log("✅ AFTER SAVE:", res);
+          this.toast.success('Profile updated successfully!', 'Success');
+        },
+        error: (err) => {
+          console.error('❌ Update Error', err);
+          this.toast.error('Profile update failed!', 'Error');
         }
       });
   }
+  
+
 }

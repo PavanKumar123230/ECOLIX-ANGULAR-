@@ -5,14 +5,12 @@ interface ManagerOption {
   label: string;
   value: string;
 }
-
 @Component({
   selector: 'app-silver-managers-data',
   templateUrl: './silver-managers-data.component.html',
   styleUrls: ['./silver-managers-data.component.scss']
 })
 export class SilverManagersDataComponent implements OnInit {
-
   managerOptions: ManagerOption[] = [
     { label: 'Silver Manager 1', value: 'SilverManager1' },
     { label: 'Silver Manager 2', value: 'SilverManager2' },
@@ -23,18 +21,14 @@ export class SilverManagersDataComponent implements OnInit {
     { label: 'Business Manager', value: 'SilverManager7' },
     { label: 'Director', value: 'SilverManager8' },
   ];
-
-  selectedManager = '';
+  selectedManager = 'SilverManager1';   // ✅ Default selected
   managerData: any[] = [];
   loading = false;
-
-  // Map string to actual UserService methods
+  // Mapping manager to API method
   managerApiMap: { [key: string]: () => any } = {};
-
   constructor(private api: UserService) { }
-
   ngOnInit(): void {
-    // Build the mapping
+    // Map API methods
     this.managerApiMap = {
       SilverManager1: () => this.api.SilverManager1(),
       SilverManager2: () => this.api.SilverManager2(),
@@ -45,8 +39,17 @@ export class SilverManagersDataComponent implements OnInit {
       SilverManager7: () => this.api.SilverManager7(),
       SilverManager8: () => this.api.SilverManager8(),
     };
+    // Load default manager data automatically
+    this.onManagerChange();
   }
 
+  // When a button is clicked
+  selectManager(value: string) {
+    this.selectedManager = value;
+    this.onManagerChange();
+  }
+
+  // Fetch API for selected manager
   onManagerChange() {
     if (!this.selectedManager) return;
 
@@ -61,7 +64,7 @@ export class SilverManagersDataComponent implements OnInit {
         this.managerData = res.data || [];
         this.loading = false;
       },
-      error: (err:any) => {
+      error: (err: any) => {
         console.error(err);
         this.managerData = [];
         this.loading = false;

@@ -7,41 +7,38 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./silver-income.component.scss']
 })
 export class SilverIncomeComponent implements OnInit {
-
-  constructor(private api: UserService) { }
-
+  constructor(private api: UserService) {}
   userTypes = [
-    { value: 'WalletSponcer', label: 'Sponcer Income' },
-    { value: 'level_Income', label: 'Level Income' },
-    { value: 'bonanaza_income', label: 'Bonanaza Income' },
-    { value: 'salary_income', label: 'Salary' },
+    { value: 'sponcer', label: 'Sponcer Income' },
+    { value: 'level', label: 'Level Income' },
+    { value: 'bonanza', label: 'Bonanza Rewards' },
+    { value: 'salary', label: 'Salary' },
     { value: 'loan', label: 'Loan' },
-    { value: 'franchise', label: 'Franchise' },
   ];
-  
-
-  selectedUserType: string = '';
+  selectedUserType: string = 'sponcer';
   tableData: any[] = [];
-
-  ngOnInit(): void { }
-
-  onUserTypeChange() {
-    this.fetchData(this.selectedUserType);
-    console.log('Selected:', this.selectedUserType);
+  ngOnInit(): void {
+    this.onUserTypeChange();
   }
-
- fetchData(type: string) {
-  this.tableData = []; 
-
-  if (type === 'WalletSponcer') {
-    this.api.walletSponcer().subscribe({
+  selectType(type: string) {
+    this.selectedUserType = type;
+    this.onUserTypeChange();
+  }
+  onUserTypeChange() {
+    this.fetchData();
+  }
+  fetchData() {
+    this.tableData = [];
+    this.api.silverIncome().subscribe({
       next: (res: any) => {
-        this.tableData = res.data || [];
-        console.log("Wallet Sponcer Response:", res);
+        const allData = res.data || [];
+        // FILTER BY method
+        this.tableData = allData.filter(
+          (item: any) => item.method?.toLowerCase() === this.selectedUserType.toLowerCase()
+        );
+        console.log("Filtered:", this.tableData);
       },
-      error: (err) => console.error("Wallet Sponcer Error:", err)
+      error: (err) => console.error("Error:", err)
     });
   }
-}
-
 }

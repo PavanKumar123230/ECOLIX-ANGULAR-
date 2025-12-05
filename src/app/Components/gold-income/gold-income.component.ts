@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-gold-income',
@@ -7,17 +8,46 @@ import { Component } from '@angular/core';
 })
 export class GoldIncomeComponent {
 
-  userTypes = [
-    { value: 'level_Income', label: 'Level Income' },
-    { value: 'bonanaza_income', label: 'Bonanaza Income' },
-    { value: 'salary_income', label: 'Salary' },
-    { value: 'loan', label: 'Loan' },
-    { value: 'franchise', label: 'Franchise' },
-  ];
+  constructor(private api: UserService) { }
 
-  selectedUserType: string = '';
+  userTypes = [
+    { value: 'sponcer', label: 'Sponcer Income' },
+    { value: 'level', label: 'Level Income' },
+    { value: 'bonanza', label: 'Bonanza Rewards' },
+    { value: 'salary', label: 'Salary' },
+    { value: 'loan', label: 'Loan' },
+  ];
+  
+  selectedUserType: string = 'sponcer'; 
+  tableData: any[] = [];
+
+  ngOnInit(): void {
+    this.onUserTypeChange();
+  }
+
+  selectType(type: string) {
+    this.selectedUserType = type;
+    this.onUserTypeChange();
+  }
 
   onUserTypeChange() {
-    console.log('Selected:', this.selectedUserType);
+    this.fetchData();
   }
+
+  fetchData() {
+    this.tableData = [];
+    this.api.goldIncome().subscribe({
+      next: (res: any) => {
+        const allData = res.data || [];
+        // FILTER BY method
+        this.tableData = allData.filter(
+          (item: any) => item.method?.toLowerCase() === this.selectedUserType.toLowerCase()
+        );
+        console.log("Filtered:", this.tableData);
+      },
+      error: (err) => console.error("Error:", err)
+    });
+  }
+
 }
+

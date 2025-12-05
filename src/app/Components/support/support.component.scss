@@ -1,45 +1,133 @@
+/* 🌈 MAIN CONTAINER */
 .support-container {
-    max-width: 1100px;
-  
-    .support-title {
-      font-weight: 700;
-      color: #0d6efd;
+  max-width: 1100px;
+
+  .support-title {
+    font-weight: 800;
+    color: #0a58ff;
+    background: linear-gradient(45deg, #0066ff, #00eaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 🌤 GLASS CARD STYLE */
+  .support-card {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 140, 255, 0.25);
     }
-  
+  }
+
+  /* ✉ MODERN INPUTS */
+  input,
+  textarea {
+    border-radius: 10px;
+    border: 1px solid #cfe8ff;
+    transition: 0.2s;
+
+    &:focus {
+      border-color: #009dff;
+      box-shadow: 0 0 5px rgba(0, 153, 255, 0.4);
+    }
+  }
+
+  /* 🚀 GRADIENT BUTTON */
+  .submit-btn {
+    background: linear-gradient(45deg, #0066ff, #00eaff);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.5);
+    transition: 0.3s;
+
+    &:hover {
+      background: linear-gradient(45deg, #004de6, #00c8ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 195, 255, 0.7);
+    }
+  }
+
+  /* 📩 TICKET BOX */
+  .ticket-box {
+    border-radius: 14px;
+    padding: 18px;
+    background: linear-gradient(135deg, #f1f9ff, #ffffff);
+    border: 1px solid rgba(0, 162, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 100, 255, 0.1);
+
+    .reply-box {
+      margin-top: 10px;
+      background: linear-gradient(120deg, #e6fff4, #d0ffe6);
+      border-left: 5px solid #28a745;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+  }
+
+  /* 🔵 STATUS BADGES */
+  .status-badge {
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    font-weight: 700;
+
+    &.pending {
+      background: linear-gradient(45deg, #ffe29f, #ffa751);
+      color: #663c00;
+    }
+
+    &.replied {
+      background: linear-gradient(45deg, #6bffcb, #28d79f);
+      color: #004d2c;
+    }
+  }
+}
+
+/* 📱 RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .support-container {
+    padding: 10px;
+
     .support-card {
-      border-radius: 1rem;
-      transition: all 0.3s ease;
-  
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-      }
+      padding: 15px !important;
     }
-  
+
     .ticket-box {
-      background: #f8f9fa;
-      border-left: 6px solid #0d6efd;
-      border-radius: 0.8rem;
-  
-      .reply-box {
-        background: #e9f7ef;
-        border-left: 4px solid #28a745;
-        border-radius: 6px;
-      }
+      padding: 15px !important;
     }
   }
-  
-  @media (max-width: 768px) {
-    .support-container {
-      padding: 10px;
-  
-      .support-card {
-        padding: 15px !important;
-      }
-  
-      .ticket-box {
-        padding: 15px !important;
-      }
-    }
+}
+
+@media (max-width: 480px) {
+  .support-title {
+    font-size: 1.4rem;
   }
-  
+
+  .ticket-box h6 {
+    font-size: 0.95rem;
+  }
+}
+
+/* Modern Select Dropdown */
+.modern-select {
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 15px;
+  border: 2px solid #bfe3ff;
+  background: #f8fcff;
+  transition: 0.25s ease;
+
+  &:focus {
+    border-color: #00a6ff;
+    box-shadow: 0 0 8px rgba(0, 153, 255, 0.4);
+  }
+}

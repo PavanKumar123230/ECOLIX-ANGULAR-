@@ -1,91 +1,94 @@
 <div class="container py-4 support-container">
 
-    <!-- Page Title -->
-    <h2 class="text-center mb-4 support-title">
-      <i class="bi bi-headset"></i> Support Center
-    </h2>
-  
-    <div class="row g-4">
-  
-      <!-- LEFT SIDE : Support Form -->
-      <div class="col-lg-5 col-md-6">
-        <div class="card shadow-sm support-card p-3">
-          <h5 class="mb-3">Create Support Ticket</h5>
-  
-          <form [formGroup]="supportForm" (ngSubmit)="submitSupport()">
-  
-            <div class="mb-3">
-              <label class="form-label">Subject</label>
-              <input type="text" formControlName="subject" class="form-control" placeholder="Enter subject" />
-            </div>
-  
-            <div class="mb-3">
-              <label class="form-label">Query</label>
-              <textarea formControlName="query" class="form-control" rows="4"
-                placeholder="Describe your issue..."></textarea>
-            </div>
-  
-            <button class="btn btn-primary w-100">
-              <i class="bi bi-send"></i> Submit Ticket
-            </button>
-  
-          </form>
-        </div>
-      </div>
-  
-      <!-- RIGHT SIDE : Support List -->
-      <div class="col-lg-7 col-md-6">
-        <div class="card shadow-sm p-3 support-card">
-          <h5 class="mb-3">My Support Tickets</h5>
-  
-          <div *ngIf="supportList?.length === 0" class="text-center text-muted py-4">
-            <i class="bi bi-envelope-open"></i><br>
-            No support tickets found.
+  <!-- PAGE TITLE -->
+  <h2 class="text-center mb-4 support-title">
+    <i class="bi bi-headset"></i> Support Center
+  </h2>
+
+  <div class="row g-4">
+    <!-- LEFT SIDE — SUPPORT FORM -->
+    <div class="col-lg-5 col-md-6">
+      <div class="card support-card p-3 shadow-sm">
+        <h5 class="mb-3 text-primary fw-semibold">Create Support Ticket</h5>
+
+        <form [formGroup]="supportForm" (ngSubmit)="submitSupport()">
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Subject</label>
+          
+            <select formControlName="subject" class="form-select modern-select">
+              <option value="" disabled selected>Select Issue</option>
+              <option value="Payment Issue">Payment Issue</option>
+              <option value="Registration Issue">Registration Issue</option>
+              <option value="Wallet Issue">Wallet Issue</option>
+              <option value="Transfer Issue">Transfer Issue</option>
+              <option value="Other Issue">Other Issue</option>
+            </select>
           </div>
-  
-          <!-- Ticket Loop -->
-          <div *ngFor="let item of supportList" class="ticket-box mb-3 p-3 rounded shadow-sm">
-  
-            <div class="d-flex justify-content-between align-items-center">
-              <h6 class="mb-1">
-                <i class="bi bi-chat-left-text"></i> {{ item.subject }}
-              </h6>
-  
-              <!-- Status Badge -->
-              <span
-                class="badge"
-                [ngClass]="{
-                  'bg-warning text-dark': item.status == '0',
-                  'bg-success': item.status == '1'
-                }"
-              >
-                {{ item.status == '0' ? 'Pending' : 'Replied' }}
-              </span>
-            </div>
-  
-            <p class="text-muted small mt-2">{{ item.query }}</p>
-  
-            <!-- Reply Box -->
-            <div *ngIf="item.reply" class="reply-box p-2 mt-2">
-              <strong>Admin Reply:</strong>
-              <p class="m-0">{{ item.reply }}</p>
-  
-              <small class="text-muted">
-                {{ item.rdate }} {{ item.rtime }}
-              </small>
-            </div>
-  
-            <!-- Date -->
-            <div class="text-muted small mt-2">
-              <i class="bi bi-clock"></i>
-              {{ item.cdate }} {{ item.ctime }}
-            </div>
-  
+          
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Query</label>
+            <textarea rows="4" formControlName="query" class="form-control"
+              placeholder="Describe your issue..."></textarea>
           </div>
-  
-        </div>
+
+          <button class="btn submit-btn w-100">
+            <i class="bi bi-send"></i> Submit Ticket
+          </button>
+
+        </form>
       </div>
-  
     </div>
+
+    <!-- RIGHT SIDE — SUPPORT LIST -->
+    <div class="col-lg-7 col-md-6">
+      <div class="card p-3 shadow-sm support-card">
+
+        <h5 class="mb-3 fw-semibold text-primary">My Support Tickets</h5>
+
+        <!-- EMPTY -->
+        <div *ngIf="supportList?.length === 0" class="text-center text-muted py-4 empty-box">
+          <i class="bi bi-chat-left-dots fs-1 text-primary"></i>
+          <p class="mt-2">No support tickets found.</p>
+        </div>
+
+        <!-- TICKET LOOP -->
+        <div *ngFor="let item of supportList" class="ticket-box p-3 mb-3 shadow-sm">
+
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-1 fw-semibold">
+              <i class="bi bi-chat-dots"></i> {{ item.subject }}
+            </h6>
+
+            <span class="status-badge"
+              [ngClass]="{
+              'pending': item.status == '0',
+              'replied': item.status == '1'
+            }">
+              {{ item.status == '0' ? "Pending" : "Replied" }}
+            </span>
+          </div>
+
+          <p class="text-muted small mt-2">{{ item.query }}</p>
+
+          <!-- ADMIN REPLY BOX -->
+          <div *ngIf="item.reply" class="reply-box p-2 mt-2">
+            <strong>Admin Reply:</strong>
+            <p class="m-0">{{ item.reply }}</p>
+            <small class="text-muted">{{ item.rdate }} {{ item.rtime }}</small>
+          </div>
+
+          <!-- DATE -->
+          <div class="text-muted small mt-2">
+            <i class="bi bi-clock"></i>
+            {{ item.cdate }} {{ item.ctime }}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
-  
+</div>

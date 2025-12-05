@@ -1,21 +1,24 @@
-<div class="dropdown-container mb-4">
-  <label for="userType" class="form-label fw-semibold">Select Welcome Bonus Type:</label>
-  <select
-    id="userType"
-    [(ngModel)]="selectedUserType"
-    (ngModelChange)="onUserTypeChange()"
-    class="form-select w-auto">
-    <option value="" disabled>Select Welcome Bonus</option>
-    <option *ngFor="let type of userTypes" [value]="type.value">
-      {{ type.label }}
-    </option>
-  </select>
+<div class="text-center mb-4">
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+    <button class="btn px-3 py-2 flex-fill"
+      [ngClass]="selectedUserType === 'Wallet_Level' ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="changeType('Wallet_Level')" style="min-width: 180px;">
+      Welcome Bonus Level Income
+    </button>
+    <button class="btn px-3 py-2 flex-fill"
+      [ngClass]="selectedUserType === 'Level_members' ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="changeType('Level_members')" style="min-width: 180px;">
+      Extra Welcome Bonus Rewards
+    </button>
+  </div>
 </div>
 <!-- Wallet Level Table -->
-<div *ngIf="selectedUserType === 'Wallet_Level'" class="container my-5">
+
+
+<!-- <div *ngIf="selectedUserType === 'Wallet_Level'" class="container my-5">
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center py-3">
-      <h3 class="mb-0 fw-bold">Welcome Bonus Level Income</h3>
+      <h4 class="mb-0 fw-bold">Welcome Bonus Level Income</h4>
     </div>
     <div class="card-body p-0">
       <div class="table-responsive">
@@ -25,58 +28,97 @@
               <th class="bg-purple text-center">S.No</th>
               <th class="bg-gradient-member text-center">User ID</th>
               <th class="bg-gradient-sharing text-center">Earn</th>
-              <!-- <th class="bg-gradient-earn text-center">Phone</th> -->
               <th class="bg-gradient-earn text-center">Level</th>
+              <th class="bg-gradient-earn text-center">Date</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let row of tableData; let i = index">
-              <td class="bg-purple text-white text-center fw-bold">{{ i + 1 }}</td>
+            <tr *ngFor="let row of paginatedData; let i = index">
+              <td class="bg-purple  text-center fw-bold">
+                {{ (currentPage - 1) * itemsPerPage + i + 1 }}
+              </td>
               <td class="bg-light-blue text-center">{{ row.forid }}</td>
               <td class="bg-light-green text-center">₹{{ row.amount }}</td>
-              <!-- <td class="bg-light-green text-center">{{ row.phone }}</td> -->
               <td class="bg-light-green text-center">{{ row.level }}</td>
+              <td class="bg-light-green text-center">
+                {{ row.cdate | date:'dd-MM-yyyy' }}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Wallet Sponcer Table -->
-<!-- <div *ngIf="selectedUserType === 'Wallet_Sponcer'" class="container my-5">
-  <div class="card shadow-lg border-0">
-    <div class="card-header bg-primary text-white text-center py-3">
-      <h3 class="mb-0 fw-bold">Wallet Sponcer Bonus</h3>
-    </div>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-borderless mb-0 align-middle">
-          <thead>
-            <tr class="text-white">
-              <th class="bg-purple text-center">S.NO</th>
-              <th class="bg-gradient-member text-center">Userid</th>
-              <th class="bg-gradient-sharing text-center">Awallet</th>
-              <th class="bg-gradient-earn text-center">Level</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let row of tableData; let i = index">
-              <td class="bg-purple text-white text-center fw-bold">{{ i + 1 }}</td>
-              <td class="bg-light-blue text-center">{{ row.sponsorPV }}</td>
-              <td class="bg-light-green text-center">{{ row.active }}</td>
-              <td class="bg-light-green text-center">{{ row.level }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="text-center my-3" *ngIf="totalPages > 1">
+        <button class="btn btn-sm btn-primary me-2" [disabled]="currentPage === 1"
+          (click)="currentPage = currentPage - 1">
+          Prev
+        </button>
+        <span class="fw-bold">
+          Page {{ currentPage }} / {{ totalPages }}
+        </span>
+        <button class="btn btn-sm btn-primary ms-2" [disabled]="currentPage === totalPages"
+          (click)="currentPage = currentPage + 1">
+          Next
+        </button>
       </div>
     </div>
   </div>
 </div> -->
 
-<!-- Level Members Table -->
+
+<div *ngIf="selectedUserType === 'Wallet_Level'" class="container my-5">
+<div class="wallet-transfer container py-4">
+  <div class="transactions-section ">
+    <h4 class="fw-semibold text-secondary text-center mb-3">Welcome Bonus Level Income</h4>
+    <div class="table-responsive ">
+      <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+        <thead class="table-primary">
+          <tr>
+            <th class="bg-purple text-center">S.No</th>
+            <th class="bg-gradient-member text-center">User ID</th>
+            <th class="bg-gradient-sharing text-center">Earn</th>
+            <th class="bg-gradient-earn text-center">Level</th>
+            <th class="bg-gradient-earn text-center">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="tableData.length === 0">
+            <td colspan="5" class="text-muted text-center py-3">
+              No transactions found
+            </td>
+          </tr>
+          <tr *ngFor="let row of paginatedData; let i = index">
+            <td class="bg-purple  text-center fw-bold">
+              {{ (currentPage - 1) * itemsPerPage + i + 1 }}
+            </td>
+            <td class="bg-light-blue text-center">{{ row.forid }}</td>
+            <td class="bg-light-green text-center">₹{{ row.amount }}</td>
+            <td class="bg-light-green text-center">{{ row.level }}</td>
+            <td class="bg-light-green text-center">
+              {{ row.cdate | date:'dd-MM-yyyy' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center my-3" *ngIf="totalPages > 1">
+      <!-- Prev -->
+      <button class="btn btn-sm btn-primary me-2" [disabled]="currentPage === 1"
+        (click)="currentPage = currentPage - 1">
+        Prev
+      </button>
+      <span class="fw-bold">
+        Page {{ currentPage }} / {{ totalPages }}
+      </span>
+      <!-- Next -->
+      <button class="btn btn-sm btn-primary ms-2" [disabled]="currentPage === totalPages"
+        (click)="currentPage = currentPage + 1">
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
 <div *ngIf="selectedUserType === 'Level_members'" class="container my-5">
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center py-3">
@@ -84,41 +126,74 @@
     </div>
     <div class="card-body p-0">
       <div class="table-responsive">
-        <table class="table table-borderless mb-0 align-middle">
+        <table class="table table-borderless mb-0 align-middle" style=" padding: 1rem;
+        vertical-align: middle;
+        font-size: 1.1rem;">
           <thead>
             <tr class="text-white">
-              <th class="bg-purple text-center">LEVELS</th>
-              <th class="bg-gradient-member text-center">TARGET DAYS</th>
-              <th class="bg-gradient-sharing text-center">SHARING PV</th>
-              <th class="bg-gradient-earn text-center">TOTAL ID'S</th>
-              <th class="bg-gradient-earn text-center">New Count</th>
-              <th class="bg-gradient-earn text-center">Status</th>
+              <th  class="bg-purple text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">LEVELS</th>
+              <th style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;" class=" text-center">TARGET DAYS</th>
+              <th class=" text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">SHARING PV</th>
+              <th class=" text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">Target ID'S</th>
+              <th class=" text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">Team Count</th>
+              <th class="text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">Earning</th>
+              <th class="text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">Remaining Days</th>
+              <th class="text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">Status</th>
             </tr>
           </thead>
           <tbody>
-  <tr *ngFor="let row of tableData">
-    <td class="bg-purple text-white text-center fw-bold">{{ row.level }}</td>
+            <tr *ngFor="let row of tableData">
+              <td class="bg-purple text-center fw-bold" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.level }}</td>
+              <td class="bg-light-blue text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.target }}</td>
+              <td class="bg-light-green text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.pv }}</td>
+              <td class="bg-light-green text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.totalLabel }}</td>
+              <td class="bg-light-green text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.count }}</td>
 
-    <!-- TARGET DAYS (display the numeric target from logic) -->
-    <td class="bg-light-blue text-center">{{ row.target }}</td>
+              <!-- ⭐ Earn Binding -->
+              <td class="bg-light-green text-center" style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;">{{ row.earn }}</td>
 
-    <!-- SHARING PV (keeps your PV label) -->
-    <td class="bg-light-green text-center">{{ row.pv }}</td>
-
-    <!-- TOTAL ID'S (static labels you originally had) -->
-    <td class="bg-light-green text-center">{{ row.totalLabel }}</td>
-
-    <!-- NEW COUNT (from API) -->
-    <td class="bg-light-green text-center">{{ row.count }}</td>
-
-    <!-- STATUS (colored cell) -->
-    <td class="text-center"
-        [ngStyle]="{ 'background': row.status, 'font-weight': 'bold' }">
-      {{ row.status | uppercase }}
-    </td>
-  </tr>
-</tbody>
-
+              <!-- ⭐ Remaining Days Binding -->
+              <td style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;" class="bg-light-green text-center fw-bold" [ngStyle]="{ 'color': getRemainingColor(row.remaining) }">
+                {{ row.remaining }}
+              </td>
+              <!-- Status -->
+              <td style=" padding: 1rem;
+              vertical-align: middle;
+              font-size: 1.1rem;" class="text-center fw-bold" [ngStyle]="{ 'color': getStatusColor(row.status) }">
+                {{ row.status | uppercase }}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

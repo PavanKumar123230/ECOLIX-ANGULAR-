@@ -1,6 +1,5 @@
-<div class="container">
-  <h1>Received Fund Transactions</h1>
-
+<!-- <div class="container">
+  <h4 class="fw-semibold text-secondary text-center mb-3">Received Fund Transactions</h4>
   <table class="responsive-table">
     <thead>
       <tr>
@@ -11,14 +10,12 @@
         <th>Status</th>
       </tr>
     </thead>
-
     <tbody>
       <tr *ngIf="transactions.length === 0">
         <td colspan="5" class="text-muted text-center py-3">
           No transactions found
         </td>
       </tr>
-
       <tr *ngFor="let tx of transactions; let i = index">
         <td data-label="S.No">{{ i + 1 }}</td>
         <td data-label="Date & Time">{{ tx.cdate }} {{ tx.ctime }}</td>
@@ -28,11 +25,49 @@
           [class.approved]="tx.status === 'Success'"
           [class.pending]="tx.status === 'Pending'"
           [class.rejected]="tx.status === 'Failed'"
-          data-label="Status"
-        >
+          data-label="Status">
           {{ tx.status || 'Success' }}
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
+<div class="wallet-transfer container py-4">
+  <div class="transactions-section ">
+    <h4 class="fw-semibold text-secondary text-center mb-3">Received Fund Transactions</h4>
+    <div class="table-responsive mt-4">
+      <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+        <thead class="table-primary">
+          <tr>
+            <th>S.No</th>
+            <th>Date & Time</th>
+            <th>User ID</th>
+            <th>Amount (₹)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="transactions.length === 0">
+            <td colspan="5" class="text-muted text-center py-3">
+              No transactions found
+            </td>
+          </tr>
+          <tr *ngFor="let tx of transactions; let i = index">
+            <td data-label="S.No">{{ i + 1 }}</td>
+            <td data-label="Date & Time">{{ tx.cdate }} {{ tx.ctime }}</td>
+            <td data-label="User ID">{{ tx.userid }}</td>
+            <td data-label="Amount">₹{{ tx.amount | number:'1.2-2' }}</td>
+            <td
+              [class.approved]="tx.status === 'Success'"
+              [class.pending]="tx.status === 'Pending'"
+              [class.rejected]="tx.status === 'Failed'"
+              data-label="Status">
+              {{ tx.status || 'Success' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  

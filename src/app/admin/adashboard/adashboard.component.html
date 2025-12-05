@@ -7,183 +7,319 @@
 
     <!-- =============== BASIC COUNTS =============== -->
     <div class="card">
-      <h3>Total Users</h3>
+      <h5 class="fw-bold">Total Users</h5>
       <p>{{ data1.totalusers }}</p>
     </div>
 
     <div class="card">
-      <h3>Total Active</h3>
+      <h5 class="fw-bold">Total Active</h5>
       <p>{{ data1.totalactive }}</p>
     </div>
 
     <div class="card">
-      <h3>Total Inactive</h3>
+      <h5 class="fw-bold"> Extra Welcome Bonus I'Ds
+      </h5>
+      <p>{{ data1.totawelcomebonusids }}</p>
+    </div>
+    <!-- 4 -->
+    <div class="card">
+      <h5 class="fw-bold"> Extra Welcome Bonus Comission
+      </h5>
+      <p>{{ data1.totalwelcomcomebonus
+      }}</p>
+    </div>
+    <!-- 5 -->
+    <div class="card">
+      <h5 class="fw-bold">Total Inactive</h5>
       <p>{{ data1.totalinactive }}</p>
     </div>
-
+    <!-- 6 -->
     <div class="card">
-      <h3>Total Wallet</h3>
-      <p>{{ data1.totalwalamount | currency:'INR' }}</p>
-    </div>
-
-    <div class="card">
-      <h3>Active Wallet</h3>
+      <h5 class="fw-bold">Active Wallet</h5>
       <p>{{ data1.totalactwallet | currency:'INR' }}</p>
     </div>
-
+    <!-- 7 -->
     <div class="card">
-      <h3>Total Commission</h3>
+      <h5 class="fw-bold">Total Commission</h5>
       <p>{{ data1.totalcommissionamount | currency:'INR' }}</p>
     </div>
+    <!-- 8 -->
+    <div class="card">
+      <h5 class="fw-bold">Total Wallet</h5>
+      <p>{{ data1.totalwalamount | currency:'INR' }}</p>
+    </div>
+    <!-- 9 -->
 
-    <!-- =============== PACKAGE USERS =============== -->
-    <div class="card card-silver">
-      <h3>Silver Users</h3>
-      <p>{{ data1.totsilver }}</p>
-      <small>Wallet: {{ data1.totsilverwal | currency:'INR' }}</small>
+    <div class="card">
+      <h5 class="fw-bold">Today's Join</h5>
+      <p>{{ data1.todayjoin }}</p>
+    </div>
+    <!-- 10 -->
+    <div class="card">
+      <h5 class="fw-bold">Today's Commission</h5>
+      <p>{{ data1.todaycommission | currency:'INR' }}</p>
+    </div>
+    <!-- 11 -->
+
+    <div class="card">
+      <h5 class="fw-bold">Week Join</h5>
+      <p>{{ data1.thisweekjoin }}</p>
+    </div>
+    <!-- 12 -->
+    <div class="card">
+      <h5 class="fw-bold">Week Commission</h5>
+      <p>{{ data1.thisweekcommission | currency:'INR' }}</p>
+    </div>
+    <!-- 13 -->
+    <div class="card">
+      <h5 class="fw-bold">Month Join</h5>
+      <p>{{ data1.thismonthjoin }}</p>
+    </div>
+    <!-- 14 -->
+    <div class="card">
+      <h5 class="fw-bold">Month Commission</h5>
+      <p>{{ data1.thismonthcommission | currency:'INR' }}</p>
+    </div>
+    <!-- 15 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Silver</h5>
+      <p>{{ data1.todaysilvercount | currency:'INR' }}</p>
+    </div>
+    <!-- 16 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Silver Comission</h5>
+      <p>{{ data1.todaysilvercommissionamount | currency:'INR' }}</p>
+    </div>
+    <!-- 17 -->
+
+    <div class="card">
+      <h5 class="fw-bold">Week Silver</h5>
+      <p>{{ data1.thisweeksilver | currency:'INR' }}</p>
+    </div>
+    <!-- 18 -->
+    <div class="card">
+      <h5 class="fw-bold">Week Silver Comission</h5>
+      <p>{{ data1.weeksilvercommissionamount | currency:'INR' }}</p>
     </div>
 
-    <div class="card card-gold">
-      <h3>Gold Users</h3>
+    <!-- 19 -->
+    <div class="card">
+      <h5 class="fw-bold">Month Silver</h5>
+      <p>{{ data1.thismonthsilver | currency:'INR' }}</p>
+    </div>
+    <!-- 20 -->
+    <div class="card">
+      <h5 class="fw-bold">Month Silver Comission</h5>
+      <p>{{ data1.monthsilvercommissionamount | currency:'INR' }}</p>
+    </div>
+    <!-- 21 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Gold.</h5>
+      <p>{{ data1.todaygoldcount | currency:'INR' }}</p>
+    </div>
+    <!-- 22 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Gold Comission</h5>
+      <p>{{ data1.todaygoldcommissionamount | currency:'INR' }}</p>
+    </div>
+
+    <!-- 23 -->
+    <div class="card">
+      <h5 class="fw-bold">Week Gold</h5>
+      <p>{{ data1.thisweekgold
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 24 -->
+    <div class="card">
+      <h5 class="fw-bold">Week Gold Comission</h5>
+      <p>{{ data1.weekgoldcommissionamount
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 25 -->
+    <div class="card">
+      <h5 class="fw-bold"> Month Gold </h5>
+      <p>{{ data1.thismonthgold
+        | currency:'INR' }}</p>
+    </div>
+
+    <!-- 26 -->
+    <div class="card">
+      <h5 class="fw-bold"> Month Gold Comission </h5>
+      <p>{{ data1.monthgoldcommissionamount
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 27 -->
+    <div class="card">
+      <h5 class="fw-bold"> To day' Diamond </h5>
+      <p>{{ data1.todaydiamondcount
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 28 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Diamond Comission </h5>
+      <p>{{ data1.todaydiamondcommissionamount
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 29 -->
+    <div class="card">
+      <h5 class="fw-bold">To day' Diamond Comission </h5>
+      <p>{{ data1.todaydiamondcommissionamount
+        | currency:'INR' }}</p>
+    </div>
+
+    <!-- 30 -->
+    <div class="card">
+      <h5 class="fw-bold">Week Diamond </h5>
+      <p>{{ data1.thisweekdiamond
+        | currency:'INR' }}</p>
+    </div>
+    <!-- 31 -->
+    <div class="card">
+      <h5 class="fw-bold"> Week Diamond Comission </h5>
+      <p>{{ data1.thisweekcommission
+        | currency:'INR' }}</p>
+    </div>
+
+    <!-- 32 -->
+    <div class="card">
+      <h5 class="fw-bold"> Month Diamond Comission </h5>
+      <p>{{ data1.monthdiamondcommissionamount
+        | currency:'INR' }}</p>
+    </div>
+
+    <!-- 33 -->
+    <div class="card">
+      <h5 class="fw-bold">This Year Input</h5>
+      <p>{{ data1.thisyearinput
+                | currency:'INR' }}</p>
+    </div>
+    <!-- 34 -->
+    <div class="card">
+      <h5 class="fw-bold">This Year Total Output</h5>
+      <p>{{ data1.thisyearcommissin
+           | currency:'INR' }}</p>
+    </div>
+
+    <!-- <div class="card card-silver">
+      <h5>Today Silver</h5>
+      <p>Count: {{ data1.todaysilvercount }}</p>
+      <p>Commission: {{ data1.todaysilvercommissionamount | currency:'INR' }}</p>
+      <p>Withdraw: {{ data1.todaysilverwthdraw | currency:'INR' }}</p>
+    </div>
+
+        <div class="card card-silver">
+      <h5>Today Silver</h5>
+      <p>Count: {{ data1.todaysilvercount }}</p>
+      <p>Commission: {{ data1.todaysilvercommissionamount | currency:'INR' }}</p>
+      <p>Withdraw: {{ data1.todaysilverwthdraw | currency:'INR' }}</p>
+    </div> -->
+
+
+    <!-- =============== PACKAGE USERS =============== -->
+    <!-- <div class="card card-silver">
+      <h5>Silver Users</h5>
+      <p>{{ data1.totsilver }}</p>
+      <small>Wallet: {{ data1.totsilverwal | currency:'INR' }}</small>
+    </div> -->
+
+    <!-- <div class="card card-gold">
+      <h5>Gold Users</h5>
       <p>{{ data1.totgold }}</p>
       <small>Wallet: {{ data1.totgoldwal | currency:'INR' }}</small>
     </div>
 
     <div class="card card-diamond">
-      <h3>Diamond Users</h3>
+      <h5>Diamond Users</h5>
       <p>{{ data1.totdiamond }}</p>
       <small>Wallet: {{ data1.totdiamondwal | currency:'INR' }}</small>
-    </div>
+    </div> -->
 
     <!-- =====================================================
          TODAY SECTION
     ====================================================== -->
     <!-- <h2>Today Summery</h2>
     <div class="section-title">Today Summary</div> -->
-
-    <div class="card">
-      <h3>Today's Join</h3>
-      <p>{{ data1.todayjoin }}</p>
-    </div>
-
-    <div class="card">
-      <h3>Today's Active</h3>
+    <!-- <div class="card">
+      <h5>Today's Active</h5>
       <p>{{ data1.todayactive }}</p>
-    </div>
-
-    <div class="card">
-      <h3>Today's Commission</h3>
-      <p>{{ data1.todaycommission | currency:'INR' }}</p>
-    </div>
-
-    <!-- Today Silver -->
-    <div class="card card-silver">
-      <h3>Today Silver</h3>
-      <p>Count: {{ data1.todaysilvercount }}</p>
-      <p>Commission: {{ data1.todaysilvercommissionamount | currency:'INR' }}</p>
-      <p>Withdraw: {{ data1.todaysilverwthdraw | currency:'INR' }}</p>
-    </div>
-
+    </div> -->
     <!-- Today Gold -->
-    <div class="card card-gold">
-      <h3>Today Gold</h3>
+    <!-- <div class="card card-gold">
+      <h5>Today Gold</h5>
       <p>Count: {{ data1.todaygoldcount }}</p>
       <p>Commission: {{ data1.todaygoldcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.todaygoldwithdraw | currency:'INR' }}</p>
-    </div>
+    </div> -->
 
     <!-- Today Diamond -->
-    <div class="card card-diamond">
-      <h3>Today Diamond</h3>
+    <!-- <div class="card card-diamond">
+      <h5>Today Diamond</h5>
       <p>Count: {{ data1.todaydiamondcount }}</p>
       <p>Commission: {{ data1.todaydiamondcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.todaydiamondwithdraw | currency:'INR' }}</p>
-    </div>
+    </div> -->
 
     <!-- =====================================================
          THIS WEEK SECTION
     ====================================================== -->
     <!-- <div class="section-title">This Week Summary</div> -->
 
-    <div class="card">
-      <h3>Week Join</h3>
-      <p>{{ data1.thisweekjoin }}</p>
-    </div>
 
+    <!-- 
     <div class="card">
-      <h3>Week Active</h3>
+      <h5>Week Active</h5>
       <p>{{ data1.thisweekactivate }}</p>
     </div>
 
-    <div class="card">
-      <h3>Week Commission</h3>
-      <p>{{ data1.thisweekcommission | currency:'INR' }}</p>
-    </div>
 
-    <!-- Week Silver -->
+
     <div class="card card-silver">
-      <h3>Week Silver</h3>
+      <h5>Week Silver</h5>
       <p>Commission: {{ data1.weeksilvercommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.weeksilverwithdraw | currency:'INR' }}</p>
-    </div>
+    </div> -->
 
     <!-- Week Gold -->
-    <div class="card card-gold">
-      <h3>Week Gold</h3>
+    <!-- <div class="card card-gold">
+      <h5>Week Gold</h5>
       <p>Commission: {{ data1.weekgoldcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.weekgoldwithdraw | currency:'INR' }}</p>
     </div>
 
-    <!-- Week Diamond -->
     <div class="card card-diamond">
-      <h3>Week Diamond</h3>
+      <h5>Week Diamond</h5>
       <p>Commission: {{ data1.weekdiamondcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.weekdiamondwithdraw | currency:'INR' }}</p>
-    </div>
+    </div> -->
 
     <!-- =====================================================
          THIS MONTH SECTION
     ====================================================== -->
     <!-- <div class="section-title">This Month Summary</div> -->
-
+    <!-- 
     <div class="card">
-      <h3>Month Join</h3>
-      <p>{{ data1.thismonthjoin }}</p>
-    </div>
-
-    <div class="card">
-      <h3>Month Active</h3>
+      <h5>Month Active</h5>
       <p>{{ data1.thismonthactivate }}</p>
-    </div>
-
-    <div class="card">
-      <h3>Month Commission</h3>
-      <p>{{ data1.thismonthcommission | currency:'INR' }}</p>
-    </div>
-
+    </div> -->
     <!-- Month Silver -->
-    <div class="card card-silver">
-      <h3>Month Silver</h3>
+    <!-- <div class="card card-silver">
+      <h5>Month Silver</h5>
       <p>Count: {{ data1.thismonthsilver }}</p>
       <p>Commission: {{ data1.monthsilvercommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.monthsilverwithdraw | currency:'INR' }}</p>
     </div>
-
-    <!-- Month Gold -->
     <div class="card card-gold">
-      <h3>Month Gold</h3>
+      <h5>Month Gold</h5>
       <p>Count: {{ data1.thismonthgold }}</p>
       <p>Commission: {{ data1.monthgoldcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.monthgoldwithdraw | currency:'INR' }}</p>
     </div>
 
-    <!-- Month Diamond -->
     <div class="card card-diamond">
-      <h3>Month Diamond</h3>
+      <h5>Month Diamond</h5>
       <p>Count: {{ data1.thismonthdiamond }}</p>
       <p>Commission: {{ data1.monthdiamondcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.monthdiamondwithdraw | currency:'INR' }}</p>
-    </div>
-
+    </div> -->
   </div>
 </div>

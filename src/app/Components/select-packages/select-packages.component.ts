@@ -31,19 +31,31 @@ export class SelectPackagesComponent implements OnInit {
     this.getPackages();
   }
 
+  selectPackage(pkg: any) {
+    this.selectedPackage = pkg.id;
+    this.onPackageSelect();
+  }
+  
+
   /** Fetch all packages */
   getPackages() {
     this.api.GetpackagesData().subscribe({
       next: (res: any) => {
         this.data1 = res.data || [];
         console.log('Packages:', this.data1);
+  
+        // ⭐ Auto select first package
+        if (this.data1.length > 0) {
+          this.selectedPackage = this.data1[0].id;
+          this.onPackageSelect(); // Load products
+        }
       },
       error: (err) => {
         console.error('Error fetching packages', err);
       }
     });
   }
-
+  
   /** When user selects a package, fetch its products */
   onPackageSelect() {
     if (this.selectedPackage) {

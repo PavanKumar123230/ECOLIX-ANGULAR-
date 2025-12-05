@@ -1,187 +1,177 @@
-<div class="dropdown-container">
-    <label for="userType" class="label">Select  Gold Income:</label>
-    <select
-      id="userType"
-      [(ngModel)]="selectedUserType"
-      (ngModelChange)="onUserTypeChange()"
-      class="select">
-      <option value="" disabled> Select Gold Income </option>
-      <option *ngFor="let type of userTypes" [value]="type.value">
-        {{ type.label }}
-      </option>
-    </select>
+<div class="text-center mb-2">
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+    <button *ngFor="let type of userTypes" (click)="selectType(type.value)" class="btn income-btn fw-semibold"
+      [ngClass]="selectedUserType === type.value ? 'btn-primary' : 'btn-outline-primary'">
+      {{ type.label }}
+    </button>
   </div>
-
-  <div *ngIf="selectedUserType === 'level_Income'" class="container my-5">
-    <div class="card shadow-sm border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h3 class="mb-0 fw-bold">Welcome Level Income</h3>
-      </div>
-      <div class="card-body p-3">
-        <!-- Only Table Scroll -->
-        <div class="table-responsive">
-          <table class="table table-hover table-striped table-borderless align-middle mb-0 text-center">
-            <thead class="table-dark">
-              <tr>
-                <th scope="col">S.NO</th>
-                <th scope="col">SHARING PV</th>
-                <th scope="col">TOTAL IDS</th>
-                <th scope="col">TOTAL EARN PV</th>
-                <th scope="col">Active</th>
-              </tr>
-            </thead>
-            <!-- <tbody>
-              <tr *ngFor="let item of levelIncomeData; let i = index">
-                <td class="fw-bold">{{ i + 1 }}</td>
-                <td>{{ item.sharingPV }}</td>
-                <td>{{ item.totalIds }}</td>
-                <td>{{ item.totalEarnPV }}</td>
-                <td>{{ item.active ? 'Yes' : 'No' }}</td>
-              </tr>
-            </tbody> -->
-          </table>
-        </div>
+</div>
+<!--Wallet Sponcer  -->
+<div *ngIf="selectedUserType === 'sponcer'" class="container my-5">
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <h4 class="fw-semibold text-secondary text-center mb-3">Gold Sponcer Income</h4>
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.No</th>
+              <th>User ID</th>
+              <th>Amount (₹)</th>
+              <th>Level</th>
+              <th>Joined Date </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableData.length === 0">
+              <td colspan="5" class="text-muted text-center py-3">
+                No transactions found
+              </td>
+            </tr>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.forid }}</td>
+              <td>{{ row.amount }}</td>
+              <td>{{ row.level }}</td>
+              <td>{{ row.cdate | date:'dd-MM-yyyy' }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  
-  
-
-  
-  <div *ngIf="selectedUserType  === 'bonanaza_income'" class="container my-5">
-    <div class="card shadow-lg border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h3 class="mb-0 fw-bold"> Welcome bonanaza Rewards
-        </h3>
-      </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-borderless mb-0 align-middle">
-            <thead>
-              <tr class="text-white">
-                <th class="bg-purple text-center">S.NO</th>
-                <th class="bg-gradient-member text-center"> TARGET TEAM
-                </th>
-                <th class="bg-gradient-sharing text-center">CODER</th>
-                <th class="bg-gradient-earn text-center">WORTH OF BONANAZA </th>
-
-                <th class="bg-gradient-earn text-center">Active</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="bg-purple text-white text-center fw-bold"></td>
-                <td class="bg-light-blue text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+</div>
+<!-- Level Income Table -->
+<div *ngIf="selectedUserType === 'level'" class="container my-5">
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <h4 class="fw-semibold text-secondary text-center mb-3">Gold Level Income</h4>
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.No</th>
+              <th>User ID</th>
+              <th>Amount (₹)</th>
+              <th>Level</th>
+              <th>Joined Date </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableData.length === 0">
+              <td colspan="5" class="text-muted text-center py-3">
+                No transactions found
+              </td>
+            </tr>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.forid }}</td>
+              <td>{{ row.amount }}</td>
+              <td>{{ row.level }}</td>
+              <td>{{ row.cdate | date:'dd-MM-yyyy' }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-
-
-  <div *ngIf="selectedUserType  === 'salary_income'" class="container my-5">
-    <div class="card shadow-lg border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h3 class="mb-0 fw-bold"> Welcome salary_income Plan
-        </h3>
-      </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-borderless mb-0 align-middle">
-            <thead>
-              <tr class="text-white">
-                <th class="bg-purple text-center">S.NO</th>
-                <th class="bg-gradient-member text-center"> TARGET TEAM
-                </th>
-                <th class="bg-gradient-sharing text-center">CADER</th>
-                <th class="bg-gradient-earn text-center">MONTHLY PV SALARY </th>
-                <th class="bg-gradient-earn text-center">MONTHS</th>
-                <th class="bg-gradient-earn text-center">TOTAL SALARY PV</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="bg-purple text-white text-center fw-bold"></td>
-                <td class="bg-light-blue text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+</div>
+<!-- bonanaze -->
+<div *ngIf="selectedUserType === 'bonanza'" class="container my-5">
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <h4 class="fw-semibold text-secondary text-center mb-3">Gold Bonanza Rewards</h4>
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.No</th>
+              <th>Date</th>
+              <th>Amount (₹)</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableData.length === 0">
+              <td colspan="5" class="text-muted text-center py-3">
+                No transactions found
+              </td>
+            </tr>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.cdate | date:'dd-MM-yyyy' }}</td>
+              <td>{{ row.amount }}</td>
+              <td>{{ row.remark }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-
-  <div *ngIf="selectedUserType  === 'loan'" class="container my-5">
-    <div class="card shadow-lg border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h3 class="mb-0 fw-bold"> Welcome Loan Plan
-        </h3>
-      </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-borderless mb-0 align-middle">
-            <thead>
-              <tr class="text-white">
-                <th class="bg-purple text-center">S.NO</th>
-                <th class="bg-gradient-member text-center"> CADER
-                </th>
-                <th class="bg-gradient-sharing text-center"></th>
-                <th class="bg-gradient-earn text-center">LOAN PV  </th>
-                <th class="bg-gradient-earn text-center">SALARY PV</th>
-                <th class="bg-gradient-earn text-center">MONTHS</th>
-                <th class="bg-gradient-earn text-center">TOTAL SALARY PV</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="bg-purple text-white text-center fw-bold"></td>
-                <td class="bg-light-blue text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+</div>
+<!-- salary -->
+<div *ngIf="selectedUserType === 'salary'" class="container my-5">
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <h4 class="fw-semibold text-secondary text-center mb-3"> Gold Salary</h4>
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.No</th>
+              <th>Date</th>
+              <th>Amount (₹)</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableData.length === 0">
+              <td colspan="5" class="text-muted text-center py-3">
+                No transactions found
+              </td>
+            </tr>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.cdate | date:'dd-MM-yyyy' }}</td>
+              <td>{{ row.amount }}</td>
+              <td>{{ row.remark }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-
-  <div *ngIf="selectedUserType  === 'franchise'" class="container my-5">
-    <div class="card shadow-lg border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h3 class="mb-0 fw-bold"> Welcome Gift Franchises 
-        </h3>
-      </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-borderless mb-0 align-middle">
-            <thead>
-              <tr class="text-white">
-                <th class="bg-purple text-center">S.NO</th>
-                <th class="bg-gradient-member text-center"> CADER
-                </th>
-                <th class="bg-gradient-sharing text-center"> GIFT E-POINTS FRANCHISES </th>
-               
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="bg-purple text-white text-center fw-bold"></td>
-                <td class="bg-light-green text-center"></td>
-                <td class="bg-light-green text-center"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+</div>
+<!-- loan -->
+<div *ngIf="selectedUserType === 'loan'" class="container my-5">
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <h4 class="fw-semibold text-secondary text-center mb-3">Gold Loan</h4>
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.No</th>
+              <th>Date</th>
+              <th>Amount (₹)</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableData.length === 0">
+              <td colspan="5" class="text-muted text-center py-3">
+                No transactions found
+              </td>
+            </tr>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.cdate | date:'dd-MM-yyyy' }}</td>
+              <td>{{ row.amount }}</td>
+              <td>{{ row.remark }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>

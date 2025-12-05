@@ -1,48 +1,105 @@
-.withdraw-card {
-    max-width: 500px;
-    width: 100%;
-    border-radius: 12px;
-    background-color: #ffffff;
-    padding: 2rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+// .withdraw-card {
+//     max-width: 500px;
+//     width: 100%;
+//     border-radius: 12px;
+//     background-color: #ffffff;
+//     padding: 2rem;
+//     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   
-    @media (max-width: 576px) {
-      padding: 1.5rem;
-      margin: 1rem;
+//     @media (max-width: 576px) {
+//       padding: 1.5rem;
+//       margin: 1rem;
+//     }
+  
+//     h2 {
+//       color: #333;
+//       font-weight: 600;
+//     }
+  
+//     .form-label {
+//       font-weight: 500;
+//       color: #555;
+//     }
+  
+//     .form-control {
+//       border-radius: 8px;
+//       padding: 0.75rem;
+//     }
+  
+//     .btn {
+//       padding: 0.6rem 1.5rem;
+//       border-radius: 8px;
+//       font-weight: 500;
+//     }
+//   }
+//   .withdraw-card {
+//     max-width: 500px;
+//   }
+  
+//   .table {
+//     font-size: 0.95rem;
+//   }
+  
+//   @media (max-width: 768px) {
+//     .table {
+//       font-size: 0.85rem;
+//     }
+//   }
+  
+
+
+.wallet-transfer {
+  .gradient-header {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+  }
+
+  .balance-display {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
-  
-    h2 {
-      color: #333;
+  }
+
+  table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    th {
+      background-color: #1976d2 !important;
+      color: white;
       font-weight: 600;
     }
-  
-    .form-label {
-      font-weight: 500;
-      color: #555;
-    }
-  
-    .form-control {
-      border-radius: 8px;
-      padding: 0.75rem;
-    }
-  
-    .btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
+    td {
+      font-size: 0.95rem;
     }
   }
-  .withdraw-card {
-    max-width: 500px;
-  }
-  
-  .table {
-    font-size: 0.95rem;
-  }
-  
+
+  /* Mobile Responsive */
   @media (max-width: 768px) {
-    .table {
+    .balance-display {
+      font-size: 1.8rem;
+    }
+
+    table {
       font-size: 0.85rem;
     }
+
+    .form-control {
+      font-size: 0.9rem;
+    }
+
+    .btn-gradient {
+      font-size: 0.95rem;
+      padding: 0.6rem;
+    }
   }
-  
+}

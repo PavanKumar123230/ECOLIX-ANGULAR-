@@ -312,7 +312,7 @@ WalletReport(){
     return this.http.get(AUTH_API + 'GoldManager_Fourdata', httpOptions);
   }
 
-   GoldrManager5(){
+   GoldManager5(){
     const token1 = this.token.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
@@ -539,62 +539,143 @@ WalletReport(){
     return this.http.get(AUTH_API + 'Profile', httpOptions);
   }
   
-  updateProfile(id: any, value: any) {
-    const token1 = this.token.getToken();
+  // updateProfile(id: any, value: any) {
+  //   const token1 = this.token.getToken();
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer ' + token1
+  //     })
+  //   };
   
+  //   return this.http.post(
+  //     AUTH_API + 'Profileiupdate',
+  //     {
+  //       id: id,
+  
+  //       // Basic
+  //       name: value.name,
+  //       phone: value.phone,
+  //       state: value.state,
+  //       email: value.email,
+  //       password: value.password,
+  //       address: value.address,
+  //       pincode:value.pincode,
+  //       image:value.image,
+  
+  //       // KYC
+  //       aadhar: value.aadharno,
+  //       pancard: value.panno,
+  
+  //       // Bank
+  //       payeename: value.payeename,
+  //       bankname: value.bankname,
+  //       branch: value.branch,
+  //       ifsccode: value.ifsccode,
+  //       accountno: value.accountno,
+  
+  //       // Nominee
+  //       nname: value.nname,
+  //       nrelation: value.nrelation,
+  //       npanno: value.npanno,
+  //       naadhar: value.naadhar,
+  //       nmobile: value.nmobile,
+  //       nemail: value.nemail,
+  //       naccountno: value.naccountno,
+  //       nbankname: value.nbankname,
+  //       nbranch: value.nbranch,
+  //       nifsccode: value.nifsccode,
+  //       ndob:value.ndob
+  //     },
+  //     httpOptions
+  //   );
+  // }
+
+
+  updateProfile(id: any, value: any) {
+  const token1 = this.token.getToken();
+  const formData = new FormData();
+
+  formData.append("id", id);
+
+  // basic
+  formData.append("name", value.name);
+  formData.append("phone", value.phone);
+  formData.append("state", value.state);
+  formData.append("email", value.email);
+  formData.append("password", value.password);
+  formData.append("address", value.address);
+  formData.append("pincode", value.pincode);
+
+  // ⭐ Image
+  if (value.image instanceof File) {
+    formData.append("image", value.image);      // real upload
+  } else {
+    formData.append("image", "");               // remove image
+  }
+
+  // KYC
+  formData.append("aadhar", value.aadharno);
+  formData.append("pancard", value.panno);
+
+  // Bank
+  formData.append("payeename", value.payeename);
+  formData.append("bankname", value.bankname);
+  formData.append("branch", value.branch);
+  formData.append("ifsccode", value.ifsccode);
+  formData.append("accountno", value.accountno);
+
+  // Nominee
+  formData.append("nname", value.nname);
+  formData.append("nrelation", value.nrelation);
+  formData.append("ndob", value.ndob);
+
+  return this.http.post(
+    AUTH_API + "Profileiupdate",
+    formData,
+    {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + token1
+      })
+    }
+  );
+}
+
+  // silver income
+  silverIncome(){
+ const token1 = this.token.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token1
       })
     };
-  
-    return this.http.post(
-      AUTH_API + 'Profileiupdate',
-      {
-        id: id,
-  
-        // Basic
-        name: value.name,
-        phone: value.phone,
-        state: value.state,
-        email: value.email,
-        password: value.password,
-        address: value.address,
-  
-        // KYC
-        aadhar: value.aadharno,
-        pancard: value.panno,
-  
-        // Bank
-        payeename: value.payeename,
-        bankname: value.bankname,
-        branch: value.branch,
-        ifsccode: value.ifsccode,
-        accountno: value.accountno,
-  
-        // Nominee
-        nname: value.nname,
-        nrelation: value.nrelation,
-        npanno: value.npanno,
-        naadhar: value.naadhar,
-        nmobile: value.nmobile,
-        nemail: value.nemail,
-        naccountno: value.naccountno,
-        nbankname: value.nbankname,
-        nbranch: value.nbranch,
-        nifsccode: value.nifsccode,
-        ndob:value.ndob
-      },
-      httpOptions
-    );
+    return this.http.get(AUTH_API + 'Wallet_Silver', httpOptions);
   }
-  
-  
+// gold
+goldIncome(){
+    const token1 = this.token.getToken();
+       const httpOptions = {
+         headers: new HttpHeaders({
+           'Content-Type': 'application/json',
+           'Authorization': 'Bearer ' + token1
+         })
+       };
+       return this.http.get(AUTH_API + 'Wallet_Gold', httpOptions);
+     }
 
-
-
-
+// diamond
+diamondIncome(){
+  const token1 = this.token.getToken();
+     const httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+         'Authorization': 'Bearer ' + token1
+       })
+     };
+     return this.http.get(AUTH_API + 'Wallet_Diamond', httpOptions);
+   }
+// 
   walletLevel(){
     const token1 = this.token.getToken();
     const httpOptions = {
@@ -605,7 +686,6 @@ WalletReport(){
     };
     return this.http.get(AUTH_API + 'Wallet_Level', httpOptions);
   }
-
   walletSponcer(){
     const token1 = this.token.getToken();
     const httpOptions = {
@@ -616,8 +696,6 @@ WalletReport(){
     };
     return this.http.get(AUTH_API + 'Wallet_Sponcer', httpOptions);
   }
-  
-
   levelmembers(){
     const token1 = this.token.getToken();
     const httpOptions = {
@@ -629,9 +707,6 @@ WalletReport(){
     return this.http.get(AUTH_API + 'Level_members', httpOptions);
 
   }
-
-
-
   support(value: {
     query: string;
     subject: string;

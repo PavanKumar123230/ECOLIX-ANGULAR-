@@ -1,119 +1,185 @@
-.dropdown-container {
-    max-width: 100%;
-    width: 100%;
-    margin: 2rem auto;
-    padding: 1.25rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.3s ease;
+// .dropdown-container {
+//     max-width: 100%;
+//     width: 100%;
+//     margin: 2rem auto;
+//     padding: 1.25rem;
+//     background: white;
+//     border-radius: 12px;
+//     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     transition: all 0.3s ease;
   
-    // Mobile First
-    @media (max-width: 480px) {
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
+//     // Mobile First
+//     @media (max-width: 480px) {
+//       margin: 1rem auto;
+//       padding: 1rem;
+//       border-radius: 10px;
+//       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+//     }
   
-    @media (min-width: 481px) and (max-width: 768px) {
-      max-width: 90%;
-      padding: 1.5rem;
-    }
+//     @media (min-width: 481px) and (max-width: 768px) {
+//       max-width: 90%;
+//       padding: 1.5rem;
+//     }
   
-    @media (min-width: 769px) {
-      max-width: 380px;
-    }
+//     @media (min-width: 769px) {
+//       max-width: 380px;
+//     }
+//   }
+  
+//   .label {
+//     display: block;
+//     margin-bottom: 0.75rem;
+//     font-weight: 600;
+//     color: #2c3e50;
+//     font-size: 1rem;
+//     line-height: 1.4;
+  
+//     @media (max-width: 480px) {
+//       font-size: 0.95rem;
+//     }
+//   }
+  
+//   .select {
+//     width: 100%;
+//     padding: 0.9rem 1rem;
+//     font-size: 1.05rem;
+//     border: 1.5px solid #e0e0e0;
+//     border-radius: 8px;
+//     background-color: #fff;
+//     color: #333;
+//     appearance: none;
+//     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+//     background-repeat: no-repeat;
+//     background-position: right 12px center;
+//     background-size: 16px;
+//     transition: all 0.25s ease;
+//     cursor: pointer;
+  
+//     // Android & iOS Touch Optimization
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+  
+//     &:focus {
+//       outline: none;
+//       border-color: #3498db;
+//       box-shadow: 0 0 0 3.5px rgba(52, 152, 219, 0.25);
+//       background-color: #f8fbff;
+//     }
+  
+//     // Better font rendering on mobile
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+  
+//     // Android-specific tap highlight
+//     -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
+  
+//     // Responsive font scaling
+//     @media (max-width: 480px) {
+//       font-size: 16px; // Prevents zoom on iOS
+//       padding: 0.85rem 1rem;
+//     }
+  
+//     @media (min-width: 481px) and (max-width: 768px) {
+//       font-size: 1.1rem;
+//       padding: 1rem;
+//     }
+//   }
+  
+//   // Optional: Add subtle animation on container
+//   .dropdown-container {
+//     animation: fadeIn 0.4s ease-out;
+  
+//     @keyframes fadeIn {
+//       from {
+//         opacity: 0;
+//         transform: translateY(10px);
+//       }
+//       to {
+//         opacity: 1;
+//         transform: translateY(0);
+//       }
+//     }
+//   }
+
+//   .table-responsive {
+//     overflow-x: auto;          /* Horizontal scroll for table only */
+//     -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+//   }
+  
+//   .table-responsive::-webkit-scrollbar {
+//     height: 6px;
+//   }
+  
+//   .table-responsive::-webkit-scrollbar-thumb {
+//     background-color: rgba(0,0,0,0.3);
+//     border-radius: 3px;
+//   }
+  
+//   /* Make buttons full width on small screens */
+// .income-btn {
+//   min-width: 180px;
+// }
+
+// @media (max-width: 576px) {
+//   .income-btn {
+//     width: 100% !important;
+//   }
+// }
+
+  
+.wallet-transfer {
+  .gradient-header {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
   }
-  
-  .label {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1rem;
-    line-height: 1.4;
-  
-    @media (max-width: 480px) {
-      font-size: 0.95rem;
-    }
+
+  .balance-display {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
   }
-  
-  .select {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    font-size: 1.05rem;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #fff;
-    color: #333;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-    transition: all 0.25s ease;
-    cursor: pointer;
-  
-    // Android & iOS Touch Optimization
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  
-    &:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 0 3.5px rgba(52, 152, 219, 0.25);
-      background-color: #f8fbff;
-    }
-  
-    // Better font rendering on mobile
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  
-    // Android-specific tap highlight
-    -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
-  
-    // Responsive font scaling
-    @media (max-width: 480px) {
-      font-size: 16px; // Prevents zoom on iOS
-      padding: 0.85rem 1rem;
-    }
-  
-    @media (min-width: 481px) and (max-width: 768px) {
-      font-size: 1.1rem;
-      padding: 1rem;
-    }
-  }
-  
-  // Optional: Add subtle animation on container
-  .dropdown-container {
-    animation: fadeIn 0.4s ease-out;
-  
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
   }
 
-  .table-responsive {
-    overflow-x: auto;          /* Horizontal scroll for table only */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+  table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    th {
+      background-color: #1976d2 !important;
+      color: white;
+      font-weight: 600;
+    }
+    td {
+      font-size: 0.95rem;
+    }
   }
-  
-  .table-responsive::-webkit-scrollbar {
-    height: 6px;
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .balance-display {
+      font-size: 1.8rem;
+    }
+
+    table {
+      font-size: 0.85rem;
+    }
+
+    .form-control {
+      font-size: 0.9rem;
+    }
+
+    .btn-gradient {
+      font-size: 0.95rem;
+      padding: 0.6rem;
+    }
   }
-  
-  .table-responsive::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 3px;
-  }
-  
-  
+}

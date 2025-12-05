@@ -1,28 +1,42 @@
-<div class="container mt-4">
 
-<h4 class="text-center fw-bold">MyReferral
-</h4>
-  <!-- Optional: Show transactions if any -->
-  <div *ngIf="transactions && transactions.length > 0" class="table-responsive mt-4">
-    <table class="table table-bordered table-hover align-middle text-center">
-      <thead class="table-success">
+<div class="wallet-transfer container py-4">
+<div class="transactions-section ">
+  <h4 class="fw-semibold text-secondary text-center mb-3">MY Referral</h4>
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+      <thead class="table-primary">
         <tr>
           <th>S.No</th>
           <th>User ID</th>
           <th>Name</th>
           <th>Phone</th>
           <th>Joined Date</th>
+          <th>Password</th>
         </tr>
       </thead>
       <tbody>
+        <tr *ngIf="transactions.length === 0">
+          <td colspan="7" class="text-muted">No transactions found</td>
+        </tr>
         <tr *ngFor="let t of transactions; index as i">
           <td>{{ i + 1 }}</td>
           <td>{{ t.regid }}</td>
           <td>{{ t.name }}</td>
           <td>{{ t.phone }}</td>
           <td>{{ t.cdate | date: 'mediumDate' }}</td>
+          <td style="cursor: pointer;" (click)="t.showPassword = !t.showPassword">
+
+            <span *ngIf="!t.showPassword">****** <i class="bi bi-eye"></i></span>
+          
+            <span *ngIf="t.showPassword">{{ t.password }} <i class="bi bi-eye-slash"></i></span>
+          
+          </td>
+          
+          
+          
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 </div>

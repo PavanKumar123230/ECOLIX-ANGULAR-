@@ -9,12 +9,17 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class WalletComponent implements OnInit {
   withdrawForm!: FormGroup;
+  homeData: any;
+  profiledata: any;
+  tableData: any;
+  completeData: any;
 
   constructor(private fb: FormBuilder, private api: UserService) {}
 
   ngOnInit(): void {
     this.withdrawrequestpending();
     this.withdrawComplate();
+    this.getHome();
 
     this.withdrawForm = this.fb.group({
       amount: ['', Validators.required],
@@ -29,7 +34,6 @@ export class WalletComponent implements OnInit {
       this.withdrawForm.markAllAsTouched();
       return;
     }
-
     const payload = this.withdrawForm.value;
     console.log('Withdraw Request:', payload);
 
@@ -49,17 +53,34 @@ export class WalletComponent implements OnInit {
     this.api.Withdrawrequestdata().subscribe({
       next: (res: any) => {
         console.log('withdrawpending:', res);
+        this.tableData = res ?? [];  // if no data, make empty array
       },
       error: (err) => {
         console.error('Error fetching home data:', err);
+        this.tableData = [];          // IMPORTANT
       },
     });
   }
-
+  
   withdrawComplate() {
     this.api.Withdrawcomplate().subscribe({
       next: (res: any) => {
         console.log('withdcomplate:', res);
+        this.completeData = res ?? [];
+      },
+      error: (err) => {
+        console.error('Error fetching home data:', err);
+        this.completeData = [];       // IMPORTANT
+      },
+    });
+  }
+  
+  getHome() {
+    this.api.Home().subscribe({
+      next: (res: any) => {
+        console.log('Home API response:', res);
+        this.homeData = res.data;
+        this.profiledata = this.homeData?.profiledata;
       },
       error: (err) => {
         console.error('Error fetching home data:', err);

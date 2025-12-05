@@ -1,44 +1,93 @@
-<div class="container">
-  <h2 class="title">Diamond Manager Data</h2>
+<div class="container py-3">
 
-  <div class="form-group">
-    <label for="managerSelect">Select Diamond Manager</label>
-    <select id="managerSelect" class="form-control" [(ngModel)]="selectedManager" (change)="onManagerChange()">
-      <option value="" disabled>Select Manager</option>
-      <option *ngFor="let manager of managerOptions" [value]="manager.value">
+  <h2 class="fw-bold mb-4">Diamond Manager Data</h2>
+
+  <!-- BUTTON GROUP -->
+  <label class="form-label fw-semibold mb-2 d-block">Select Diamond Manager</label>
+
+  <div class="form-group mb-4 text-center">
+
+    <div class="btn-group" role="group">
+      <button
+        *ngFor="let manager of managerOptions"
+        type="button"
+        class="btn diamond-btn"
+        [ngClass]="{
+          'active-btn': selectedManager === manager.value,
+          'inactive-btn': selectedManager !== manager.value
+        }"
+        (click)="selectManager(manager.value)"
+      >
         {{ manager.label }}
-      </option>
-    </select>
+      </button>
+    </div>
   </div>
 
-  <div class="loading" *ngIf="loading">
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading text-center py-2">
     Loading data...
   </div>
+  <div class="wallet-transfer container py-4">
+    <div class="transactions-section ">
+      <div class="table-responsive ">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+          <thead class="table-primary">
+            <tr>
+              <th>S.no</th>
+              <th>Bonanza Date</th>
+              <th>Bonanza</th>
+              <th>Salary Date</th>
+              <th>Salary</th>
+              <th>Salary Months</th>
+              <th>Salary Credit</th>
+              <th>Salary Balance</th>
+              <th>Loan Date</th>
+              <th>Loan</th>
+              <th>Loan Pay</th>
+              <th>Loan Months</th>
+              <th>Loan Balance</th>
+              <th>Loan Status</th>
+            </tr>
+            
+          </thead>
+          <tbody>
+            <tr *ngIf="!loading && managerData.length === 0 && selectedManager">
+              <td colspan="19" class="text-muted text-center py-3">
+                No data available for this manager.
+              </td>
+            </tr>
+            <tr *ngFor="let item of managerData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.bonanzadate }}</td>
+              <!-- <td>{{ item.bonanza }}</td> -->
+              <td 
+  [ngClass]="{
+    'text-danger': item.bonusstatus == 0,  
+    'text-primary': item.bonusstatus == 1, 
+    'text-success': item.bonusstatus == 2  
+  }"
+>
+  {{ item.bonanza }}
+</td>
 
-  <div *ngIf="managerData.length > 0" class="table-responsive">
-    <table class="manager-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Reg ID</th>
-          <th>Package</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of managerData; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.regid }}</td>
-          <td>{{ item.package }}</td>
-          <td>{{ item.status }}</td>
-        </tr>
-      </tbody>
-    </table>
+              <td>{{ item.salarydate }}</td>
+              <td>{{ item.salary }}</td>
+              <td>{{ item.salarymonths }}</td>
+              <td>{{ item.salarycredit }}</td>
+              <td>{{ item.salarybalance }}</td>
+
+              <td>{{ item.loandate }}</td>
+              <td>{{ item.loan }}</td>
+              <td>{{ item.loanpay }}</td>
+              <td>{{ item.loanmonths }}</td>
+              <td>{{ item.loanbalance }}</td>
+              <td>{{ item.loanstatus }}</td>
+      
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <div *ngIf="!loading && managerData.length === 0 && selectedManager">
-    No data available for this manager.
-  </div>
 </div>

@@ -1,7 +1,6 @@
-<div class="container my-4">
+<!-- <div class="container my-4">
   <div class="card shadow-sm p-4 mx-auto withdraw-card">
     <h2 class="text-center mb-4 text-primary">Withdraw Funds</h2>
-
     <form [formGroup]="withdrawForm" (ngSubmit)="onWithdraw()">
       <div class="mb-3">
         <label for="amount" class="form-label">Enter Amount</label>
@@ -50,7 +49,6 @@
           Wallet type is required
         </div>
       </div>
-
       <div class="text-center">
         <button type="submit" class="btn btn-primary w-100" [disabled]="withdrawForm.invalid">
           Withdraw
@@ -58,48 +56,164 @@
       </div>
     </form>
   </div>
+</div> -->
+
+
+
+
+<div class="wallet-transfer container py-4">
+  <!-- Wallet Header -->
+  <div class="card text-white gradient-header mb-4 shadow-sm rounded-4 text-center p-4" *ngIf="profiledata">
+    <h4 class="fw-semibold mb-2">Wallet Balance</h4>
+    <h1 class="fw-bold balance-display">₹{{ profiledata.walletamount
+      | number: '1.2-2' }}</h1>
+  </div>
+
+  <!-- Transfer Form -->
+  <div class="card shadow-sm rounded-4 p-4 bg-light">
+    <h5 class="fw-semibold text-center text-primary mb-4">Withdraw Funds</h5>
+      <form [formGroup]="withdrawForm" (ngSubmit)="onWithdraw()">
+
+      <div class="row g-3">
+        <!-- Amount -->
+        <div class="col-md-6">
+          <label class="form-label">Enter Amount (₹)</label>
+          <input class="form-control" placeholder="Enter amount" formControlName="amount" />
+          <div *ngIf="withdrawForm.get('amount')?.touched && withdrawForm.get('amount')?.invalid" class="text-danger mt-1">
+            Amount is required
+          </div>
+          <!-- <div class="text-danger small mt-1"
+            *ngIf="transferForm.get('amount')?.invalid && transferForm.get('amount')?.touched">
+            <span *ngIf="transferForm.get('amount')?.errors?.['required']">Amount is required.</span>
+            <span *ngIf="transferForm.get('amount')?.errors?.['min']">Minimum transfer amount is ₹50.</span>
+          </div> -->
+        </div>
+
+        <!-- User ID -->
+        <div class="col-md-6">
+          <label class="form-label">Bank Account Number</label>
+          <input type="text" class="form-control"        placeholder="Enter bank account number" formControlName="accountnumber" />
+          <!-- <div class="text-danger small mt-1"
+            *ngIf="transferForm.get('regid')?.invalid && transferForm.get('regid')?.touched">
+            User ID is required
+          </div> -->
+        </div>
+
+
+        <div class="col-md-6">
+          <label class="form-label">Bank IFSC Code</label>
+          <input type="text" class="form-control"      placeholder="Enter bank IFSC code"         formControlName="ifsc"
+          />
+          <!-- <div class="text-danger small mt-1"
+            *ngIf="transferForm.get('regid')?.invalid && transferForm.get('regid')?.touched">
+            User ID is required
+          </div> -->
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Select Wallet Type</label>
+            <select class="form-select" formControlName="waltype">
+              <option value="">Select wallet type</option>
+              <option value="silver">Silver</option>
+              <option value="gold">Gold</option>
+              <option value="diamond">Diamond</option>
+            </select>
+            <div *ngIf="withdrawForm.get('waltype')?.touched && withdrawForm.get('waltype')?.invalid" class="text-danger mt-1">
+              Wallet type is required
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div class="text-center">
+        <button type="submit"  class="btn btn-gradient w-100 mt-4 py-2 fw-semibold" [disabled]="withdrawForm.invalid">
+          Withdraw Funds
+        </button>
+      </div>
+    </form>
+  </div>
+
+
 </div>
 
-<h1 class="text-center mb-4 text-primary fw-bold">Withdraw Request Pending</h1>
-<div class="table-responsive mt-4">
-  <table class="table table-bordered table-hover align-middle text-center">
-    <thead class="table-success">
-      <tr>
-        <th>S.No</th>
-        <th>User ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Joined Date</th>
-      </tr>
-    </thead>
-    <tbody>
-   
-    </tbody>
-  </table>
+
+
+
+
+<div class="wallet-transfer container py-4">
+  <div class="transactions-section ">
+    <h4 class="fw-semibold text-secondary text-center mb-3">Withdraw Request Pending</h4>
+    <div class="table-responsive ">
+      <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+        <thead class="table-primary">
+          <tr>
+            <th>S.No</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Joined Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="tableData.length === 0">
+            <td colspan="5" class="text-muted py-3">No transactions found</td>
+          </tr>
+        
+          <tr *ngFor="let row of tableData; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.user_id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.phone }}</td>
+            <td>{{ row.joined_date }}</td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
 </div>
 
 
 
-
-
-
-<h1 class="text-center mb-4 text-primary fw-bold">Withdraw Request complete</h1>
-<div class="table-responsive mt-4">
-  <table class="table table-bordered table-hover align-middle text-center">
-    <thead class="table-success">
-      <tr>
-        <th>S.No</th>
-        <th>User ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Joined Date</th>
-      </tr>
-    </thead>
-    <tbody>
-   
-    </tbody>
-  </table>
+<div class="wallet-transfer container py-4">
+  <div class="transactions-section ">
+    <h4 class="fw-semibold text-secondary text-center mb-3">Withdraw Request complete</h4>
+    <div class="table-responsive ">
+      <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+        <thead class="table-primary">
+          <tr>
+            <th>S.No</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Joined Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="completeData.length === 0">
+            <td colspan="5" class="text-muted py-3">No transactions found</td>
+          </tr>
+        
+          <tr *ngFor="let row of completeData; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.user_id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.phone }}</td>
+            <td>{{ row.joined_date }}</td>
+          </tr>
+        </tbody>
+        
+        
+        
+      </table>
+    </div>
+  </div>
 </div>
+
+
 
 
 

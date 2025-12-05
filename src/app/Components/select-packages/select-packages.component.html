@@ -1,27 +1,29 @@
 <div class="container mt-4">
-  <h2 class="text-center mb-4 text-success fw-bold">Select Your Package</h2>
+  <h4 class="text-center mb-4 text-success fw-bold">Select Your Package</h4>
 
   <!-- Package Dropdown -->
-  <div class="mb-4 text-center">
-    <label for="packageSelect" class="form-label fw-semibold me-2">Select Package:</label>
-    <select
-      id="packageSelect"
-      class="form-select d-inline-block w-auto"
-      [(ngModel)]="selectedPackage"
-      (change)="onPackageSelect()"
-    >
-      <option value="" disabled selected>Select Package</option>
-      <option *ngFor="let pkg of data1" [value]="pkg.id">
-        {{ pkg.pname }}
-      </option>
-    </select>
+<!-- 🔥 Package Buttons (Responsive) -->
+<div class="text-center mb-4">
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+
+    <button
+      *ngFor="let pkg of data1"
+      class="btn px-3 py-2 fw-semibold"
+      [ngClass]="selectedPackage === pkg.id ? 'btn-success' : 'btn-outline-success'"
+      (click)="selectPackage(pkg)"
+      style="min-width: 180px;">
+      {{ pkg.pname }}
+    </button>
+
   </div>
+</div>
+
 
   <!-- Product Grid -->
   <section *ngIf="productdata.length > 0" class="latest-products py-4">
     <div class="container text-center">
       <h4 class="text-success mb-4">
-        Products in 
+        Products 
       </h4>
 
       <div class="row g-4">

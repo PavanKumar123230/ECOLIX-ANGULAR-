@@ -43,6 +43,7 @@ import { DiamondManagersDataComponent } from './Components/diamond-managers-data
 import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
+import { TeamComponent } from './Components/team/team.component';
 
 const routes: Routes = [
   // Public routes
@@ -79,9 +80,10 @@ const routes: Routes = [
        { path: 'silvermanager', component: SilverManagersDataComponent },
         { path: 'goldmanager', component: GoldManagersDataComponent },
          { path: 'diamondmanager', component: DiamondManagersDataComponent },
+         { path: 'levelwise-team', component: TeamComponent },
+
     ]
   },
-
   // ✅ Admin Dashboard
 {
   path: '', 
@@ -105,8 +107,6 @@ const routes: Routes = [
     { path: 'aprofile', component: AdminProfileComponent }, 
       { path: 'adminregister', component: AdminRegisterUserComponent },      
       { path: 'banner', component: BannerComponent },      
-
-
   ]
 },
   // ✅ Admin Dashboard Layout

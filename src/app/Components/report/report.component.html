@@ -1,46 +1,69 @@
-<div class="container my-4">
-   
-  
-    <!-- ✅ Wallet Report Table -->
-    <div class="card shadow-sm mt-5 p-3">
-      <h4 class="text-center text-success mb-3">Wallet Report</h4>
-  
-      <div *ngIf="loading" class="text-center my-3">
-        <div class="spinner-border text-primary" role="status"></div>
-      </div>
-  
-      <div *ngIf="!loading && walletData.length > 0" class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-          <thead class="table-dark text-center">
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-                <th>Time</th>
-              <th>Description</th>
-              <th>Credit (₹)</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of walletData; let i = index" class="text-center">
-              <td>{{ i + 1 }}</td>
-              <td>{{ item.cdate | date:'dd-MMM-yyyy' }} </td>
-                <td>{{ item.ctime  }} </td>
-              <td>{{ item.remark }}</td>
-              <td>{{ item.amount | currency : "INR" : "symbol" : "1.0-0" }}</td>
-              <td>{{ item.type }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <div *ngIf="!loading && walletData.length === 0" class="text-center text-muted">
-        No wallet data available.
-      </div>
-  
-      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-        {{ errorMessage }}
-      </div>
+<div class="wallet-transfer container py-4">
+  <div class="transactions-section">
+    <h4 class="fw-semibold text-secondary text-center mb-3">Wallet Report</h4>
+    <!-- Loading Spinner -->
+    <div *ngIf="loading" class="text-center my-3">
+      <div class="spinner-border text-primary" role="status"></div>
     </div>
+    <!-- Table Section -->
+    <div *ngIf="!loading" class="table-responsive mt-4 shadow-sm">
+      <table class="table table-bordered table-hover text-center align-middle mb-0">
+        <thead class="table-primary">
+          <tr>
+            <th>S.No</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount (₹)</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- No Data -->
+          <tr *ngIf="paginatedData.length === 0">
+            <td colspan="6" class="text-muted py-3">No transactions found</td>
+          </tr>
+          <!-- Wallet Records -->
+          <tr *ngFor="let item of paginatedData; let i = index">
+            <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+            <td>{{ item.cdate | date:'dd-MMM-yyyy' }} {{ convertToAmPm(item.ctime) }}</td>
+            <!-- <td>{{ item.ctime }}</td> -->
+            <!-- <td>{{ convertToAmPm(item.ctime) }}</td> -->
+            <td>{{ item.remark }}</td>
+            <td>{{ item.amount | currency:'INR':'symbol':'1.0-0' }}</td>
+            <!-- <td>{{ item.type }}</td> -->
+            <td [ngClass]="{
+              'text-success': item.type === 'credit',
+              'text-danger': item.type === 'debit'
+            }">
+          {{ item.type }}
+        </td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- If Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Pagination -->
+    <div class="text-center mt-4" *ngIf="totalPages > 1">
+      <button class="btn btn-sm btn-primary me-2"
+              [disabled]="currentPage === 1"
+              (click)="currentPage = currentPage - 1">
+        Prev
+      </button>
+
+      <span class="fw-bold px-3">Page {{ currentPage }} / {{ totalPages }}</span>
+
+      <button class="btn btn-sm btn-primary ms-2"
+              [disabled]="currentPage === totalPages"
+              (click)="currentPage = currentPage + 1">
+        Next
+      </button>
+    </div>
+
   </div>
-  
+</div>

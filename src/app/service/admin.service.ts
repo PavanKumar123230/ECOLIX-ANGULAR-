@@ -48,7 +48,6 @@ export class AdminService {
     httpOptions
   );
 }
-
  GetJoiningPackage(){
     const token1 = this.token.getToken();
     const httpOptions = {
@@ -73,9 +72,6 @@ export class AdminService {
       };
       return this.http.get(`${AUTH_API}Get_Productdatabypackage/${id}`, httpOptions);
     }
-  
-
-
  Profile(){
     const token1 = this.token.getToken();
     const httpOptions = {
@@ -91,7 +87,7 @@ export class AdminService {
   }
 
   UpdateUserProfile(id: any, value: {
-  name:string;
+    user:string;
   phone:string;
   email:string;
   password:string;
@@ -104,9 +100,9 @@ export class AdminService {
     })
   };
   return this.http.put(
-    AUTH_API + 'Userprofile_Update/' + id,
+    AUTH_API + 'Profile_Update/' + id,
     {
-      "name":value.name,
+      "user":value.user,
       "phone":value.phone,
       "email":value.email,
       "password":value.password,

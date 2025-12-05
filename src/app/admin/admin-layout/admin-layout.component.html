@@ -39,20 +39,20 @@
   <!-- Main Content -->
   <div class="main-content">
     <!-- Header -->
-    <header class="header">
+    <header class="header" style="background-color: #12437A;">
       <div class="header-left">
         <i class="fas fa-bars menu-btn" (click)="toggleSidebar()"></i>
         <div class="logo">
           <!-- <img src="assets/img/logo.png" alt="Logo" /> -->
-          <span>MyEcommerce</span>
+          <span style="color: white;">ECOLIX</span>
         </div>
       </div>
 
       <div class="header-right">
         <div class="profile-dropdown" (click)="toggleProfileDropdown()">
           <!-- <img src="assets/img/admin-avatar.png" alt="Admin" class="avatar"/> -->
-          <span>Admin</span>
-          <i class="fas fa-chevron-down"></i>
+          <span style="color: white;">Admin</span>
+          <i class="fas fa-chevron-down" style="color: white;"></i>
         </div>
         <div class="dropdown-menu" *ngIf="profileDropdownOpen">
           <a routerLink="/aprofile"><i class="fas fa-user"></i> Profile</a>

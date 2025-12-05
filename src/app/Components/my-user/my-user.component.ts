@@ -20,10 +20,15 @@ export class MyUserComponent implements OnInit {
   getdirectdata(): void {
     this.api.DirectTeam().subscribe({
       next: (res: any) => {
+
         console.log('Direct Team Data:', res);
-        if (res.status === 1 && Array.isArray(res.data)) {
-          this.transactions = res.data;
-        } else {
+    if (res.status === 1 && Array.isArray(res.data)) {
+  this.transactions = res.data.map((item: any) => ({
+    ...item,
+    showPassword: false   // 🔥 added flag for each row
+  }));
+}
+else {
           this.transactions = [];
         }
       },

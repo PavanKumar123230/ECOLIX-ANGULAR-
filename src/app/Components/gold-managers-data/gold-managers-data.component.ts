@@ -24,27 +24,32 @@ export class GoldManagersDataComponent implements OnInit {
     { label: 'Director', value: 'GoldManager8' },
   ];
 
-  selectedManager = '';
+  selectedManager = 'GoldManager1';  // Default selection
   managerData: any[] = [];
   loading = false;
 
-  // Map string to actual UserService methods
   managerApiMap: { [key: string]: () => any } = {};
 
   constructor(private api: UserService) {}
 
   ngOnInit(): void {
-    // Map selected option to API method
     this.managerApiMap = {
       GoldManager1: () => this.api.GoldManager1(),
       GoldManager2: () => this.api.GoldManager2(),
       GoldManager3: () => this.api.GoldManager3(),
       GoldManager4: () => this.api.GoldManager4(),
-      GoldManager5: () => this.api.GoldrManager5(),
+      GoldManager5: () => this.api.GoldManager5(),
       GoldManager6: () => this.api.GoldManager6(),
       GoldManager7: () => this.api.GoldManager7(),
       GoldManager8: () => this.api.GoldManager8(),
     };
+
+    this.onManagerChange(); // Auto-load default
+  }
+
+  selectManager(value: string) {
+    this.selectedManager = value;
+    this.onManagerChange();
   }
 
   onManagerChange() {

@@ -24,14 +24,13 @@ export class DiamondManagersDataComponent implements OnInit {
     { label: 'Director', value: 'DiamondManager8' },
   ];
 
-  selectedManager = '';
+  selectedManager = 'DiamondManager1';  // ✅ Default selection
   managerData: any[] = [];
   loading = false;
 
-  // Map string to actual UserService methods
   managerApiMap: { [key: string]: () => any } = {};
 
-  constructor(private api: UserService) { }
+  constructor(private api: UserService) {}
 
   ngOnInit(): void {
     this.managerApiMap = {
@@ -44,11 +43,16 @@ export class DiamondManagersDataComponent implements OnInit {
       DiamondManager7: () => this.api.DiamondManager7(),
       DiamondManager8: () => this.api.DiamondManager8(),
     };
+
+    this.onManagerChange(); // ✅ Auto-load default manager’s data
+  }
+
+  selectManager(value: string) {
+    this.selectedManager = value;
+    this.onManagerChange();
   }
 
   onManagerChange() {
-    if (!this.selectedManager) return;
-
     const apiMethod = this.managerApiMap[this.selectedManager];
     if (!apiMethod) return;
 
@@ -60,8 +64,7 @@ export class DiamondManagersDataComponent implements OnInit {
         this.managerData = res.data || [];
         this.loading = false;
       },
-      error: (err: any) => {
-        console.error(err);
+      error: () => {
         this.managerData = [];
         this.loading = false;
       }

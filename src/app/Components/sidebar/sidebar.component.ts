@@ -160,6 +160,9 @@ export class SidebarComponent implements OnInit {
         { label: 'Transfer Fund', icon: 'bi bi-arrow-left-right', route: '/transferfund' },
         { label: 'Received Fund', icon: 'bi bi-wallet2', route: '/receivedfund' },
         { label: 'My Users', icon: 'bi bi-person-circle', route: '/my-user' },
+        { label: 'Level-wise-team', icon: 'bi bi-person-circle', route: '/levelwise-team' },
+
+
         { label: 'Welcome Bonus', icon: 'bi bi-gift', route: '/welcome-bonus' },
         { label: 'Silver Income', icon: 'bi bi-trophy', route: '/silver' },
         { label: 'Gold Income', icon: 'bi bi-award', route: '/gold' },

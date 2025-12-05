@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- Required
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -52,6 +54,7 @@ import { DiamondManagersDataComponent } from './Components/diamond-managers-data
 import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-register-user.component';
 import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
+import { TeamComponent } from './Components/team/team.component';
 
 
 
@@ -106,12 +109,20 @@ import { SupportComponent } from './Components/support/support.component';
     AdminRegisterUserComponent,
     BannerComponent,
     SupportComponent,
+    TeamComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule, HttpClientModule
+    FormsModule,ReactiveFormsModule, HttpClientModule,BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', // Toast appears in the top-right
+      timeOut: 3000, // Toast disappears after 3 seconds
+      closeButton: true, // Show close button
+      progressBar: true, // Show progress bar
+      preventDuplicates: true, // Prevent duplicate toa
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -102,55 +102,112 @@
     }
   }
 
-  .bg-purple {
-    background: linear-gradient(135deg, #6a1b9a, #8e24aa) !important;
-    color: white;
-  }
+  // .bg-purple {
+  //   background: linear-gradient(135deg,#CD5C5C) !important;
+  //   color: white;
+  // }
   
-  .bg-gradient-member {
-    background: linear-gradient(135deg, #2196f3, #64b5f6) !important;
-    color: white;
-  }
+  // .bg-gradient-member {
+  //   background: linear-gradient(135deg, #2196f3, #64b5f6) !important;
+  //   color: white;
+  // }
   
-  .bg-gradient-sharing,
-  .bg-gradient-earn {
-    background: linear-gradient(135deg, #66bb6a, #81c784) !important;
-    color: white;
-  }
+  // .bg-gradient-sharing,
+  // .bg-gradient-earn {
+  //   background: linear-gradient(135deg, #66bb6a, #81c784) !important;
+  //   color: white;
+  // }
   
-  .bg-light-blue {
-    background-color: #e3f2fd !important;
-    color: #1565c0;
-    font-weight: 500;
-  }
+  // .bg-light-blue {
+  //   background-color: #e3f2fd !important;
+  //   color: #1565c0;
+  //   font-weight: 500;
+  // }
   
-  .bg-light-green {
-    background-color: #e8f5e9 !important;
-    color: #2e7d32;
-    font-weight: 500;
-  }
+  // .bg-light-green {
+  //   background-color: #e8f5e9 !important;
+  //   color: #2e7d32;
+  //   font-weight: 500;
+  // }
   
-  .card {
+  
+   .card {
     border-radius: 16px;
-    overflow: hidden;
-  }
+     overflow: hidden;
+   }
+
+  // .table th,
+  // .table td {
+  //   padding: 1rem;
+  //   vertical-align: middle;
+  //   font-size: 1.1rem;
+  // }
   
-  .table th,
-  .table td {
-    padding: 1rem;
-    vertical-align: middle;
-    font-size: 1.1rem;
-  }
+  // .table thead th {
+  //   font-weight: 600;
+  //   font-size: 1.15rem;
+  // }
   
-  .table thead th {
-    font-weight: 600;
-    font-size: 1.15rem;
+  // @media (max-width: 768px) {
+  //   .table th,
+  //   .table td {
+  //     padding: 0.75rem;
+  //     font-size: 1rem;
+  //   }
+  // }
+
+.wallet-transfer {
+  .gradient-header {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
   }
-  
-  @media (max-width: 768px) {
-    .table th,
-    .table td {
-      padding: 0.75rem;
-      font-size: 1rem;
+
+  .balance-display {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
   }
+
+  table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    th {
+      background-color: #1976d2 !important;
+      color: white;
+      font-weight: 600;
+    }
+    td {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .balance-display {
+      font-size: 1.8rem;
+    }
+
+    table {
+      font-size: 0.85rem;
+    }
+
+    .form-control {
+      font-size: 0.9rem;
+    }
+
+    .btn-gradient {
+      font-size: 0.95rem;
+      padding: 0.6rem;
+    }
+  }
+}

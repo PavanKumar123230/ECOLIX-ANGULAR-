@@ -1,0 +1,112 @@
+/* Main container spacing */
+.container {
+    padding: 15px;
+  }
+  
+  /* Button group styling */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  /* Buttons styling */
+  .btn-group .btn {
+    min-width: 140px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  /* Mobile & Android screens (small width) */
+  @media (max-width: 480px) {
+    .btn-group .btn {
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  
+
+
+  /* Table scrollable on small devices */
+  // .table-responsive {
+  //   width: 100%;
+  //   overflow-x: auto;
+  // }
+  
+  // .manager-table {
+  //   min-width: 600px;
+  // }
+  
+  // .loading {
+  //   font-weight: bold;
+  //   margin-bottom: 10px;
+  // }
+
+
+
+
+  .wallet-transfer {
+    .gradient-header {
+      background: linear-gradient(135deg, #1976d2, #00bcd4);
+      border: none;
+    }
+  
+    .balance-display {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+  
+    .btn-gradient {
+      background: linear-gradient(135deg, #1976d2, #00bcd4);
+      border: none;
+      color: white;
+      transition: 0.3s ease;
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+    }
+  
+    table {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      th {
+        background-color: #1976d2 !important;
+        color: white;
+        font-weight: 600;
+      }
+      td {
+        font-size: 0.95rem;
+      }
+    }
+  
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .balance-display {
+        font-size: 1.8rem;
+      }
+  
+      table {
+        font-size: 0.85rem;
+      }
+  
+      .form-control {
+        font-size: 0.9rem;
+      }
+  
+      .btn-gradient {
+        font-size: 0.95rem;
+        padding: 0.6rem;
+      }
+    }
+  }
+  
+  

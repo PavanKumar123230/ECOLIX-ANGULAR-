@@ -1,0 +1,136 @@
+/* Main container spacing */
+.container {
+    padding: 15px;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  /* Button group styling */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  /* Base button styling */
+  .diamond-btn {
+    min-width: 140px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.25s ease-in-out;
+  }
+  
+  /* ACTIVE (Diamond gradient) */
+  .active-btn {
+    background: linear-gradient(45deg, #00b7ff, #006dff);
+    color: #fff !important;
+    border: none;
+  }
+  
+  /* INACTIVE BUTTON (simple border blue) */
+  .inactive-btn {
+    background: #fff;
+    border: 2px solid #009eff;
+    color: #006dcc;
+  }
+  
+  .inactive-btn:hover {
+    background: #e9f6ff;
+  }
+  
+
+  
+  /* Loading text */
+  .loading {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Small screens: Android, iPhone */
+  @media (max-width: 480px) {
+    .diamond-btn {
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+      padding: 12px;
+      border-radius: 8px;
+    }
+  
+    .title {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+
+  }
+
+
+
+
+
+  .wallet-transfer {
+    .gradient-header {
+      background: linear-gradient(135deg, #1976d2, #00bcd4);
+      border: none;
+    }
+  
+    .balance-display {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+  
+    .btn-gradient {
+      background: linear-gradient(135deg, #1976d2, #00bcd4);
+      border: none;
+      color: white;
+      transition: 0.3s ease;
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+    }
+  
+    table {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      th {
+        background-color: #1976d2 !important;
+        color: white;
+        font-weight: 600;
+      }
+      td {
+        font-size: 0.95rem;
+      }
+    }
+  
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .balance-display {
+        font-size: 1.8rem;
+      }
+  
+      table {
+        font-size: 0.85rem;
+      }
+  
+      .form-control {
+        font-size: 0.9rem;
+      }
+  
+      .btn-gradient {
+        font-size: 0.95rem;
+        padding: 0.6rem;
+      }
+    }
+  }
+  
+  
+  

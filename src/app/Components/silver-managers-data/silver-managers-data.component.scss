@@ -1,0 +1,142 @@
+/* Container responsive layout */
+.container {
+    padding: 15px;
+  }
+  
+  /* Button group: wrap + mobile full-width */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  /* Make buttons larger & full width on Android/Mobile */
+  .btn-group .btn {
+    min-width: 140px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  /* Very small screens like Android 360px */
+  @media (max-width: 480px) {
+    .btn-group .btn {
+      width: 100%;            /* full-width button */
+      text-align: center;
+      font-size: 15px;
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  
+  /* Make table scrollable on small screens */
+  // .table-responsive {
+  //   width: 100%;
+  //   overflow-x: auto;
+  // }
+  
+  // /* Force table to stay readable on mobile */
+  // .manager-table {
+  //   min-width: 600px;
+  // }
+  
+  /* Loading text style */
+  .loading {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  /* Base silver button */
+.silver-btn {
+    border: 2px solid #c0c0c0;
+    color: #444;
+    background-color: #f8f8f8;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  /* Active selected button (silver shiny effect) */
+  .active-silver {
+    background: linear-gradient(145deg, #e6e6e6, #bfbfbf);
+    border-color: #a9a9a9;
+    color: #000;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Not selected = silver outline */
+  .outline-silver {
+    background: #ffffff;
+    border-color: #c0c0c0;
+  }
+  
+  /* Hover effect */
+  .silver-btn:hover {
+    background: linear-gradient(145deg, #ededed, #d4d4d4);
+    border-color: #a9a9a9;
+    color: #111;
+  }
+
+  
+
+  
+.wallet-transfer {
+  .gradient-header {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+  }
+
+  .balance-display {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+  }
+
+  table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    th {
+      background-color: #1976d2 !important;
+      color: white;
+      font-weight: 600;
+    }
+    td {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .balance-display {
+      font-size: 1.8rem;
+    }
+
+    table {
+      font-size: 0.85rem;
+    }
+
+    .form-control {
+      font-size: 0.9rem;
+    }
+
+    .btn-gradient {
+      font-size: 0.95rem;
+      padding: 0.6rem;
+    }
+  }
+}
+
+  
+  

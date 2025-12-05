@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,10 +10,23 @@ export class DashboardComponent {
   homeData: any;
   data:any;
   profiledata: any;
-  constructor(private api: UserService) {}
+  constructor(private api: UserService,private router: Router) {}
 
   ngOnInit(): void {
     this.getHome();
+  }
+  goToWelcomeBonus() {
+    this.router.navigate(['/welcome-bonus']);
+  }
+  totalReferal(){
+    this.router.navigate(['/my-user']);
+
+  }
+
+
+  levelmember(){
+    this.router.navigate(['/levelwise-team']);
+
   }
   getHome() {
     this.api.Home().subscribe({

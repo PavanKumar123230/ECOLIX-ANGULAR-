@@ -1,0 +1,70 @@
+<div class="text-center mb-2">
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      <button 
+        *ngFor="let type of userTypes" 
+        (click)="selectType(type.value)" 
+        class="btn income-btn fw-semibold"
+        [ngClass]="selectedUserType === type.value ? 'btn-primary' : 'btn-outline-primary'">
+        {{ type.label }}
+      </button>
+    </div>
+  </div>
+  
+  <div class="container my-5">
+    <div class="wallet-transfer container py-4">
+      <div class="transactions-section">
+  
+        <h4 class="fw-semibold text-secondary text-center mb-3">
+          {{ selectedUserType | titlecase }} Members
+        </h4>
+  
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+            <thead class="table-primary">
+              <tr>
+                <th>S.No</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Joined Date</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr *ngIf="levelData[selectedUserType].length === 0">
+                <td colspan="5" class="text-muted text-center py-3">
+                  No members found
+                </td>
+              </tr>
+  
+              <!-- ✅ Pagination applied here -->
+              <tr *ngFor="let item of paginatedData; index as i">
+                <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                <td>{{ item.regid }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.phone }}</td>
+                <td>{{ item.cdate | date:'dd-MM-yyyy' }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+  
+          <div class="text-center mt-4" *ngIf="totalPages > 1">
+            <button class="btn btn-sm btn-primary me-2"
+                    [disabled]="currentPage === 1"
+                    (click)="currentPage = currentPage - 1">
+              Prev
+            </button>
+      
+            <span class="fw-bold px-3">Page {{ currentPage }} / {{ totalPages }}</span>
+      
+            <button class="btn btn-sm btn-primary ms-2"
+                    [disabled]="currentPage === totalPages"
+                    (click)="currentPage = currentPage + 1">
+              Next
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
