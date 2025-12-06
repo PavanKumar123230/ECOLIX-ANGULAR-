@@ -15,10 +15,9 @@ export class ProfileComponent implements OnInit {
   profileData: any;
   showPass = false;
   saving = false;
-
   // ⭐ Added For Image Upload
-  previewImage: any = null;
-  selectedImageFile: any = null;
+  previewImage: any 
+  selectedImageFile: any 
 
   constructor(
     private fb: FormBuilder,
@@ -89,24 +88,106 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // onImageSelect(event: any) {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  
+  //   this.selectedImageFile = file;
+  
+  //   // Show Preview
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.previewImage = reader.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  
+  //   // Save actual file in form
+  //   this.profileForm.patchValue({
+  //     image: file
+  //   });
+  // }
+  // onImageSelect(event: any) {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  
+  //   // ⭐ Maximum allowed size = 300KB (300 * 1024 bytes)
+  //   const maxSize = 300 * 1024;
+  
+  //   if (file.size > maxSize) {
+  //     this.toast.error('Image size must be less than 300KB!', 'File Too Large');
+  //     this.selectedImageFile = null;
+  //     this.previewImage = null;
+  
+  //     // Clear image from form
+  //     this.profileForm.patchValue({ image: '' });
+  //     return;
+  //   }
+  
+  //   this.selectedImageFile = file;
+  //   // ⭐ Preview
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.previewImage = reader.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  
+  //   this.profileForm.patchValue({
+  //     image: file
+  //   });
+  // }
   onImageSelect(event: any) {
     const file = event.target.files[0];
     if (!file) return;
   
+    const maxSize = 300 * 1024; // 300KB
+  
+    if (file.size > maxSize) {
+      this.toast.error('Image size must be less than 300KB!', 'File Too Large');
+  
+      this.selectedImageFile = null;
+      this.previewImage = null;
+  
+      this.profileForm.patchValue({ image: '' });
+  
+      // ⭐ Auto Refresh page after 1.5 seconds
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+  
+      return;
+    }
+  
     this.selectedImageFile = file;
   
-    // Show Preview
     const reader = new FileReader();
     reader.onload = () => {
       this.previewImage = reader.result;
     };
     reader.readAsDataURL(file);
   
-    // Save actual file in form
     this.profileForm.patchValue({
       image: file
     });
   }
+  
+  
+
+  // onSave() {
+  //   console.log("🔥 BEFORE SAVE:", this.profileForm.value);
+  
+  //   this.api.updateProfile(this.profileData.id, this.profileForm.value)
+  //     .pipe(finalize(() => this.saving = false))
+  //     .subscribe({
+  //       next: (res) => {
+  //         console.log("✅ AFTER SAVE:", res);
+  //         this.toast.success('Profile updated successfully!', 'Success');
+  //       },
+  //       error: (err) => {
+  //         console.error('❌ Update Error', err);
+  //         this.toast.error('Profile update failed!', 'Error');
+  //       }
+  //     });
+  // }
   
 
   onSave() {
@@ -118,6 +199,11 @@ export class ProfileComponent implements OnInit {
         next: (res) => {
           console.log("✅ AFTER SAVE:", res);
           this.toast.success('Profile updated successfully!', 'Success');
+  
+          // ⭐ Refresh page after 1.5 seconds
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         },
         error: (err) => {
           console.error('❌ Update Error', err);

@@ -11,7 +11,7 @@
           <th>Name</th>
           <th>Phone</th>
           <th>Joined Date</th>
-          <th>Password</th>
+          <!-- <th>Password</th> -->
         </tr>
       </thead>
       <tbody>
@@ -24,13 +24,13 @@
           <td>{{ t.name }}</td>
           <td>{{ t.phone }}</td>
           <td>{{ t.cdate | date: 'mediumDate' }}</td>
-          <td style="cursor: pointer;" (click)="t.showPassword = !t.showPassword">
+          <!-- <td style="cursor: pointer;" (click)="t.showPassword = !t.showPassword">
 
             <span *ngIf="!t.showPassword">****** <i class="bi bi-eye"></i></span>
           
             <span *ngIf="t.showPassword">{{ t.password }} <i class="bi bi-eye-slash"></i></span>
           
-          </td>
+          </td> -->
           
           
           
