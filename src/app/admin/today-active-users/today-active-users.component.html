@@ -26,6 +26,7 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Password</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -41,6 +42,17 @@
                 {{ u.status == 1 ? 'Active' : 'Blocked' }}
               </span>
             </td>
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+            
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
+            
             <td>
               <button class="btn btn-sm btn-primary" (click)="openEditModal(u)">
                 <i class="fas fa-edit"></i>
@@ -64,12 +76,13 @@
       <table *ngIf="joinUsers.length > 0">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>S.No</th>
             <th>User ID</th>
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
             <th>Join Date</th>
+            <th>Password</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -81,6 +94,16 @@
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+            
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
             <td>
               <button class="btn btn-sm btn-primary" (click)="openEditModal(u)">
                 <i class="fas fa-edit"></i>

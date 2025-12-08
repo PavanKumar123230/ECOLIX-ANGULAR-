@@ -37,6 +37,7 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Join Date</th>
+            <th>Password</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +48,21 @@
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.joindate || u.cdate }}</td>
+            <!-- <td>{{u.password}}</td> -->
+
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+            
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
+            
+
+            
           </tr>
         </tbody>
       </table>

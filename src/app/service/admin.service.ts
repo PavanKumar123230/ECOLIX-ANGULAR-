@@ -86,26 +86,55 @@ export class AdminService {
     );
   }
 
-  UpdateUserProfile(id: any, value: {
-    user:string;
-  phone:string;
-  email:string;
-  password:string;
-}) {
+//   UpdateUserProfile(id: any, value: {
+//     user:string;
+//   phone:string;
+//   email:string;
+//   password:string;
+// }) {
+//   const token1 = this.token.getToken();
+//   const httpOptions = {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token1
+//     })
+//   };
+//   return this.http.put(
+//     AUTH_API + 'Profile_Update/' + id,
+//     {
+//       "user":value.user,
+//       "phone":value.phone,
+//       "email":value.email,
+//       "password":value.password,
+//     },
+//     httpOptions
+//   );
+// }
+UpdateUserProfile(
+  regid: any,
+  value: {
+    user: string;
+    phone: string;
+    email: string;
+    password: string;
+  }
+) {
   const token1 = this.token.getToken();
+
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token1
     })
   };
+
   return this.http.put(
-    AUTH_API + 'Profile_Update/' + id,
+    AUTH_API + 'Userprofile_Update/' + regid,  // 👈 updated endpoint
     {
-      "user":value.user,
-      "phone":value.phone,
-      "email":value.email,
-      "password":value.password,
+      user: value.user,
+      phone: value.phone,
+      email: value.email,
+      password: value.password
     },
     httpOptions
   );

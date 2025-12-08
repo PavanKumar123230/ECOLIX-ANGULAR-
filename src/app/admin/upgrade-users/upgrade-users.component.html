@@ -1,6 +1,5 @@
 <div class="admin-dashboard">
   <h2 class="title">Total Upgrade Users</h2>
-
   <!-- Tabs -->
   <div class="tabs">
     <button 
@@ -32,6 +31,7 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -42,13 +42,21 @@
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
             <td> </td>
           </tr>
         </tbody>
       </table>
       <div *ngIf="activeUsers.length === 0" class="no-data">No active users found.</div>
     </div>
-
     <!-- Today Joined Users -->
     <div *ngIf="activeTab === 'join' && !loading" class="table-container">
       <h3>Joined Users</h3>
@@ -60,7 +68,8 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Status</th>
+            <th>Password</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -70,6 +79,16 @@
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
+  
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
             <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
           </tr>
         </tbody>

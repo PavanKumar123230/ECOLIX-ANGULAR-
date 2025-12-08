@@ -57,4 +57,9 @@ export class TotalActiveUsersComponent {
       this.activeTab = tab;
     }
 
+    togglePassword(user: any) {
+      user.showPassword = !user.showPassword;
+    }
+    
+
 }

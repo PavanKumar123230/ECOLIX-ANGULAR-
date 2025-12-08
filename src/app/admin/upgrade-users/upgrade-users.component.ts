@@ -57,5 +57,8 @@ export class UpgradeUsersComponent {
       switchTab(tab: 'active' | 'join') {
         this.activeTab = tab;
       }
-
+      togglePassword(user: any) {
+        user.showPassword = !user.showPassword;
+      }
+      
 }

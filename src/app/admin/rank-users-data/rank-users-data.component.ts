@@ -45,4 +45,9 @@ export class RankUsersDataComponent implements OnInit {
       }
     });
   }
+
+  togglePassword(user: any) {
+    user.showPassword = !user.showPassword;
+  }
+  
 }

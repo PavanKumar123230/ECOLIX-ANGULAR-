@@ -1,6 +1,5 @@
 <div class="admin-dashboard">
   <h2 class="title">Total Active Users</h2>
-
   <!-- Tabs -->
   <div class="tabs">
     <button 
@@ -16,11 +15,9 @@
       <i class="fas fa-user-plus"></i> Inactive Users
     </button>
   </div>
-
   <div class="tab-content">
     <!-- Loader -->
     <div *ngIf="loading" class="loading">Loading...</div>
-
     <!-- Today Active Users -->
     <div *ngIf="activeTab === 'active' && !loading" class="table-container">
       <h3>Active Users</h3>
@@ -32,7 +29,8 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Status</th>
+            <th>Level</th>
+            <th>Password</th>
           </tr>
         </thead>
         <tbody>
@@ -42,7 +40,18 @@
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
-            <td> </td>
+            <td>{{ u.level }}</td>
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+            
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
+            
           </tr>
         </tbody>
       </table>
@@ -60,7 +69,9 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Status</th>
+            <th>Password</th>
+            <th>Date</th>
+
           </tr>
         </thead>
         <tbody>
@@ -70,6 +81,15 @@
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
             <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
           </tr>
         </tbody>

@@ -47,7 +47,6 @@ export class TodayActiveUsersComponent implements OnInit {
       error: () => (this.loading = false)
     });
   }
-
   // ✅ Today Join Users
   loadTodayJoin() {
     this.loading = true;
@@ -65,6 +64,11 @@ export class TodayActiveUsersComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  togglePassword(user: any) {
+    user.showPassword = !user.showPassword;
+  }
+  
+
   // ✅ Edit User (open modal)
   openEditModal(user: any) {
     this.selectedUser = user;
@@ -78,7 +82,6 @@ export class TodayActiveUsersComponent implements OnInit {
     this.modalRef = new bootstrap.Modal(modalEl);
     this.modalRef.show();
   }
-
   // ✅ Save User Update
   saveProfile() {
     if (!this.selectedUser) return;

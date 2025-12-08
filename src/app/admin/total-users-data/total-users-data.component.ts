@@ -59,21 +59,39 @@ export class TotalUsersDataComponent implements OnInit {
   }
 
   // ✅ Save User Update
+  // saveProfile() {
+  //   if (!this.selectedUser) return;
+
+  //   this.adminService.UpdateUserProfile(this.selectedUser.id, this.editForm.value).subscribe({
+  //     next: () => {
+  //       alert('✅ User profile updated successfully!');
+  //       this.modalRef.hide();
+  //       this.loadAllUsers();
+  //     },
+  //     error: (err) => {
+  //       console.error(err);
+  //       alert('❌ Update failed!');
+  //     }
+  //   });
+  // }
+
   saveProfile() {
     if (!this.selectedUser) return;
-
-    this.adminService.UpdateUserProfile(this.selectedUser.id, this.editForm.value).subscribe({
-      next: () => {
-        alert('✅ User profile updated successfully!');
-        this.modalRef.hide();
-        this.loadAllUsers();
-      },
-      error: (err) => {
-        console.error(err);
-        alert('❌ Update failed!');
-      }
-    });
+  
+    this.adminService.UpdateUserProfile(this.selectedUser.regid, this.editForm.value)
+      .subscribe({
+        next: () => {
+          alert('✅ User profile updated successfully!');
+          this.modalRef.hide();
+          this.loadAllUsers();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('❌ Update failed!');
+        }
+      });
   }
+  
 
   // ✅ Block User
   blockUser(id: any) {
@@ -98,4 +116,9 @@ export class TotalUsersDataComponent implements OnInit {
       error: () => alert('❌ Failed to unblock user!')
     });
   }
+
+  togglePassword(user: any) {
+    user.showPassword = !user.showPassword;
+  }
+  
 }
