@@ -15,6 +15,10 @@ export class TotalUsersDataComponent implements OnInit {
   editForm!: FormGroup;
   selectedUser: any = null;
   modalRef: any;
+  currentPage = 1;
+itemsPerPage = 10;
+totalPages = 1;
+
 
   constructor(private adminService: AdminService, private fb: FormBuilder) {}
 
@@ -33,15 +37,24 @@ export class TotalUsersDataComponent implements OnInit {
   }
 
   // ✅ Load all users
+
   loadAllUsers() {
     this.loading = true;
     this.adminService.TotalMembers().subscribe({
       next: (res: any) => {
         this.allUsers = res.data || res;
+        // 🟦 Calculate total pages
+        this.totalPages = Math.ceil(this.allUsers.length / this.itemsPerPage);
         this.loading = false;
       },
       error: () => (this.loading = false)
     });
+  }
+
+  get paginatedUsers() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.allUsers.slice(start, end);
   }
 
   // ✅ Edit User (open modal)

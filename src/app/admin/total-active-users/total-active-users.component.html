@@ -21,40 +21,57 @@
     <!-- Today Active Users -->
     <div *ngIf="activeTab === 'active' && !loading" class="table-container">
       <h3>Active Users</h3>
-      <table *ngIf="activeUsers.length > 0">
+
+
+
+      <table *ngIf="activeUsers.length > 0" class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>S.no</th>
             <th>User ID</th>
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Level</th>
             <th>Password</th>
           </tr>
         </thead>
+      
         <tbody>
-          <tr *ngFor="let u of activeUsers">
-            <td>{{ u.id }}</td>
+          <tr *ngFor="let u of paginatedActiveUsers; let i = index">
+            <td>{{ (currentPageActive - 1) * itemsPerPage + i + 1 }}</td>
             <td>{{ u.regid }}</td>
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
-            <td>{{ u.level }}</td>
             <td>
               <span [ngClass]="{ 'text-blur': !u.showPassword }">
                 {{ u.showPassword ? u.password : '••••••••' }}
               </span>
-            
-              <button class="btn btn-sm btn-link p-0 ms-2"
-                      (click)="togglePassword(u)">
+              <button class="btn btn-sm btn-link p-0 ms-2" (click)="togglePassword(u)">
                 <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
               </button>
             </td>
-            
           </tr>
+          
         </tbody>
       </table>
+      
+
+      <div class="text-center mt-4" *ngIf="totalPagesActive > 1">
+        <button class="btn btn-sm btn-primary me-2"
+                [disabled]="currentPageActive === 1"
+                (click)="currentPageActive = currentPageActive - 1">
+          Prev
+        </button>
+        <span class="fw-bold px-3">Page {{ currentPageActive }} / {{ totalPagesActive }}</span>
+        <button class="btn btn-sm btn-primary ms-2"
+                [disabled]="currentPageActive === totalPagesActive"
+                (click)="currentPageActive = currentPageActive + 1">
+          Next
+        </button>
+      </div>
+      
+      
       <div *ngIf="activeUsers.length === 0" class="no-data">No active users found.</div>
     </div>
 
@@ -71,12 +88,11 @@
             <th>Email</th>
             <th>Password</th>
             <th>Date</th>
-
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let u of joinUsers">
-            <td>{{ u.id }}</td>
+          <tr *ngFor="let u of paginatedJoinUsers; let i = index">
+            <td>{{ (currentPageJoin - 1) * itemsPerPage + i + 1 }}</td>
             <td>{{ u.regid }}</td>
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
@@ -85,15 +101,29 @@
               <span [ngClass]="{ 'text-blur': !u.showPassword }">
                 {{ u.showPassword ? u.password : '••••••••' }}
               </span>
-              <button class="btn btn-sm btn-link p-0 ms-2"
-                      (click)="togglePassword(u)">
+              <button class="btn btn-sm btn-link p-0 ms-2" (click)="togglePassword(u)">
                 <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
               </button>
             </td>
             <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
           </tr>
+          
         </tbody>
       </table>
+      <div class="text-center mt-4" *ngIf="totalPagesJoin > 1">
+        <button class="btn btn-sm btn-primary me-2"
+                [disabled]="currentPageJoin === 1"
+                (click)="currentPageJoin = currentPageJoin - 1">
+          Prev
+        </button>
+        <span class="fw-bold px-3">Page {{ currentPageJoin }} / {{ totalPagesJoin }}</span>
+        <button class="btn btn-sm btn-primary ms-2"
+                [disabled]="currentPageJoin === totalPagesJoin"
+                (click)="currentPageJoin = currentPageJoin + 1">
+          Next
+        </button>
+      </div>
+      
       <div *ngIf="joinUsers.length === 0" class="no-data">No joined users found today.</div>
     </div>
   </div>

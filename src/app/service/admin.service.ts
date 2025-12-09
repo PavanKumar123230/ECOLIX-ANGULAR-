@@ -1018,8 +1018,6 @@ DiamondDirector(){
 //     httpOptions
 //   );   
 // }
-
-
 getBanner() {
   const token1 = this.token.getToken();
   const httpOptions = {
