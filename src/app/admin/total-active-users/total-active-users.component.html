@@ -1,30 +1,99 @@
 <div class="admin-dashboard">
-  <h2 class="title">Total Active Users</h2>
+  <h2 class="title">Total Active / Joined Users</h2>
+
   <!-- Tabs -->
   <div class="tabs">
-    <button 
-      class="tab-btn" 
-      [class.active]="activeTab === 'active'" 
-      (click)="switchTab('active')">
+    <button class="tab-btn" [class.active]="activeTab === 'active'" (click)="switchTab('active')">
       <i class="fas fa-bolt"></i> Active Users
     </button>
-    <button 
-      class="tab-btn" 
-      [class.active]="activeTab === 'join'" 
-      (click)="switchTab('join')">
+
+    <button class="tab-btn" [class.active]="activeTab === 'join'" (click)="switchTab('join')">
       <i class="fas fa-user-plus"></i> Inactive Users
     </button>
   </div>
+
+  <!-- DATE FILTER -->
+  <div class="card p-3 mt-3">
+    <label class="fw-bold"><i class="fas fa-calendar"></i> Filter by Date</label>
+
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <input type="date" class="form-control" [(ngModel)]="fromDate" (change)="filterByDate()">
+      </div>
+      <div class="col-md-6">
+        <input type="date" class="form-control" [(ngModel)]="toDate" (change)="filterByDate()">
+      </div>
+    </div>
+  </div>
+
   <div class="tab-content">
+
     <!-- Loader -->
     <div *ngIf="loading" class="loading">Loading...</div>
-    <!-- Today Active Users -->
+
+    <!-- ================== ACTIVE USERS ================== -->
     <div *ngIf="activeTab === 'active' && !loading" class="table-container">
       <h3>Active Users</h3>
 
+      <table *ngIf="filteredActiveUsers.length > 0" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Password</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <tr *ngFor="let u of paginatedActiveUsers; let i = index">
+            <td>{{ (currentPageActive - 1) * itemsPerPage + i + 1 }}</td>
+            <td>{{ u.regid }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
 
-      <table *ngIf="activeUsers.length > 0" class="table table-bordered">
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+              <button class="btn btn-sm btn-link p-0 ms-2" (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="text-center mt-3" *ngIf="totalPagesActive > 1">
+        <button class="btn btn-sm btn-primary me-2" 
+                [disabled]="currentPageActive === 1"
+                (click)="currentPageActive = currentPageActive - 1">
+          Prev
+        </button>
+
+        <span class="fw-bold">Page {{ currentPageActive }} / {{ totalPagesActive }}</span>
+
+        <button class="btn btn-sm btn-primary ms-2"
+                [disabled]="currentPageActive === totalPagesActive"
+                (click)="currentPageActive = currentPageActive + 1">
+          Next
+        </button>
+      </div>
+
+      <div *ngIf="filteredActiveUsers.length === 0" class="no-data">No Active Users Found.</div>
+    </div>
+
+    <!-- ================== JOINED USERS ================== -->
+    <div *ngIf="activeTab === 'join' && !loading" class="table-container">
+      <h3>Joined Users</h3>
+
+      <table *ngIf="filteredJoinUsers.length > 0" class="table table-bordered">
         <thead>
           <tr>
             <th>S.no</th>
@@ -33,63 +102,10 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Password</th>
-          </tr>
-        </thead>
-      
-        <tbody>
-          <tr *ngFor="let u of paginatedActiveUsers; let i = index">
-            <td>{{ (currentPageActive - 1) * itemsPerPage + i + 1 }}</td>
-            <td>{{ u.regid }}</td>
-            <td>{{ u.name }}</td>
-            <td>{{ u.phone }}</td>
-            <td>{{ u.email }}</td>
-            <td>
-              <span [ngClass]="{ 'text-blur': !u.showPassword }">
-                {{ u.showPassword ? u.password : '••••••••' }}
-              </span>
-              <button class="btn btn-sm btn-link p-0 ms-2" (click)="togglePassword(u)">
-                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-              </button>
-            </td>
-          </tr>
-          
-        </tbody>
-      </table>
-      
-
-      <div class="text-center mt-4" *ngIf="totalPagesActive > 1">
-        <button class="btn btn-sm btn-primary me-2"
-                [disabled]="currentPageActive === 1"
-                (click)="currentPageActive = currentPageActive - 1">
-          Prev
-        </button>
-        <span class="fw-bold px-3">Page {{ currentPageActive }} / {{ totalPagesActive }}</span>
-        <button class="btn btn-sm btn-primary ms-2"
-                [disabled]="currentPageActive === totalPagesActive"
-                (click)="currentPageActive = currentPageActive + 1">
-          Next
-        </button>
-      </div>
-      
-      
-      <div *ngIf="activeUsers.length === 0" class="no-data">No active users found.</div>
-    </div>
-
-    <!-- Today Joined Users -->
-    <div *ngIf="activeTab === 'join' && !loading" class="table-container">
-      <h3>Joined Users</h3>
-      <table *ngIf="joinUsers.length > 0">
-        <thead>
-          <tr>
-             <th>ID</th>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Password</th>
             <th>Date</th>
           </tr>
         </thead>
+
         <tbody>
           <tr *ngFor="let u of paginatedJoinUsers; let i = index">
             <td>{{ (currentPageJoin - 1) * itemsPerPage + i + 1 }}</td>
@@ -97,6 +113,7 @@
             <td>{{ u.name }}</td>
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
+
             <td>
               <span [ngClass]="{ 'text-blur': !u.showPassword }">
                 {{ u.showPassword ? u.password : '••••••••' }}
@@ -105,26 +122,31 @@
                 <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
               </button>
             </td>
+
             <td>{{ u.cdate | date:'dd-MM-yyyy' }}</td>
           </tr>
-          
         </tbody>
       </table>
-      <div class="text-center mt-4" *ngIf="totalPagesJoin > 1">
+
+      <!-- Pagination -->
+      <div class="text-center mt-3" *ngIf="totalPagesJoin > 1">
         <button class="btn btn-sm btn-primary me-2"
                 [disabled]="currentPageJoin === 1"
                 (click)="currentPageJoin = currentPageJoin - 1">
           Prev
         </button>
-        <span class="fw-bold px-3">Page {{ currentPageJoin }} / {{ totalPagesJoin }}</span>
+
+        <span class="fw-bold">Page {{ currentPageJoin }} / {{ totalPagesJoin }}</span>
+
         <button class="btn btn-sm btn-primary ms-2"
                 [disabled]="currentPageJoin === totalPagesJoin"
                 (click)="currentPageJoin = currentPageJoin + 1">
           Next
         </button>
       </div>
-      
-      <div *ngIf="joinUsers.length === 0" class="no-data">No joined users found today.</div>
+
+      <div *ngIf="filteredJoinUsers.length === 0" class="no-data">No Joined Users Found.</div>
     </div>
+
   </div>
 </div>
