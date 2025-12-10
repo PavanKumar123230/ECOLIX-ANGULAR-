@@ -6,12 +6,16 @@
   <div class="cards" *ngIf="data1">
 
     <!-- =============== BASIC COUNTS =============== -->
-    <div class="card">
+    <!-- <div class="card">
+      <h5 class="fw-bold">Total Users</h5>
+      <p>{{ data1.totalusers }}</p>
+    </div> -->
+    <div class="card" routerLink="/totalusers" style="cursor:pointer;">
       <h5 class="fw-bold">Total Users</h5>
       <p>{{ data1.totalusers }}</p>
     </div>
-
-    <div class="card">
+    
+    <div class="card" routerLink="/totalactiveusers" style="cursor:pointer;">
       <h5 class="fw-bold">Total Active</h5>
       <p>{{ data1.totalactive }}</p>
     </div>
@@ -29,7 +33,7 @@
       }}</p>
     </div>
     <!-- 5 -->
-    <div class="card">
+    <div class="card" routerLink="/totalactiveusers" style="cursor:pointer;">
       <h5 class="fw-bold">Total Inactive</h5>
       <p>{{ data1.totalinactive }}</p>
     </div>
@@ -81,81 +85,81 @@
       <p>{{ data1.thismonthcommission | currency:'INR' }}</p>
     </div>
     <!-- 15 -->
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;" >
       <h5 class="fw-bold">To day' Silver</h5>
-      <p>{{ data1.todaysilvercount | currency:'INR' }}</p>
+      <p>{{ data1.todaysilvercount  }}</p>
     </div>
     <!-- 16 -->
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">To day' Silver Comission</h5>
       <p>{{ data1.todaysilvercommissionamount | currency:'INR' }}</p>
     </div>
     <!-- 17 -->
 
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Week Silver</h5>
-      <p>{{ data1.thisweeksilver | currency:'INR' }}</p>
+      <p>{{ data1.thisweeksilver  }}</p>
     </div>
     <!-- 18 -->
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Week Silver Comission</h5>
       <p>{{ data1.weeksilvercommissionamount | currency:'INR' }}</p>
     </div>
 
     <!-- 19 -->
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Month Silver</h5>
-      <p>{{ data1.thismonthsilver | currency:'INR' }}</p>
+      <p>{{ data1.thismonthsilver  }}</p>
     </div>
     <!-- 20 -->
-    <div class="card">
+    <div class="card" routerLink="/silvercaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Month Silver Comission</h5>
       <p>{{ data1.monthsilvercommissionamount | currency:'INR' }}</p>
     </div>
     <!-- 21 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">To day' Gold.</h5>
-      <p>{{ data1.todaygoldcount | currency:'INR' }}</p>
+      <p>{{ data1.todaygoldcount  }}</p>
     </div>
     <!-- 22 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">To day' Gold Comission</h5>
       <p>{{ data1.todaygoldcommissionamount | currency:'INR' }}</p>
     </div>
 
     <!-- 23 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Week Gold</h5>
       <p>{{ data1.thisweekgold
-        | currency:'INR' }}</p>
+         }}</p>
     </div>
     <!-- 24 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Week Gold Comission</h5>
       <p>{{ data1.weekgoldcommissionamount
         | currency:'INR' }}</p>
     </div>
     <!-- 25 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> Month Gold </h5>
       <p>{{ data1.thismonthgold
-        | currency:'INR' }}</p>
+         }}</p>
     </div>
 
     <!-- 26 -->
-    <div class="card">
+    <div class="card" routerLink="/goldcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> Month Gold Comission </h5>
       <p>{{ data1.monthgoldcommissionamount
         | currency:'INR' }}</p>
     </div>
     <!-- 27 -->
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> To day' Diamond </h5>
       <p>{{ data1.todaydiamondcount
-        | currency:'INR' }}</p>
+         }}</p>
     </div>
     <!-- 28 -->
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">To day' Diamond Comission </h5>
       <p>{{ data1.todaydiamondcommissionamount
         | currency:'INR' }}</p>
@@ -168,13 +172,13 @@
     </div> -->
 
     <!-- 30 -->
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold">Week Diamond </h5>
       <p>{{ data1.thisweekdiamond
-        | currency:'INR' }}</p>
+         }}</p>
     </div>
     <!-- 31 -->
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> Week Diamond Comission </h5>
       <p>{{ data1.weekdiamondcommissionamount
 
@@ -182,13 +186,13 @@
     </div>
 
 
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> Month Diamond  </h5>
       <p>{{ data1.thismonthdiamond
-        | currency:'INR' }}</p>
+       }}</p>
     </div>
     <!-- 32 -->
-    <div class="card">
+    <div class="card" routerLink="/diamondcaderusers" style="cursor:pointer;">
       <h5 class="fw-bold"> Month Diamond Comission </h5>
       <p>{{ data1.monthdiamondcommissionamount
         | currency:'INR' }}</p>
@@ -328,5 +332,6 @@
       <p>Commission: {{ data1.monthdiamondcommissionamount | currency:'INR' }}</p>
       <p>Withdraw: {{ data1.monthdiamondwithdraw | currency:'INR' }}</p>
     </div> -->
+
   </div>
 </div>
