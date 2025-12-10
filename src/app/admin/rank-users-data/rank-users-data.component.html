@@ -1,9 +1,8 @@
-<div class="rank-users-dashboard">
+<!-- <div class="rank-users-dashboard">
   <h2 class="title">
     <i class="fas fa-users"></i> Rank Based Users Data
   </h2>
 
-  <!-- 🔹 Rank Selector -->
   <div class="rank-select card">
     <label for="rank"><i class="fas fa-medal"></i> Select Rank:</label>
     <select id="rank" (change)="onRankChange($event)">
@@ -14,13 +13,10 @@
     </select>
   </div>
 
-  <!-- 🔹 Loader -->
   <div *ngIf="loading" class="loading">Loading users...</div>
 
-  <!-- 🔹 Error Message -->
   <div *ngIf="errorMsg && !loading" class="alert error">{{ errorMsg }}</div>
 
-  <!-- 🔹 Users Table -->
   <div *ngIf="!loading && users.length > 0" class="card table-container">
     <h3 class="table-title">
       <i class="fas fa-database"></i>
@@ -48,7 +44,6 @@
             <td>{{ u.phone }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.joindate || u.cdate }}</td>
-            <!-- <td>{{u.password}}</td> -->
 
             <td>
               <span [ngClass]="{ 'text-blur': !u.showPassword }">
@@ -63,6 +58,96 @@
             
 
             
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="rank-users-dashboard">
+  <h2 class="title">
+    <i class="fas fa-users"></i> Rank Based Users Data
+  </h2>
+
+  <!-- Rank Selector -->
+  <div class="rank-select card">
+    <label><i class="fas fa-medal"></i> Select Rank:</label>
+    <select id="rank" (change)="onRankChange($event)">
+      <option value="">-- Select --</option>
+      <option value="silver">Silver Users</option>
+      <option value="gold">Gold Users</option>
+      <option value="diamond">Diamond Users</option>
+    </select>
+  </div>
+
+  <!-- Date Filter -->
+  <div class="card mt-3 p-3">
+    <label><i class="fas fa-calendar"></i> Filter By Date:</label>
+
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <input type="date" class="form-control"
+               [(ngModel)]="fromDate"
+               (change)="onDateChange()">
+      </div>
+
+      <div class="col-md-6">
+        <input type="date" class="form-control"
+               [(ngModel)]="toDate"
+               (change)="onDateChange()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">Loading users...</div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMsg && !loading" class="alert error mt-2">{{ errorMsg }}</div>
+
+  <!-- Users Table -->
+  <div *ngIf="!loading && filteredUsers.length > 0" class="card table-container mt-3">
+    <h3 class="table-title">
+      <i class="fas fa-database"></i>
+      {{ selectedRank | titlecase }} Users List
+    </h3>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let u of filteredUsers; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ u.regid || u.id }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.joindate || u.cdate }}</td>
+
+            <td>
+              <span [ngClass]="{ 'text-blur': !u.showPassword }">
+                {{ u.showPassword ? u.password : '••••••••' }}
+              </span>
+
+              <button class="btn btn-sm btn-link p-0 ms-2"
+                      (click)="togglePassword(u)">
+                <i [class]="u.showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </td>
+
           </tr>
         </tbody>
       </table>
