@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'product-details', component: ProductDeatilsComponent },
+  // { path: 'product-details', component: ProductDeatilsComponent },
   { path: 'contact-us', component: ContactComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
 

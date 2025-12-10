@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -14,11 +15,11 @@ export class BannerComponent implements OnInit {
   preview: any = '';
   selectedFile!: File;
 
-  constructor(private fb: FormBuilder, private api: AdminService) {}
+  constructor(private fb: FormBuilder, private api: AdminService,private toastr:ToastrService) {}
 
   ngOnInit(): void {
     this.bannerForm = this.fb.group({
-      bannertype: ['home'],
+      bannertype: [''],
       // sponcerid: [''],
       // bannertype: [''],
       name: [''],
@@ -57,7 +58,7 @@ export class BannerComponent implements OnInit {
     formData.append("image", this.selectedFile);  // REQUIRED: File
 
     this.api.addBanner(formData).subscribe((res: any) => {
-      alert("Banner Added Successfully!");
+      this.toastr.success("Banner Added successfully!", "Success");
       this.bannerForm.reset();
       this.preview = '';
       this.loadBanners();
@@ -74,15 +75,19 @@ export class BannerComponent implements OnInit {
   }
 
   /** DELETE */
-  deleteBanner(id: string) {
-    console.log("id",id);
-    
-    if (confirm("Are you sure?")) {
-      this.api.deleteBanner(id).subscribe(() => {
-        alert("Banner Deleted!");
+deleteBanner(id: string) {
+  if (confirm("Are you sure you want to delete this banner?")) {
+    this.api.deleteBanner(id).subscribe({
+      next: () => {
+        this.toastr.success("Banner deleted successfully!", "Success");
         this.loadBanners();
-      });
-    }
+      },
+      error: (err) => {
+        this.toastr.error("Failed to delete banner!", "Error");
+        console.error(err);
+      }
+    });
   }
-  
+}
+
 }
