@@ -70,33 +70,58 @@ export class AdminLayoutComponent {
     } else if (this.isAdmin) {
       this.menuItems = [
         { label: 'Dashboard', icon: 'fas fa-tachometer-alt', route: '/adashboard' },
-        { label: 'Add Package', icon: 'bi bi-speedometer2', route: '/addpackage' },
-         { label: 'Add Products', icon: 'bi bi-speedometer2', route: '/addproduct' },
-         { label: 'Registration', icon: 'fas fa-tachometer-alt', route: '/adminregister' },
-         { label: 'Add Banner', icon: 'fas fa-tachometer-alt', route: '/banner' },
+        { label: 'Add Package', icon: 'bi bi-box-seam', route: '/addpackage' },
+
+        { label: 'Add Products', icon: 'bi bi-bag-plus', route: '/addproduct' }
+,
+         { label: 'Registration', icon: 'fas fa-user-plus', route: '/adminregister' },
+         { label: 'Add Banner', icon: 'fas fa-image', route: '/banner' },
+
 
           { label: 'Profile', icon: 'fas fa-edit', route: '/aprofile' },
-          { label: 'Wallet Report', icon: 'fas fa-edit', route: '/wallet-report' },
+          { label: 'Wallet Report', icon: 'fas fa-wallet', route: '/wallet-report' },
+
+        // {
+        //   label: 'Users',
+        //   icon: 'fas fa-users',
+        //   children: [
+        //     { label: 'Today Users', icon: 'fas fa-list', route: '/todayactive' },
+        //     { label: 'Total Users', icon: 'fas fa-user-plus', route: '/totalusers' },
+        //     { label: 'Total Active Users', icon: 'fas fa-user-plus', route: '/totalactiveusers' },
+        //     { label: 'Upgrade Users', icon: 'fas fa-user-plus', route: '/upgradeusers' },
+        //     { label: 'Rank Users', icon: 'fas fa-user-plus', route: '/rankwiseusers' },
+        //   ]
+        // },
+        //     {
+        //   label: 'Cader Users',
+        //   icon: 'fas fa-users',
+        //   children: [
+        //     { label: 'Silver', icon: 'fas fa-list', route: '/silvercaderusers' },
+        //     { label: 'Gold', icon: 'fas fa-list', route: '/goldcaderusers' },
+        //     { label: 'Diamond', icon: 'fas fa-list', route: '/diamondcaderusers' },
+        //   ]
+        // },
         {
           label: 'Users',
           icon: 'fas fa-users',
           children: [
-            { label: 'Today Users', icon: 'fas fa-list', route: '/todayactive' },
-            { label: 'Total Users', icon: 'fas fa-user-plus', route: '/totalusers' },
-            { label: 'Total Active Users', icon: 'fas fa-user-plus', route: '/totalactiveusers' },
-            { label: 'Upgrade Users', icon: 'fas fa-user-plus', route: '/upgradeusers' },
-            { label: 'Rank Users', icon: 'fas fa-user-plus', route: '/rankwiseusers' },
+            { label: 'Today Users', icon: 'fas fa-calendar-day', route: '/todayactive' },
+            { label: 'Total Users', icon: 'fas fa-users', route: '/totalusers' },
+            { label: 'Total Active Users', icon: 'fas fa-user-check', route: '/totalactiveusers' },
+            { label: 'Upgrade Users', icon: 'fas fa-arrow-up', route: '/upgradeusers' },
+            { label: 'Rank Users', icon: 'fas fa-medal', route: '/rankwiseusers' },
           ]
         },
-            {
+        {
           label: 'Cader Users',
-          icon: 'fas fa-users',
+          icon: 'fas fa-layer-group',
           children: [
-            { label: 'Silver', icon: 'fas fa-list', route: '/silvercaderusers' },
-            { label: 'Gold', icon: 'fas fa-list', route: '/goldcaderusers' },
-            { label: 'Diamond', icon: 'fas fa-list', route: '/diamondcaderusers' },
+            { label: 'Silver', icon: 'fas fa-medal text-secondary', route: '/silvercaderusers' },
+            { label: 'Gold', icon: 'fas fa-medal text-warning', route: '/goldcaderusers' },
+            { label: 'Diamond', icon: 'fas fa-gem text-info', route: '/diamondcaderusers' },
           ]
         },
+        
         {
           label: 'Payments',
           icon: 'fas fa-credit-card',
