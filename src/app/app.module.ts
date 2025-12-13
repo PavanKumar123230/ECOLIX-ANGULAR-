@@ -55,6 +55,7 @@ import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-re
 import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
 import { TeamComponent } from './Components/team/team.component';
+import { WalletReportComponent } from './admin/wallet-report/wallet-report.component';
 
 
 
@@ -110,6 +111,7 @@ import { TeamComponent } from './Components/team/team.component';
     BannerComponent,
     SupportComponent,
     TeamComponent,
+    WalletReportComponent,
    
   ],
   imports: [

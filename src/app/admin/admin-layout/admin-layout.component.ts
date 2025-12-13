@@ -76,6 +76,7 @@ export class AdminLayoutComponent {
          { label: 'Add Banner', icon: 'fas fa-tachometer-alt', route: '/banner' },
 
           { label: 'Profile', icon: 'fas fa-edit', route: '/aprofile' },
+          { label: 'Wallet Report', icon: 'fas fa-edit', route: '/wallet-report' },
         {
           label: 'Users',
           icon: 'fas fa-users',

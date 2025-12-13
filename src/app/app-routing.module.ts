@@ -44,6 +44,7 @@ import { AdminRegisterUserComponent } from './admin/admin-register-user/admin-re
 import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
 import { TeamComponent } from './Components/team/team.component';
+import { WalletReportComponent } from './admin/wallet-report/wallet-report.component';
 
 const routes: Routes = [
   // Public routes
@@ -106,7 +107,8 @@ const routes: Routes = [
     { path: 'withdrawusers', component: WithdrawUsersListComponent },
     { path: 'aprofile', component: AdminProfileComponent }, 
       { path: 'adminregister', component: AdminRegisterUserComponent },      
-      { path: 'banner', component: BannerComponent },      
+      { path: 'banner', component: BannerComponent },    
+      {path:'wallet-report',component:WalletReportComponent}  
   ]
 },
   // ✅ Admin Dashboard Layout
