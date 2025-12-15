@@ -76,13 +76,20 @@
                   
             </tbody>
 
-            <tfoot class="table-light fw-bold">
+            <!-- <tfoot class="table-light fw-bold">
                 <tr>
                     <td colspan="5">Total</td>
                     <td  colspan="1" class="text-success">₹{{ totalAmount }}</td>
-                    <!-- <td colspan="1"></td> -->
                 </tr>
-            </tfoot>
+            </tfoot> -->
+            <tfoot class="table-light fw-bold">
+                <tr>
+                  <td colspan="5">Page Total</td>
+                  <td class="text-success">₹{{ pageTotalAmount }}</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+              
         </table>
      
           
