@@ -1,0 +1,31 @@
+<div class="id-wrapper" *ngIf="profiledata">
+    <div class="id-card">
+  
+      <!-- HEADER -->
+      <div class="id-header">
+        <img src="assets/silver.png" class="id-logo" alt="Logo" />
+        <i class="bi bi-person-circle profile-icon"></i>
+      </div>
+  
+      <!-- BODY -->
+      <div class="id-body">
+        <h3 class="user-name">{{ profiledata.name }}</h3>
+        <p class="user-id">ID : {{ profiledata.regid }}</p>
+      </div>
+  
+      <!-- CADRE -->
+      <span class="badge silver" *ngIf="profiledata.silver === '1'">
+        SILVER CADRE
+      </span>
+  
+      <!-- FOOTER -->
+      <div class="id-footer">
+        <p>
+          <strong>Address:</strong>
+          {{ profiledata.city || 'Hyderabad' }}
+        </p>
+      </div>
+  
+    </div>
+  </div>
+  

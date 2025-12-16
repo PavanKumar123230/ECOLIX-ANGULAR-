@@ -45,6 +45,7 @@ import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
 import { TeamComponent } from './Components/team/team.component';
 import { WalletReportComponent } from './admin/wallet-report/wallet-report.component';
+import { IdCardComponent } from './Components/id-card/id-card.component';
 
 const routes: Routes = [
   // Public routes
@@ -82,7 +83,7 @@ const routes: Routes = [
         { path: 'goldmanager', component: GoldManagersDataComponent },
          { path: 'diamondmanager', component: DiamondManagersDataComponent },
          { path: 'levelwise-team', component: TeamComponent },
-
+         { path: 'id-card', component: IdCardComponent },
     ]
   },
   // ✅ Admin Dashboard

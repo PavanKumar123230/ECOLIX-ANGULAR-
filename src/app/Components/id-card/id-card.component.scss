@@ -1,0 +1,100 @@
+/* Center card in page */
+.id-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f6fb;
+  }
+  
+  /* Card */
+  .id-card {
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Header */
+  .id-header {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    padding: 24px;
+  }
+  
+  .profile-icon {
+    font-size: 80px;
+    color: #ffffff;
+  }
+  
+  /* Body */
+  .id-body {
+    padding: 20px;
+  }
+  
+  .user-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .user-id {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* Footer */
+  .id-footer {
+    background: #f9fafb;
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .badge.silver {
+    background: #cbd5e1;
+    color: #1f2937;
+  }
+  
+  .address p {
+    margin: 2px 0;
+    font-size: 13px;
+    color: #374151;
+  }
+  /* Header */
+.id-header {
+    position: relative;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    padding: 24px;
+  }
+  
+  /* Logo */
+  .id-logo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  
+  /* Profile Icon */
+  .profile-icon {
+    font-size: 80px;
+    color: #ffffff;
+  }
+  

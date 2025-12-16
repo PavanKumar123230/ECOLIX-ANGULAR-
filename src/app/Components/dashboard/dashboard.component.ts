@@ -32,10 +32,50 @@ export class DashboardComponent {
         console.log('homedata:', this.homeData.profiledata);
         this.profiledata=this.homeData.profiledata
         console.log("profiledata:",this.profiledata)
+        this.checkRankCongrats();
       },
       error: (err) => {
         console.error('Error fetching home data:', err);
       }
     });
   }
-}
+
+
+  showCongrats = false;
+
+  showSilverCongrats() {
+    this.showCongrats = true;
+
+    setTimeout(() => {
+      this.showCongrats = false;
+    }, 4000);
+  }
+
+
+
+
+    congratsShown = false;
+  
+  
+
+  
+    checkRankCongrats() {
+      if (
+        this.profiledata &&
+        this.profiledata.silver === '1' &&
+        !this.congratsShown
+      ) {
+        this.showCongrats = true;
+        this.congratsShown = true;
+      }
+    }
+  
+    closePopup() {
+      this.showCongrats = false;
+    }
+  }
+  
+
+
+
+

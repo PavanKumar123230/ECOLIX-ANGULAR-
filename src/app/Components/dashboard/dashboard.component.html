@@ -21,6 +21,32 @@
   </div>
 </div> -->
 
+<!-- Trigger Button -->
+
+<!-- 
+<button class="btn-silver" (click)="showSilverCongrats()">
+  Check Rank
+</button>
+
+<div class="congrats-overlay" *ngIf="showCongrats">
+  <div class="congrats-card">
+    
+    <div class="confetti"></div>
+
+    <i class="bi bi-person-circle silver-icon"></i>
+
+    <img
+      src="assets/gif/silver-rank.gif"
+      alt="Silver Rank"
+      class="rank-gif"
+    />
+
+    <h2>Congratulations 🎉</h2>
+    <p>You are now a <span class="silver-text">Silver Member</span></p>
+
+    <button class="close-btn" (click)="closePopup()">OK</button>
+  </div>
+</div> -->
 <div class="welcome-card mb-4" *ngIf="profiledata">
   <div class="welcome-content">
     <div class="welcome-left">
@@ -38,34 +64,39 @@
       <p class="welcome-info">
         <strong>Sponsor ID:</strong> {{ profiledata.sponcerid }}
       </p>
-    </div>
 
+      <p class="welcome-info">
+        <button class="btn btn-primary" routerLink="/id-card"> print ID Card</button> 
+      </p>
+    </div>
     <div class="welcome-right">
-      <div class="icon-container">
-        <i
-          class="bi bi-person-circle welcome-icon sparkle"
-          [ngClass]="{
-            'default-icon': profiledata.gold === '0' && profiledata.silver === '0' && profiledata.diamond === '0',
-            'gold-icon': profiledata.gold === '1',
-            'silver-icon': profiledata.silver === '1',
-            'diamond-icon': profiledata.diamond === '1'
-          }">
-        </i>
+
+      <!-- INLINE CONGRATS CARD -->
+      <div class="congrats-inline"
+           *ngIf="profiledata.silver === '1' && showCongrats">
     
-        <span class="rank-badge gold" *ngIf="profiledata.gold === '1'">GOLD</span>
-        <span class="rank-badge silver" *ngIf="profiledata.silver === '1'">SILVER</span>
-        <span class="rank-badge diamond" *ngIf="profiledata.diamond === '1'">DIAMOND</span>
+        <!-- Confetti -->
+        <div class="confetti"></div>
+    
+        <!-- Silver Icon -->
+        <i class="bi bi-person-circle silver-icon"></i>
+  
+        <p>Congratulations 🎉<p>
+        <p>
+          You are now a
+          <!-- <span class="silver-text" >Silver Member</span> -->
+          <span class=" fw-bold" *ngIf="profiledata.gold === '1'">GOLD Member</span>
+          <span class=" fw-bold" *ngIf="profiledata.silver === '1'">SILVER Member</span>
+          <span class="  fw-bold" *ngIf="profiledata.diamond === '1'">DIAMOND Member</span>
+        </p>
       </div>
+  
+    
     </div>
     
-    
-
     
   </div>
 </div>
-
-
-
   <div class="dashboard-grid mb-5" *ngIf="profiledata">
        <div class="card gradient-blue">
       <div class="card-header">

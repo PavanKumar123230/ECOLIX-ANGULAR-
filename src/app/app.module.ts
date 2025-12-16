@@ -56,6 +56,7 @@ import { BannerComponent } from './admin/banner/banner.component';
 import { SupportComponent } from './Components/support/support.component';
 import { TeamComponent } from './Components/team/team.component';
 import { WalletReportComponent } from './admin/wallet-report/wallet-report.component';
+import { IdCardComponent } from './Components/id-card/id-card.component';
 
 
 
@@ -112,6 +113,7 @@ import { WalletReportComponent } from './admin/wallet-report/wallet-report.compo
     SupportComponent,
     TeamComponent,
     WalletReportComponent,
+    IdCardComponent,
    
   ],
   imports: [
