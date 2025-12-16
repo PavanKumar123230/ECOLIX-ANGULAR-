@@ -86,6 +86,8 @@ paginatedUsers: any[] = [];
   
     if (this.selectedPaytype) {
       data = data.filter(u => u.paytype === this.selectedPaytype);
+      console.log(data);
+      
     }
   
     if (this.fromDate) {

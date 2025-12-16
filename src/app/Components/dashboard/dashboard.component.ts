@@ -20,13 +20,9 @@ export class DashboardComponent {
   }
   totalReferal(){
     this.router.navigate(['/my-user']);
-
   }
-
-
   levelmember(){
     this.router.navigate(['/levelwise-team']);
-
   }
   getHome() {
     this.api.Home().subscribe({
@@ -42,5 +38,4 @@ export class DashboardComponent {
       }
     });
   }
-
 }
