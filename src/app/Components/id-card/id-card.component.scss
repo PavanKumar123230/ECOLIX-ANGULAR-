@@ -97,4 +97,35 @@
     font-size: 80px;
     color: #ffffff;
   }
+  .badge.gold {
+    background: #facc15;
+    color: #1f2937;
+  }
+  
+  .badge.diamond {
+    background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+    color: #0f172a;
+  }
+  .card-diamond {
+    border: 3px solid #38bdf8;
+  }
+  
+  .card-gold {
+    border: 3px solid #facc15;
+  }
+  
+  .card-silver {
+    border: 3px solid #cbd5e1;
+  }
+  .icon-diamond {
+    color: #38bdf8 !important;
+  }
+  
+  .icon-gold {
+    color: #facc15 !important;
+  }
+  
+  .icon-silver {
+    color: #cbd5e1 !important;
+  }
   

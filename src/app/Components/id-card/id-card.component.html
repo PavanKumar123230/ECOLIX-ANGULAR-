@@ -1,31 +1,56 @@
 <div class="id-wrapper" *ngIf="profiledata">
-    <div class="id-card">
-  
-      <!-- HEADER -->
-      <div class="id-header">
-        <img src="assets/silver.png" class="id-logo" alt="Logo" />
-        <i class="bi bi-person-circle profile-icon"></i>
-      </div>
-  
-      <!-- BODY -->
-      <div class="id-body">
-        <h3 class="user-name">{{ profiledata.name }}</h3>
-        <p class="user-id">ID : {{ profiledata.regid }}</p>
-      </div>
-  
-      <!-- CADRE -->
-      <span class="badge silver" *ngIf="profiledata.silver === '1'">
-        SILVER CADRE
-      </span>
-  
-      <!-- FOOTER -->
-      <div class="id-footer">
-        <p>
-          <strong>Address:</strong>
-          {{ profiledata.city || 'Hyderabad' }}
-        </p>
-      </div>
-  
+  <div class="id-card"
+       [ngClass]="{
+         'card-diamond': profiledata.diamond === '1',
+         'card-gold': profiledata.gold === '1',
+         'card-silver': profiledata.silver === '1'
+       }">
+
+    <!-- HEADER -->
+    <div class="id-header">
+      <img src="assets/silver.png" class="id-logo" alt="Logo" />
+
+      <i class="bi bi-person-circle profile-icon"
+         [ngClass]="{
+           'icon-diamond': profiledata.diamond === '1',
+           'icon-gold': profiledata.gold === '1',
+           'icon-silver': profiledata.silver === '1'
+         }"></i>
     </div>
+
+    <!-- BODY -->
+    <div class="id-body">
+      <h3 class="user-name">Name: {{ profiledata.name }}</h3>
+      <p class="user-id">ID No: {{ profiledata.regid }}</p>
+
+      <!-- CADRE BADGE -->
+      <span class="badge diamond"
+            *ngIf="profiledata.diamond === '1'; else goldBlock">
+        DIAMOND CADRE
+      </span>
+
+      <ng-template #goldBlock>
+        <span class="badge gold"
+              *ngIf="profiledata.gold === '1'; else silverBlock">
+          GOLD CADRE
+        </span>
+      </ng-template>
+
+      <ng-template #silverBlock>
+        <span class="badge silver"
+              *ngIf="profiledata.silver === '1'">
+          SILVER CADRE
+        </span>
+      </ng-template>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="id-footer">
+      <p>
+        <strong>Address:</strong>
+        {{ profiledata.city || 'Hyderabad' }}
+      </p>
+    </div>
+
   </div>
-  
+</div>

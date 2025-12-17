@@ -1,7 +1,7 @@
 <div class="dashboard-container">
   <!-- <h1 class="dashboard-title">Dashboard Overview</h1> -->
-   <!-- User Welcome Card -->
-<!-- <div class="welcome-card mb-4" *ngIf="profiledata">
+  <!-- User Welcome Card -->
+  <!-- <div class="welcome-card mb-4" *ngIf="profiledata">
   <div class="welcome-content">
     <div class="welcome-left">
       <h2 class="welcome-title">Welcome, {{ profiledata.name }}</h2>
@@ -21,9 +21,9 @@
   </div>
 </div> -->
 
-<!-- Trigger Button -->
+  <!-- Trigger Button -->
 
-<!-- 
+  <!-- 
 <button class="btn-silver" (click)="showSilverCongrats()">
   Check Rank
 </button>
@@ -47,58 +47,131 @@
     <button class="close-btn" (click)="closePopup()">OK</button>
   </div>
 </div> -->
-<div class="welcome-card mb-4" *ngIf="profiledata">
-  <div class="welcome-content">
-    <div class="welcome-left">
-      <h2 class="welcome-title">Welcome, {{ profiledata.name }}</h2>
 
-      <p class="welcome-info">
-        <strong>Reg ID:</strong> {{ profiledata.regid }}
-      </p>
-
-      <p class="welcome-info">
-        <strong>Activation Date:</strong>
-        {{ profiledata.cdate | date:'dd MMM yyyy' }}
-      </p>
-
-      <p class="welcome-info">
-        <strong>Sponsor ID:</strong> {{ profiledata.sponcerid }}
-      </p>
-
-      <p class="welcome-info">
-        <button class="btn btn-primary" routerLink="/id-card"> print ID Card</button> 
-      </p>
-    </div>
-    <div class="welcome-right">
-
-      <!-- INLINE CONGRATS CARD -->
-      <div class="congrats-inline"
-           *ngIf="profiledata.silver === '1' && showCongrats">
-    
-        <!-- Confetti -->
-        <div class="confetti"></div>
-    
-        <!-- Silver Icon -->
-        <i class="bi bi-person-circle silver-icon"></i>
-  
-        <p>Congratulations 🎉<p>
-        <p>
-          You are now a
-          <!-- <span class="silver-text" >Silver Member</span> -->
-          <span class=" fw-bold" *ngIf="profiledata.gold === '1'">GOLD Member</span>
-          <span class=" fw-bold" *ngIf="profiledata.silver === '1'">SILVER Member</span>
-          <span class="  fw-bold" *ngIf="profiledata.diamond === '1'">DIAMOND Member</span>
+  <div class="welcome-card mb-4" *ngIf="profiledata">
+    <div class="welcome-content">
+      <div class="welcome-left">
+        <h2 class="welcome-title">Welcome, {{ profiledata.name }}</h2>
+        <p class="welcome-info">
+          <strong>Reg ID:</strong> {{ profiledata.regid }}
+        </p>
+        <p class="welcome-info">
+          <strong>Activation Date:</strong>
+          {{ profiledata.cdate | date:'dd MMM yyyy' }}
+        </p>
+        <p class="welcome-info">
+          <strong>Sponsor ID:</strong> {{ profiledata.sponcerid }}
+        </p>
+        <p class="welcome-info">
+          <button class="btn btn-primary" routerLink="/id-card"> print ID Card</button>
         </p>
       </div>
-  
-    
+      <!-- <div class="welcome-right">
+        <div class="congrats-inline" *ngIf="profiledata.silver === '1' && showCongrats">
+          <div class="confetti"></div>
+          <i class="bi bi-person-circle silver-icon"></i>
+          <p>Congratulations 🎉
+          <p>
+          <p>
+            You are now a
+            <span class=" fw-bold" *ngIf="profiledata.gold === '1'">GOLD Member</span>
+            <span class=" fw-bold" *ngIf="profiledata.silver === '1'">SILVER Member</span>
+            <span class="  fw-bold" *ngIf="profiledata.diamond === '1'">DIAMOND Member</span>
+          </p>
+        </div>
+      </div> -->
+
+     
+      <!-- <div class="welcome-right">
+        <div class="congrats-inline"
+             *ngIf="showCongrats && (profiledata.silver === '1' || profiledata.gold === '1' || profiledata.diamond === '1')">
+      
+          <div class="confetti"></div>
+      
+          <i class="bi bi-person-circle"
+             [ngClass]="{
+               'silver-icon': profiledata.silver === '1',
+               'gold-icon': profiledata.gold === '1',
+               'diamond-icon': profiledata.diamond === '1'
+             }"></i>
+      
+          <p class="mb-1">Congratulations 🎉</p>
+      
+          <p>
+            You are now a
+            <span class="fw-bold" *ngIf="profiledata.diamond === '1'; else goldBlock">
+              DIAMOND Member
+            </span>
+      
+            <ng-template #goldBlock>
+              <span class="fw-bold" *ngIf="profiledata.gold === '1'; else silverBlock">
+                GOLD Member
+              </span>
+            </ng-template>
+      
+            <ng-template #silverBlock>
+              <span class="fw-bold">
+                SILVER Member
+              </span>
+            </ng-template>
+          </p>
+      
+        </div>
+      </div> -->
+      <div class="welcome-right">
+
+        <!-- CONGRATS BLOCK -->
+        <div class="congrats-inline"
+             *ngIf="showCongrats && (profiledata.silver === '1' || profiledata.gold === '1' || profiledata.diamond === '1');
+                    else defaultIcon">
+      
+          <div class="confetti"></div>
+      
+          <!-- ICON WITH COLOR -->
+          <i class="bi bi-person-circle"
+             [ngClass]="{
+               'silver-icon': profiledata.silver === '1',
+               'gold-icon': profiledata.gold === '1',
+               'diamond-icon': profiledata.diamond === '1'
+             }"></i>
+      
+          <p class="mb-1">Congratulations 🎉</p>
+      
+          <!-- IF / ELSE CHAIN -->
+          <p>
+            You are now a
+            <span class="fw-bold" *ngIf="profiledata.diamond === '1'; else goldBlock">
+              DIAMOND Member
+            </span>
+      
+            <ng-template #goldBlock>
+              <span class="fw-bold" *ngIf="profiledata.gold === '1'; else silverBlock">
+                GOLD Member
+              </span>
+            </ng-template>
+      
+            <ng-template #silverBlock>
+              <span class="fw-bold">
+                SILVER Member
+              </span>
+            </ng-template>
+          </p>
+      
+        </div>
+      
+        <!-- DEFAULT ICON (ELSE CASE) -->
+        <ng-template #defaultIcon>
+          <i class="bi bi-person-circle welcome-icon"></i>
+        </ng-template>
+      
+      </div>
+      
     </div>
-    
-    
   </div>
-</div>
+
+  
   <div class="dashboard-grid mb-5" *ngIf="profiledata">
-       <div class="card gradient-blue">
+    <div class="card gradient-blue">
       <div class="card-header">
         <h3>Active Fund</h3>
         <i class="bi bi-currency-rupee"></i>
@@ -135,7 +208,7 @@
       </p>
     </div>
 
-    
+
     <!-- <div class="card gradient-pink" >
       <div class="card-header">
         <h3>Welcome Bonus Income</h3>
@@ -154,12 +227,12 @@
         {{ homeData.levelincome | currency : "INR" : "symbol" : "1.0-0" }}
       </p>
     </div>
-     <div class="card gradient-pink" style="cursor: pointer;" (click)="goToWelcomeBonus()" >
+    <div class="card gradient-pink" style="cursor: pointer;" (click)="goToWelcomeBonus()">
       <div class="card-header">
         <h3>Extra Welcome Bonus Income</h3>
         <i class="bi bi-person-badge"></i>
       </div>
-       <p class="card-value">{{homeData.welcomebonus | currency : "INR" : "symbol" : "1.0-0"}}</p>
+      <p class="card-value">{{homeData.welcomebonus | currency : "INR" : "symbol" : "1.0-0"}}</p>
     </div>
     <!-- <div class="card gradient-cyan">
       <div class="card-header">
@@ -168,7 +241,7 @@
       </div>
       <p class="card-value">{{ homeData.sponsors }}</p>
     </div> -->
-    <div class="card gradient-yellow"  style="cursor: pointer;" (click)="totalReferal()" >
+    <div class="card gradient-yellow" style="cursor: pointer;" (click)="totalReferal()">
       <div class="card-header">
         <h3>Total Referrals</h3>
         <i class="bi bi-person-badge"></i>
@@ -176,7 +249,7 @@
       <p class="card-value">{{ homeData.sponsors }}</p>
       <!-- <p class="card-change positive">+5.4% from yesterday</p> -->
     </div>
-    <div class="card gradient-yellow"  style="cursor: pointer;" (click)="levelmember()" >
+    <div class="card gradient-yellow" style="cursor: pointer;" (click)="levelmember()">
       <div class="card-header">
         <h3>Total Team</h3>
         <i class="bi bi-person-badge"></i>
@@ -201,13 +274,13 @@
     <h2 class="section-title mb-4">Silver Income Overview</h2>
     <div class="silver-income-grid">
       <!-- Welcome Bonus Income (Silver Sponsor Income) -->
-   
-       <div class="card silver-card gradient-gray">
+
+      <div class="card silver-card gradient-gray">
         <div class="card-header">
           <h3>Silver Referal Income</h3>
           <i class="bi bi-bar-chart-line"></i>
         </div>
-         <p class="card-value">{{ homeData.silversponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
+        <p class="card-value">{{ homeData.silversponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
       </div>
       <!-- Silver Working Level Income -->
       <div class="card silver-card gradient-gray">
@@ -232,7 +305,7 @@
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.silversalaryincome | currency:'INR':'symbol':'1.0-0' }}</p>
-      
+
       </div>
 
       <!-- Silver Loan Income -->
@@ -252,7 +325,7 @@
           <i class="bi bi-cash-coin"></i>
         </div>
         <p class="card-value">{{ homeData.loanincome || 0 | currency:'INR':'symbol':'1.0-0' }}</p>
-   
+
       </div>
 
       <!-- Today Income (if no field in API, can use silverincome as placeholder) -->
@@ -271,7 +344,7 @@
           <i class="bi bi-building"></i>
         </div>
         <p class="card-value">{{ homeData.franchiseincome || 0 | currency:'INR':'symbol':'1.0-0' }}</p>
-     
+
       </div>
 
     </div>
@@ -291,8 +364,8 @@
           <h3>Gold Referral Income</h3>
           <i class="bi bi-trophy"></i>
         </div>
-       <p class="card-value">{{ homeData.goldsponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
-  
+        <p class="card-value">{{ homeData.goldsponcerincome | currency:'INR':'symbol':'1.0-0' }}</p>
+
       </div>
 
       <!-- Gold Level Income -->
@@ -302,7 +375,7 @@
           <i class="bi bi-trophy"></i>
         </div>
         <p class="card-value">{{ homeData.goldincome | currency:'INR':'symbol':'1.0-0' }}</p>
-  
+
       </div>
 
       <!-- Gold Bonanza Income -->
@@ -322,7 +395,7 @@
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.goldsalaryincome | currency:'INR':'symbol':'1.0-0' }}</p>
-  
+
       </div>
 
       <!-- Gold Loan Income -->
@@ -332,7 +405,7 @@
           <i class="bi bi-bank"></i>
         </div>
         <p class="card-value">{{ homeData.goldloanincome | currency:'INR':'symbol':'1.0-0' }}</p>
- 
+
       </div>
 
       <!-- Gold Today Income -->
@@ -342,7 +415,7 @@
           <i class="bi bi-sun"></i>
         </div>
         <p class="card-value">{{ homeData.goldincome | currency:'INR':'symbol':'1.0-0' }}</p>
- 
+
       </div>
 
     </div>
@@ -362,8 +435,8 @@
           <h3>Diamond Referral Income</h3>
           <i class="bi bi-gem"></i>
         </div>
-       <p class="card-value">{{ homeData.diamondsponcerincome | currency:'INR':'symbol' }}</p>
-   
+        <p class="card-value">{{ homeData.diamondsponcerincome | currency:'INR':'symbol' }}</p>
+
       </div>
 
       <div class="card diamond-card gradient-diamondblue">
@@ -372,7 +445,7 @@
           <i class="bi bi-gem"></i>
         </div>
         <p class="card-value">{{ homeData.diamondincome | currency:'INR':'symbol' }}</p>
-   
+
       </div>
 
       <div class="card diamond-card gradient-diamondblue">
@@ -381,7 +454,7 @@
           <i class="bi bi-stars"></i>
         </div>
         <p class="card-value">{{ homeData.diamondbonanzaincome | currency:'INR':'symbol' }}</p>
-      
+
       </div>
 
       <div class="card diamond-card gradient-diamondblue">
@@ -390,7 +463,7 @@
           <i class="bi bi-calendar-check"></i>
         </div>
         <p class="card-value">{{ homeData.diamondsalaryincome | currency:'INR':'symbol' }}</p>
-     
+
       </div>
 
       <div class="card diamond-card gradient-diamondblue">
@@ -413,4 +486,3 @@
     </div>
   </div>
 </div>
-
