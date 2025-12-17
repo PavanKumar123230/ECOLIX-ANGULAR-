@@ -128,4 +128,55 @@
   .icon-silver {
     color: #cbd5e1 !important;
   }
+
+  /* PROFILE IMAGE */
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ffffff;
+  padding: 4px;
+  margin-top: 6px;
+}
+
+/* IMAGE BORDER COLORS (same logic as icon before) */
+.img-diamond {
+  border: 3px solid #38bdf8;
+}
+
+.img-gold {
+  border: 3px solid #facc15;
+}
+
+.img-silver {
+  border: 3px solid #cbd5e1;
+}
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ffffff;
+  padding: 4px;
+  margin-top: 6px;
+}
+
+.img-diamond {
+  border: 3px solid #38bdf8;
+}
+
+.img-gold {
+  border: 3px solid #facc15;
+}
+
+.img-silver {
+  border: 3px solid #cbd5e1;
+}
+
+.profile-icon {
+  font-size: 80px;
+  color: #ffffff;
+}
+
   

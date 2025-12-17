@@ -10,12 +10,46 @@
     <div class="id-header">
       <img src="assets/silver.png" class="id-logo" alt="Logo" />
 
-      <i class="bi bi-person-circle profile-icon"
+      <!-- <i class="bi bi-person-circle profile-icon"
          [ngClass]="{
            'icon-diamond': profiledata.diamond === '1',
            'icon-gold': profiledata.gold === '1',
            'icon-silver': profiledata.silver === '1'
-         }"></i>
+         }"></i> -->
+ <!-- DIAMOND IMAGE -->
+<img
+*ngIf="profiledata.diamond === '1'; else goldImg"
+src="assets/diamond.png"
+alt="Diamond"
+class="profile-img img-diamond"
+/>
+
+<!-- GOLD IMAGE -->
+<ng-template #goldImg>
+<img
+  *ngIf="profiledata.gold === '1'; else silverImg"
+  src="assets/gold.png"
+  alt="Gold"
+  class="profile-img img-gold"
+/>
+</ng-template>
+
+<!-- SILVER IMAGE -->
+<ng-template #silverImg>
+<img
+  *ngIf="profiledata.silver === '1'; else defaultIcon"
+  src="assets/silver.png"
+  alt="Silver"
+  class="profile-img img-silver"
+/>
+</ng-template>
+
+<!-- DEFAULT ICON (NO MATCH) -->
+<ng-template #defaultIcon>
+<i class="bi bi-person-circle profile-icon"></i>
+</ng-template>
+
+
     </div>
 
     <!-- BODY -->
